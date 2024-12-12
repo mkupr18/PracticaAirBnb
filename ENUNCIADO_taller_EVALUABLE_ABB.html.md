@@ -299,6 +299,67 @@ Consideremos las variables `price` y `number_of_reviews` de Pollença y Palma de
 Estudiad si estos datos se aproximan a una distribución normal gráficamente. Para ello, dibujad el histograma, la función "kernel-density" que aproxima la densidad y la densidad de la normal de media y varianza las de las muestras de las variables `price` (para precios mayores de 50 y menores de 400) y `number_of_reviews` para Palma y 	
 Pollença
 
+{r}
+price2= listings_common_select %>% filter (neighbourhood_cleansed %in% c("Pollença", "Palma de Mallorca") & date == "2024-09-13")
+ # juntamos los precios de los dos municipios
+str(price2)
+price2=price2$price 
+str(price2)
+ # filtramos los precios para que estén entre 50 y 400
+price2=na.omit(price2[price2>50 & price2<400])
+mean_price=mean(price2)
+sd_price=sd(price2)
+mean_price 
+sd_price
+
+# primera manera para pintar el histograma con las curvas 
+hist (price2, freq = FALSE, col = "lightblue", main = "Histograma de
+precios \n Pollença y Palma ", xlab = "Precios" ,ylab = "Densidad
+muestral" ,ylim=c(0,0.006))
+
+lines (density(price2), col = "red", lwd = 2)
+
+curve(dnorm(x, mean = mean_price, sd = sd_price), col = "blue", lwd = 2, add = TRUE)
+legend ("topright", legend = c ("Densidad muestral","Curva normal esperada"), col = c("red","blue"), lty = 1, lwd = 2, cex = 0.7)
+
+
+# segunda manera: con ggpolt 2
+
+# Supongamos que price2 es el vector de datos
+
+mean_price <- mean(price2)
+sd_price <- sd(price2)
+
+# Data frame de precios
+data <- data.frame(price2 = price2)
+
+# Genera el gráfico con el título centrado
+ggplot(data, aes(x = price2)) + 
+  geom_histogram(aes(y = ..density..), bins = 30, fill = "lightblue", color = "black") + 
+  geom_density(color = "red", size = 1) + 
+  stat_function (fun = dnorm, args = list(mean = mean_price, sd = sa_price), color = "blue", size = 1) +
+  labs (
+    title = "Histograma de precios Pollença y Palma\n 2024-09-13", # Título
+    x = "Precios",            # Etiqueta del eje x
+    y = "Densidad muestral"   # Etiqueta del eje Y) +
+  ylim(0, 0.006) + 
+  theme_minimal(0) + 
+  theme(
+    plot.title = element_text(hjust = 0.5)) # Centra el título
+    
+# para reviews
+reviews2= listings_common_select %>% filter (neighbourhood_cleansed %in% c("Pollença", "Palma de Mallorca") & date == "2024-09-13")
+ # juntamos los precios de los dos municipios
+str(reviews2)
+reviews2=reviews2$number_of_reviews 
+str(reviews2)
+ # filtramos los precios para que estén entre 50 y 400
+price2=na.omit(price2[price2>50 & price2<400])
+mean_price=mean(price2)
+sd_price=sd(price2)
+mean_price 
+sd_price
+
 ## Pregunta 3 (**1punto**)
 
 Con los datos de `listings_common0_select` de todos los periodos, contrastar si la media del precio en Pollença es igual a la de Palma **contra** que es mayor que en Palma para los precios mayores que 50 euros y menores de 400. Construid la hipótesis nula y alternativa, calculad el $p$-valor y el intervalo de confianza asociado al contraste. Justifica técnicamente la conclusión del contraste.
