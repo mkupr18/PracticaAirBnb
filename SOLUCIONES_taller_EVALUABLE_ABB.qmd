@@ -156,7 +156,7 @@ Pollença
 ```{r}
 
 # --- Analizamos el precio ---
-price2 = listing_common0_select %>% filter(neighbourhood_cleansed %in% c("Pollença", "Palma de Mallorca") & date == "2024-09-13")
+price2 = listings_common0_select %>% filter(neighbourhood_cleansed %in% c("Pollença", "Palma de Mallorca") & date == "2024-09-13")
  # Juntamos los precios de los dos municipios
 str(price2)
 price2=price2$price 
@@ -192,7 +192,7 @@ ggplot(data, aes(x = price2)) +
 
 # --- Analizamos reviews ---
 # Filtrar los datos
-reviews2 = listing_common0_select %>%
+reviews2 = listings_common0_select %>%
   filter(neighbourhood_cleansed %in% c("Pollença", "Palma de Mallorca") & date == "2024-09-13")
 str(reviews2)
 # Limpiar la variable `number_of_reviews`
