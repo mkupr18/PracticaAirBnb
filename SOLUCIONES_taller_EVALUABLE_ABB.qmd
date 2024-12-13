@@ -112,7 +112,7 @@ Presenta los resultados con una tabla de kableExtra.
 
 ```{r}
 # --- Analizamos los precios ---
-aux_price = listing_common0_select %>% select(id,
+aux_price = listings_common0_select %>% select(id,
                                               date, 
                                               price, 
                                               neighbourhood_cleansed)
@@ -129,7 +129,7 @@ knitr::kable(table_price,"html") %>%
   kableExtra::kable_styling(bootstrap_options = "striped", full_width = F)
 
 # --- Analizamos reviews ---        
-aux_reviews = listing_common0_select %>% select(id,
+aux_reviews = listings_common0_select %>% select(id,
                                               date, 
                                               number_of_reviews, 
                                               neighbourhood_cleansed)
@@ -196,7 +196,9 @@ reviews2 = listings_common0_select %>%
   filter(neighbourhood_cleansed %in% c("Pollença", "Palma de Mallorca") & date == "2024-09-13")
 str(reviews2)
 # Limpiar la variable `number_of_reviews`
-reviews2 = na.omit(reviews2$number_of_reviews)
+reviews2 = reviews2$number_of_reviews
+str(reviews2)
+reviews2 = na.omit(reviews2)
 str(reviews2)
 
 # Calcular media y desviación estándar
@@ -216,6 +218,7 @@ ggplot(data_reviews, aes(x = reviews2)) +
     x = "Número de reviews", 
     y = "Densidad muestral"
   ) +
+  ylim(0,0.006) +
   theme_minimal() + 
   theme(plot.title = element_text(hjust = 0.5))
 
