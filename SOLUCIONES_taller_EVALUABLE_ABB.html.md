@@ -1,6 +1,6 @@
 ---
-title: "ENUNCIADO taller en grupo Mat3 GIN 2024-2025"
-author: "Maria Kupriyenko, Juan Huguet, Kalyarat Asawapoom"
+title: "SOLUCIONES taller en grupo Mat3 GIN 2024-2025"
+author: "Maria Kupriyenko, Jaume Juan Huguet, Kalyarat Asawapoom"
 lang: es
 format:
   html:
@@ -245,7 +245,7 @@ geojson_sf <- sf::st_read("data/mallorca/2024-09-13/neighbourhoods.geojson")
 
 ```
 Reading layer `neighbourhoods' from data source 
-  `C:\Users\mkupr\Documents\GitHub\PracticaAirBnb\data\mallorca\2024-09-13\neighbourhoods.geojson' 
+  `C:\Users\JaumeJH\Documents\GitHub\PracticaAirBnb\data\mallorca\2024-09-13\neighbourhoods.geojson' 
   using driver `GeoJSON'
 Simple feature collection with 53 features and 2 fields
 Geometry type: MULTIPOLYGON
@@ -4619,8 +4619,7 @@ knitr::kable(table_reviews,"html") %>%
 
 ## Pregunta 2 (**1punto**)
 
-Consideremos las variables `price` y `number_of_reviews` de Pollença y Palma del periodo "2024-09-13", del fichero `listing_common0_select.RData`. Estudiad si estos datos se aproximan a una distribución normal gráficamente. Para ello, dibujad el histograma, la función "kernel-density" que aproxima la densidad y la densidad de la normal de media y varianza las de las muestras de las variables `price` (para precios mayores de 50 y menores de 400) y `number_of_reviews` para Palma y
-Pollença
+Consideremos las variables `price` y `number_of_reviews` de Pollença y Palma del periodo "2024-09-13", del fichero `listing_common0_select.RData`. Estudiad si estos datos se aproximan a una distribución normal gráficamente. Para ello, dibujad el histograma, la función "kernel-density" que aproxima la densidad y la densidad de la normal de media y varianza las de las muestras de las variables `price` (para precios mayores de 50 y menores de 400) y `number_of_reviews` para Palma y Pollença
 
 ### Solución
 
@@ -4860,8 +4859,7 @@ H_0 & : \mu_{\mathrm{\texttt{Pollença}}} = \mu_{\mathrm{Palma}} \\
 H_1 & : \mu_{\mathrm{\texttt{Pollença}}} \leq \mu_{\mathrm{Palma}}
 \end{aligned}
 \right.
-$$
-Primero calculamos los datos que nos piden
+$$ Primero calculamos los datos que nos piden
 
 
 ::: {.cell}
@@ -4997,8 +4995,6 @@ mean of x mean of y
 :::
 
 
-Idem..... (COMENTAR??)
-
 Para decidir si las varianzas son iguales o no hacemos
 
 
@@ -5038,11 +5034,112 @@ Con los datos de `listings_common0_select`, contrastar si las medias de los prec
 
 ### Solución
 
+Sea $\mu_{2023}$ Y $\mu_{2024} las medias de los precios en Palma en los periodos "2023-12-17" y "2024-03-23" respectivamente. La hipótesis nula y alternativa son:
+
 
 ::: {.cell}
 
+```{.r .cell-code}
+# Calculamos el contraste de hipótesis
+# Las medias de los precios en Palma entre "2023-12-17" y "2024-03-23"
+# H0: \( \mu_{2023} = \mu_{2024} \)
+# H1: \( \mu_{2023} < \mu_{2024} \)
+
+# Seleccionamos los precios de los periodos especificados
+price_2023= listings_common0_select %>% filter(neighbourhood_cleansed=="Palma de Mallorca" & date=="2023-12-17") %>% arrange(id)
+
+price_2024= listings_common0_select %>% filter(neighbourhood_cleansed=="Palma de Mallorca" & date=="2024-03-23") %>% arrange(id)
+
+# Verificamos que sean los mismos apartamentos
+all(table(price_2023$id==price_2024$id))
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+[1] TRUE
+```
+
+
+:::
 :::
 
+Luego son los mismo apartamentos así que tenemos muestras dependientes el precio del apartamento en 2023 y el del MISMO apartamento en 2024. El test es:
+
+
+::: {.cell}
+
+```{.r .cell-code}
+# Realizamos el test t para muestras dependientes (paired)
+t.test(price_2023$price, price_2024$price, alternative = "less", mu=0, conf.level=0.95,paired=TRUE)
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+
+	Paired t-test
+
+data:  price_2023$price and price_2024$price
+t = 2.3951, df = 910, p-value = 0.9916
+alternative hypothesis: true mean difference is less than 0
+95 percent confidence interval:
+     -Inf 33.82886
+sample estimates:
+mean difference 
+        20.0472 
+```
+
+
+:::
+:::
+
+Aceptamos que la media es mayor en 2024 que en 2023
+
+Interpretación del resultado:
+
+No se rechaza la hipótesis nula: no hay evidencia suficiente para afirmar que los precios en 2023 son menores que los de 2024.
+
+El p-valor alto (0.9916) y el intervalo de confianza (-Inf, 33.83) sugieren que cualquier diferencia observada podría deberse al azar.
+
+Aunque la media en 2024 parece mayor (diferencia promedio = 20.05), esta no es estadísticamente significativa.
+
+
+::: {.cell}
+
+```{.r .cell-code}
+# Creamos el diagrama de caja comparativo por periodo
+library(ggplot2)
+
+price_comparison <- listings_common0_select %>% 
+  filter(neighbourhood_cleansed == "Palma de Mallorca" & date %in% c("2023-12-17", "2024-03-23")) %>% 
+  mutate(period = ifelse(date == "2023-12-17", "2023", "2024"))
+
+ggplot(price_comparison, aes(x = period, y = price, fill = period)) +
+  geom_boxplot() +
+  labs(
+    title = "Comparación de precios por periodo",
+    x = "Periodo",
+    y = "Precio",
+    fill = "Periodo"
+  ) +
+  theme_minimal()
+```
+
+::: {.cell-output-display}
+![](SOLUCIONES_taller_EVALUABLE_ABB_files/figure-html/unnamed-chunk-14-1.png){width=672}
+:::
+:::
+
+Observaciones del gráfico:
+
+-Distribución central: Ambas cajas son similares en tamaño y ubicación. La mediana (línea dentro de las cajas) parece ligeramente más alta para 2024, sugiriendo un incremento moderado en los precios promedio.
+
+-Rango de precios: Los precios muestran una alta dispersión, con valores atípicos muy elevados en ambos periodos. El rango de los valores extremos parece similar, aunque hay más puntos alejados del cuerpo principal de datos en 2024.
+
+-Similitud general: Aunque se observa una ligera diferencia en las medianas y la posición de las cajas, estas no parecen lo suficientemente marcadas como para indicar un cambio significativo.
+
+-Conclusión: El gráfico apoya los resultados del test t: no hay evidencia de una diferencia estadísticamente significativa entre los precios de los dos periodos. Si bien 2024 muestra precios ligeramente más altos en promedio, la variación en los datos y la presencia de valores atípicos sugieren que la diferencia podría deberse al azar.
 
 ## Pregunta 5 (**1punto**)
 
@@ -5146,6 +5243,7 @@ n_Palma
 :::
 :::
 
+
 La hipótesis nula y alternativa son:
 
 $$
@@ -5155,8 +5253,7 @@ H_0 & : p_{\text{Pollença}} = p_{\text{Palma}} \\
 H_1 & : p_{\text{Pollença}} \neq p_{\text{Palma}}
 \end{aligned}
 \right.
-$$
-Para que obtengamos el contraste clásico de la Z y su intervalo de confianza ponemos el parámetro `correct=FALSE` para que no aplique la corrección de Yates.
+$$ Para que obtengamos el contraste clásico de la Z y su intervalo de confianza ponemos el parámetro `correct=FALSE` para que no aplique la corrección de Yates.
 
 
 ::: {.cell}
@@ -5224,7 +5321,6 @@ intervalo_confianza
 
 :::
 :::
-
 
 
 ## Pregunta 6 (**1punto**)
@@ -5305,7 +5401,6 @@ Luego lasa proporciones de las valoraciones superior a 4 son iguales en la muest
 rating_2024 = na.omit(rating_2024$review_scores_rating)
 ```
 :::
-
 
 
 ## Pregunta 7 (**1punto**)
