@@ -194,7 +194,7 @@ ggplot(data, aes(x = price2)) +
     x = "Precios",            # Etiqueta del eje x
     y = "Densidad muestral") +   # Etiqueta del eje Y
   ylim(0, 0.006) + 
-  theme_minimal(0) + 
+  theme_minimal() + 
   theme(
     plot.title = element_text(hjust = 0.5)) # Centra el título
     
@@ -202,13 +202,15 @@ ggplot(data, aes(x = price2)) +
 # Analizamos reviews
 
 # Filtramos los datos
-reviews2 = listings_common0_select %>%
-  filter(neighbourhood_cleansed %in% c("Pollença", "Palma de Mallorca") & date == "2024-09-13")
+reviews2 = listings_common0_select %>%filter(neighbourhood_cleansed %in% c("Pollença", "Palma de Mallorca") & date == "2024-09-13")
 str(reviews2)
 
 # Limpiamos la variable `number_of_reviews`
-reviews2 = na.omit(reviews2$number_of_reviews)
+reviews2 = reviews2$number_of_reviews
 str(reviews2)
+reviews2 = na.omit(reviews2)
+str(reviews2)
+
 
 # Calculamos la media y la desviación estándar
 mean_reviews <- mean(reviews2)
@@ -227,8 +229,9 @@ ggplot(data_reviews, aes(x = reviews2)) +
     x = "Número de reviews", 
     y = "Densidad muestral"
   ) +
+  ylim(0,0.006) +
   theme_minimal() + 
-  theme(plot.title = element_text(hjust = 0.5))
+  theme(plot.title = element_text(hjust=0.5))
 
 ```
 
@@ -284,8 +287,6 @@ El p-valor es muy alto
 t.test(price_Pollença, price_Palma, alternative = "less", 
        mu = 0, conf.level = 0.95, var.equal = FALSE)
 ```
-
-Idem..... (COMENTAR??)
 
 Para decidir si las varianzas son iguales o no hacemos
 
@@ -403,9 +404,41 @@ Calcular la proporción de apartamentos de los periodos "2023-12-17" y "2024-03-
 
 ### Solución
 
-```{r}
+Ahora son proporciones de dos muestras dependientes. Las proporciones y tamaño de las muestras para los mismos id en cada periodo: "2023-12-17" y "2024-03-23" son:
 
+Aunque ya estaba calculada recalculamos la de Palma 2024
+
+```{r}
+# Filtramos los datos de valoraciones para Palma de Mallorca en la fecha 2023-12-17
+rating_2023 = listings_common0_select %>%
+  filter(neighbourhood_cleansed == "Palma de Mallorca" & date == "2023-12-17") %>%
+  arrange(id) %>% select(id, review_scores_rating)
+
+# Filtramos los datos de valoraciones para Palma de Mallorca en la fecha 2024-03-23
+rating_2024 = listings_common0_select %>%
+  filter(neighbourhood_cleansed == "Palma de Mallorca" & date == "2024-03-23") %>%
+  arrange(id) %>% select(id, review_scores_rating)
+
+# Combinamos las valoraciones de ambas fechas utilizando un 'left join' por la columna 'id'
+rating_23_24 = rating_2023 %>% left_join(rating_2024, by = "id")
+
+# Creamos una tabla de frecuencias cruzadas para comparar las valoraciones > 4 en ambas fechas
+tabla = table(rating_23_24$review_scores_rating.x > 4, rating_23_24$review_scores_rating.y > 4)
+
+tabla
 ```
+```{r}
+# Realizamos la prueba de McNemar sobre la tabla de contingencia previamente calculada
+mcnemar.test(tabla)
+```
+
+Luego lasa proporciones de las valoraciones superior a 4 son iguales en la muestra de 2023 y la de 2024
+
+```{r}
+# Eliminamos los valores NA (valores faltantes) de la columna review_scores_rating del conjunto de datos rating_2024
+rating_2024 = na.omit(rating_2024$review_scores_rating)
+```
+
 
 ## Pregunta 7 (**1punto**)
 
