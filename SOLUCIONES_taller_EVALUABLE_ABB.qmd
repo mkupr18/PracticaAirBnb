@@ -356,5 +356,8 @@ summary(sol3)
 ### Solución
 
 ```{r}
+plot(tbl2$Rank,tbl2$Freq,col="green")
+
+plot(tbl2$Rank,tbl2$Freq,col="blue")
 
 ```
