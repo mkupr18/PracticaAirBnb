@@ -286,7 +286,7 @@ Presenta los resultados con una tabla de kableExtra.
 ::: {.cell}
 
 ```{.r .cell-code}
-# --- Analizamos los precios ---
+# Analizamos los precios
 aux_price = listings_common0_select %>% select(id,
                                               date, 
                                               price, 
@@ -2449,7 +2449,7 @@ knitr::kable(table_price,"html") %>%
 :::
 
 ```{.r .cell-code}
-# --- Analizamos reviews ---        
+# Analizamos reviews        
 aux_reviews = listings_common0_select %>% select(id,
                                               date, 
                                               number_of_reviews, 
@@ -4615,7 +4615,7 @@ knitr::kable(table_reviews,"html") %>%
 
 ## Pregunta 2 (**1punto**)
 
-Consideremos las variables `price` y `number_of_reviews` de Pollença y Palma del periodo "2024-09-13", del fichero `listing_common0_select.RData`. Estudiad si estos datos se aproximan a una distribución normal gráficamente. Para ello, dibujad el histograma, la función "kernel-density" que aproxima la densidad y la densidad de la normal de media y varianza las de las muestras de las variables `price` (para precios mayores de 50 y menores de 400) y `number_of_reviews` para Palma y\
+Consideremos las variables `price` y `number_of_reviews` de Pollença y Palma del periodo "2024-09-13", del fichero `listing_common0_select.RData`. Estudiad si estos datos se aproximan a una distribución normal gráficamente. Para ello, dibujad el histograma, la función "kernel-density" que aproxima la densidad y la densidad de la normal de media y varianza las de las muestras de las variables `price` (para precios mayores de 50 y menores de 400) y `number_of_reviews` para Palma y
 Pollença
 
 ### Solución
@@ -4624,8 +4624,9 @@ Pollença
 ::: {.cell}
 
 ```{.r .cell-code}
-# --- Analizamos el precio ---
+# Analizamos el precio
 price2 = listings_common0_select %>% filter(neighbourhood_cleansed %in% c("Pollença", "Palma de Mallorca") & date == "2024-09-13")
+
  # Juntamos los precios de los dos municipios
 str(price2)
 ```
@@ -4700,7 +4701,7 @@ sd_price
 :::
 
 ```{.r .cell-code}
-# Crear el diagrama con ggpolt 2
+# Creamos el diagrama con ggpolt 2
 mean_price <- mean(price2)
 sd_price <- sd(price2)
 
@@ -4727,8 +4728,9 @@ ggplot(data, aes(x = price2)) +
 :::
 
 ```{.r .cell-code}
-# --- Analizamos reviews ---
-# Filtrar los datos
+# Analizamos reviews
+
+# Filtramos los datos
 reviews2 = listings_common0_select %>%
   filter(neighbourhood_cleansed %in% c("Pollença", "Palma de Mallorca") & date == "2024-09-13")
 str(reviews2)
@@ -4760,7 +4762,7 @@ tibble [3,126 × 16] (S3: tbl_df/tbl/data.frame)
 :::
 
 ```{.r .cell-code}
-# Limpiar la variable `number_of_reviews`
+# Limpiamos la variable `number_of_reviews`
 reviews2 = na.omit(reviews2$number_of_reviews)
 str(reviews2)
 ```
@@ -4775,7 +4777,7 @@ str(reviews2)
 :::
 
 ```{.r .cell-code}
-# Calcular media y desviación estándar
+# Calculamos la media y la desviación estándar
 mean_reviews <- mean(reviews2)
 sd_reviews <- sd(reviews2)
 mean_reviews
@@ -4804,7 +4806,7 @@ sd_reviews
 :::
 
 ```{.r .cell-code}
-# Genera el gráfico con ggplot
+# Generamos el gráfico con ggplot
 data_reviews <- data.frame(reviews2 = reviews2)
 ggplot(data_reviews, aes(x = reviews2)) + 
   geom_histogram(aes(y = ..density..), bins = 30, fill = "lightgreen", color = "black") + 
@@ -4831,18 +4833,16 @@ Con los datos de `listings_common0_select` de todos los periodos, contrastar si 
 
 ### Solución
 
-Sea $\mu_{Pollença}$ y $\mu_{Palma}$ las medias de los precios en Pollença y Palma respectivamente. La hipótesis nula y aleternativa son:
+Sea $\mu_{\texttt{Pollença}}$ y $\mu_{Palma}$ las medias de los precios en Pollença y Palma respectivamente. La hipótesis nula y aleternativa son:
 
 $$
 \left\{
-\begin{array}{11}
-H_0:& \mu_{\mathrm{Pollença}}=\mu_{\mathrm{Palma}}\\
-H_1: & \mu_{\mathrm{Pollença}}\leq \mu_{\mathrm{Palma}}
-\end{array}
+\begin{aligned}
+H_0 & : \mu_{\mathrm{\texttt{Pollença}}} = \mu_{\mathrm{Palma}} \\
+H_1 & : \mu_{\mathrm{\texttt{Pollença}}} \leq \mu_{\mathrm{Palma}}
+\end{aligned}
 \right.
-}
 $$
-
 Primero calculamos los datos que nos piden
 
 
@@ -5029,10 +5029,179 @@ Calcular la proporción de apartamentos de la muestra "2024-03-23" con media de 
 
 ### Solución
 
+Sea $p_{\texttt{Pollença}}$ y $p_{\texttt{Palma}}$ las proporciones de apartamentos con media de valoración `review_scores_rating` mayor que 4 en Pollença y Palma respectivamente.
+
+Calculemos las proporciones muestrales
+
 
 ::: {.cell}
 
+```{.r .cell-code}
+rating_Pollença = listings_common0_select %>%
+filter(neighbourhood_cleansed == "Pollença" & date == "2024-03-23")
+rating_Pollença = na.omit(rating_Pollença$review_scores_rating)
+
+rating_Palma = listings_common0_select %>%
+filter(neighbourhood_cleansed == "Palma de Mallorca" & date == "2024-03-23")
+rating_Palma = na.omit(rating_Palma$review_scores_rating)
+```
 :::
+
+
+Las proporciones y tamaño de las muestras son
+
+
+::: {.cell}
+
+```{.r .cell-code}
+## Pollença
+p_Pollença = mean(rating_Pollença > 4)
+n_Pollença = length(rating_Pollença)
+
+p_Pollença
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+[1] 0.9001323
+```
+
+
+:::
+:::
+
+::: {.cell}
+
+```{.r .cell-code}
+n_Pollença
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+[1] 1512
+```
+
+
+:::
+:::
+
+::: {.cell}
+
+```{.r .cell-code}
+## Palma
+p_Palma = mean(rating_Palma > 4)
+n_Palma = length(rating_Palma)
+
+p_Palma
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+[1] 0.9590643
+```
+
+
+:::
+:::
+
+::: {.cell}
+
+```{.r .cell-code}
+n_Palma
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+[1] 855
+```
+
+
+:::
+:::
+
+
+La hipótesis nula y alternativa son:
+
+$$
+\left\{
+\begin{aligned}
+H_0 & : p_{\text{Pollença}} = p_{\text{Palma}} \\
+H_1 & : p_{\text{Pollença}} \neq p_{\text{Palma}}
+\end{aligned}
+\right.
+$$
+Para que obtengamos el contraste clásico de la Z y su intervalo de confianza ponemos el parámetro `correct=FALSE` para que no aplique la corrección de Yates.
+
+
+::: {.cell}
+
+```{.r .cell-code}
+prop.test(c(sum(rating_Pollença > 4), sum(rating_Palma > 4)),
+          c(n_Pollença, n_Palma),
+          alternative = "two.sided",
+          conf.level = 0.95,
+          correct = FALSE)
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+
+	2-sample test for equality of proportions without continuity correction
+
+data:  c(sum(rating_Pollença > 4), sum(rating_Palma > 4)) out of c(n_Pollença, n_Palma)
+X-squared = 26.197, df = 1, p-value = 3.083e-07
+alternative hypothesis: two.sided
+95 percent confidence interval:
+ -0.07905124 -0.03881286
+sample estimates:
+   prop 1    prop 2 
+0.9001323 0.9590643 
+```
+
+
+:::
+:::
+
+
+Rechazamos la igualdad el intervalo de confianza es el que se ve pero lo podemos calcular también
+
+
+::: {.cell}
+
+```{.r .cell-code}
+# Parámetro Z para un nivel de confianza del 95%
+z <- qnorm(0.975)
+
+# Error de margen
+error_margen <- z * sqrt(
+  p_Pollença * (1 - p_Pollença) / n_Pollença + 
+  p_Palma * (1 - p_Palma) / n_Palma
+)
+
+# Intervalo de confianza
+intervalo_confianza <- c(
+  (p_Pollença - p_Palma) - error_margen,
+  (p_Pollença - p_Palma) + error_margen
+)
+
+intervalo_confianza
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+[1] -0.07905124 -0.03881286
+```
+
+
+:::
+:::
+
 
 
 ## Pregunta 6 (**1punto**)
