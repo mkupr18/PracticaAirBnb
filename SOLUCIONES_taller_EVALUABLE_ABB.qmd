@@ -112,7 +112,7 @@ Presenta los resultados con una tabla de kableExtra.
 
 ```{r}
 # --- Analizamos los precios ---
-aux_price = listing_common0_select %>% select(id,
+aux_price = listings_common0_select %>% select(id,
                                               date, 
                                               price, 
                                               neighbourhood_cleansed)
@@ -129,7 +129,7 @@ knitr::kable(table_price,"html") %>%
   kableExtra::kable_styling(bootstrap_options = "striped", full_width = F)
 
 # --- Analizamos reviews ---        
-aux_reviews = listing_common0_select %>% select(id,
+aux_reviews = listings_common0_select %>% select(id,
                                               date, 
                                               number_of_reviews, 
                                               neighbourhood_cleansed)
