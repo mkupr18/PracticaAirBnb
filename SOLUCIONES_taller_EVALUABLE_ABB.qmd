@@ -194,7 +194,7 @@ ggplot(data, aes(x = price2)) +
     x = "Precios",            # Etiqueta del eje x
     y = "Densidad muestral") +   # Etiqueta del eje Y
   ylim(0, 0.006) + 
-  theme_minimal(0) + 
+  theme_minimal() + 
   theme(
     plot.title = element_text(hjust = 0.5)) # Centra el título
     
@@ -202,13 +202,15 @@ ggplot(data, aes(x = price2)) +
 # Analizamos reviews
 
 # Filtramos los datos
-reviews2 = listings_common0_select %>%
-  filter(neighbourhood_cleansed %in% c("Pollença", "Palma de Mallorca") & date == "2024-09-13")
+reviews2 = listings_common0_select %>%filter(neighbourhood_cleansed %in% c("Pollença", "Palma de Mallorca") & date == "2024-09-13")
 str(reviews2)
 
 # Limpiamos la variable `number_of_reviews`
-reviews2 = na.omit(reviews2$number_of_reviews)
+reviews2 = reviews2$number_of_reviews
 str(reviews2)
+reviews2 = na.omit(reviews2)
+str(reviews2)
+
 
 # Calculamos la media y la desviación estándar
 mean_reviews <- mean(reviews2)
@@ -227,6 +229,7 @@ ggplot(data_reviews, aes(x = reviews2)) +
     x = "Número de reviews", 
     y = "Densidad muestral"
   ) +
+  ylim(0,0.006) +
   theme_minimal() + 
   theme(plot.title = element_text(hjust = 0.5))
 
@@ -444,5 +447,8 @@ summary(sol3)
 ### Solución
 
 ```{r}
+plot(tbl2$Rank,tbl2$Freq,col="green")
+
+plot(tbl2$Rank,tbl2$Freq,col="blue")
 
 ```
