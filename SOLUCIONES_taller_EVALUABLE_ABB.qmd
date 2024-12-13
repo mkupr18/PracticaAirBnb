@@ -168,6 +168,7 @@ sd_price=sd(price2)
 mean_price 
 sd_price
 
+
 # Crear el diagrama con ggpolt 2
 mean_price <- mean(price2)
 sd_price <- sd(price2)
@@ -179,16 +180,17 @@ data <- data.frame(price2 = price2)
 ggplot(data, aes(x = price2)) + 
   geom_histogram(aes(y = ..density..), bins = 30, fill = "lightblue", color = "black") + 
   geom_density(color = "red", size = 1) + 
-  stat_function (fun = dnorm, args = list(mean = mean_price, sd = sd_price), color = "blue", size = 1) +
+  stat_function(fun = dnorm, args = list(mean = mean_price, sd = sd_price), color = "blue", size = 1) +
   labs(
     title = "Histograma de precios Pollença y Palma\n 2024-09-13", # Título
     x = "Precios",            # Etiqueta del eje x
-    y = "Densidad muestral") +   # Etiqueta del eje Y
+    y = "Densidad muestral"   # Etiqueta del eje Y
+    ) +   
   ylim(0, 0.006) + 
-  theme_minimal(0) + 
+  theme_minimal() + 
   theme(
-    plot.title = element_text(hjust = 0.5)) # Centra el título
-    
+    plot.title = element_text(hjust = 0.5)
+    ) # Centra el título
 
 # --- Analizamos reviews ---
 # Filtrar los datos
