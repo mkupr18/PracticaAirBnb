@@ -176,9 +176,6 @@ sd_price=sd(price2)
 mean_price 
 sd_price
 
-# Creamos el diagrama con ggpolt 2
-mean_price <- mean(price2)
-sd_price <- sd(price2)
 
 # Data frame de precios
 data <- data.frame(price2 = price2)
@@ -190,14 +187,22 @@ ggplot(data, aes(x = price2)) +
   stat_function (fun = dnorm, args = list(mean = mean_price, sd = sd_price), color = "blue", size = 1) +
   labs(
     title = "Histograma de precios Pollença y Palma\n 2024-09-13", # Título
-    x = "Precios",            # Etiqueta del eje x
+    x = "Precios",               # Etiqueta del eje x
     y = "Densidad muestral") +   # Etiqueta del eje Y
   ylim(0, 0.006) + 
   theme_minimal() + 
   theme(
     plot.title = element_text(hjust = 0.5)) # Centra el título
     
+```
+El histograma representa la distribución de los precios para valores filtrados entre 50 y 400.
+La curva roja representa la estimación de densidad mediante un kernel density (no paramétrica). Esta sigue la distribución empírica de los datos. Mientras que la curva azul, que representa densidad de una distribución normal basada en la media y la desviación estándar de la muestra no ajuste perfectamente a los datos especialmente en la parte izquierda.
 
+En conclusión, al observar el gráfico, la distribución de precios no sigue exactamente una distribución normal.
+
+
+Ahora calculamos las estadíticas con la variable number_of_reviews
+```{r}
 # Analizamos reviews
 
 # Filtramos los datos
@@ -233,6 +238,11 @@ ggplot(data_reviews, aes(x = reviews2)) +
   theme(plot.title = element_text(hjust=0.5))
 
 ```
+El histograma muestra la distribución empírica de los datos de number_of_reviews.
+La curva roja corresponde a la estimación de la densidad Kernel, que sigue de cerca la forma del histograma, especialmente la concentración de datos en valores bajos.
+La curva azul representa la distribución normal teórica calculada con la media y la desviación estándar de la muestra. Esta no se ajusta bien a los datos, ya que decrece más rápido en comparación con la densidad Kernel.
+En conclusión, la variable number_of_reviews no sigue una distribución normal.
+
 
 ## Pregunta 3 (**1punto**)
 
@@ -513,6 +523,7 @@ head(table(length_rewiews))
 aux=table(length_rewiews)
 head(aux)
 head(names(aux))
+
 tbl=tibble( L=as.numeric(names(aux)),Freq=as.numeric(aux),
             Rank=rank(L),Log_Freq=log(Freq),Log_Rank=log(Rank))
 str(tbl)
