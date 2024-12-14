@@ -1,6 +1,6 @@
 ---
-title: "ENUNCIADO taller en grupo Mat3 GIN 2024-2025"
-author: "Maria Kupriyenko, Juan Huguet, Kalyarat Asawapoom"
+title: "SOLUCIONES taller en grupo Mat3 GIN 2024-2025"
+author: "Maria Kupriyenko, Jaume Juan Huguet, Kalyarat Asawapoom"
 lang: es
 format:
   html:
@@ -39,8 +39,9 @@ Leeremos los siguientes datos de la zona de etiqueta `mallorca` con el código s
 ::: {.cell}
 
 ```{.r .cell-code}
+# Carga de datos del objeto 'listings_common0_select'.
 load("clean_data/mallorca/listing_common0_select.RData")
-ls()
+ls()  # Lista los objetos cargados en el entorno
 ```
 
 ::: {.cell-output .cell-output-stdout}
@@ -53,7 +54,7 @@ ls()
 :::
 
 ```{.r .cell-code}
-str(listings_common0_select)
+str(listings_common0_select) # Muestra la estructura del objeto
 ```
 
 ::: {.cell-output .cell-output-stdout}
@@ -119,6 +120,7 @@ Estos datos necesitan leerse de forma adecuada, las columnas 1, 2 y 4 deben ser 
 ::: {.cell}
 
 ```{.r .cell-code}
+# Carga de datos de reseñas desde un archivo CSV comprimido
 reviews=read_csv("data/mallorca/2023-12-17/reviews.csv.gz")
 str(reviews)
 ```
@@ -179,6 +181,7 @@ Son dos columnas y la primera es una agrupación de municipios (están NA) y la 
 ::: {.cell}
 
 ```{.r .cell-code}
+# Carga de datos de municipios desde un archivo CSV.
 municipios=read_csv("data/mallorca/2023-12-17/neighbourhoods.csv")
 str(municipios)
 ```
@@ -242,7 +245,7 @@ geojson_sf <- sf::st_read("data/mallorca/2024-09-13/neighbourhoods.geojson")
 
 ```
 Reading layer `neighbourhoods' from data source 
-  `C:\Users\mkupr\Documents\GitHub\PracticaAirBnb\data\mallorca\2024-09-13\neighbourhoods.geojson' 
+  `C:\Users\JaumeJH\Documents\GitHub\PracticaAirBnb\data\mallorca\2024-09-13\neighbourhoods.geojson' 
   using driver `GeoJSON'
 Simple feature collection with 53 features and 2 fields
 Geometry type: MULTIPOLYGON
@@ -299,7 +302,8 @@ table_price = aux_price %>% group_by(neighbourhood_cleansed, date) %>%
             min_price = min(price, na.rm = TRUE),
             max_price = max(price, na.rm = TRUE),
             n_price = n()) %>% arrange(neighbourhood_cleansed, date)
-            
+
+# Presentación de resultados en tabla HTML
 knitr::kable(table_price,"html") %>%
   kableExtra::kable_styling(bootstrap_options = "striped", full_width = F)
 ```
@@ -2462,7 +2466,7 @@ table_reviews = aux_reviews %>% group_by(neighbourhood_cleansed, date) %>%
             min_reviews = min(number_of_reviews, na.rm = TRUE),
             max_reviews = max(number_of_reviews, na.rm = TRUE),
             n_reviews = n()) %>% arrange(neighbourhood_cleansed, date)         
-            
+# Presentación de resultados en tabla HTML
 knitr::kable(table_reviews,"html") %>%
   kableExtra::kable_styling(bootstrap_options = "striped", full_width=F)
 ```
@@ -4615,8 +4619,7 @@ knitr::kable(table_reviews,"html") %>%
 
 ## Pregunta 2 (**1punto**)
 
-Consideremos las variables `price` y `number_of_reviews` de Pollença y Palma del periodo "2024-09-13", del fichero `listing_common0_select.RData`. Estudiad si estos datos se aproximan a una distribución normal gráficamente. Para ello, dibujad el histograma, la función "kernel-density" que aproxima la densidad y la densidad de la normal de media y varianza las de las muestras de las variables `price` (para precios mayores de 50 y menores de 400) y `number_of_reviews` para Palma y
-Pollença
+Consideremos las variables `price` y `number_of_reviews` de Pollença y Palma del periodo "2024-09-13", del fichero `listing_common0_select.RData`. Estudiad si estos datos se aproximan a una distribución normal gráficamente. Para ello, dibujad el histograma, la función "kernel-density" que aproxima la densidad y la densidad de la normal de media y varianza las de las muestras de las variables `price` (para precios mayores de 50 y menores de 400) y `number_of_reviews` para Palma y Pollença
 
 ### Solución
 
@@ -4718,7 +4721,7 @@ ggplot(data, aes(x = price2)) +
     x = "Precios",            # Etiqueta del eje x
     y = "Densidad muestral") +   # Etiqueta del eje Y
   ylim(0, 0.006) + 
-  theme_minimal(0) + 
+  theme_minimal() + 
   theme(
     plot.title = element_text(hjust = 0.5)) # Centra el título
 ```
@@ -4731,8 +4734,7 @@ ggplot(data, aes(x = price2)) +
 # Analizamos reviews
 
 # Filtramos los datos
-reviews2 = listings_common0_select %>%
-  filter(neighbourhood_cleansed %in% c("Pollença", "Palma de Mallorca") & date == "2024-09-13")
+reviews2 = listings_common0_select %>%filter(neighbourhood_cleansed %in% c("Pollença", "Palma de Mallorca") & date == "2024-09-13")
 str(reviews2)
 ```
 
@@ -4763,7 +4765,21 @@ tibble [3,126 × 16] (S3: tbl_df/tbl/data.frame)
 
 ```{.r .cell-code}
 # Limpiamos la variable `number_of_reviews`
-reviews2 = na.omit(reviews2$number_of_reviews)
+reviews2 = reviews2$number_of_reviews
+str(reviews2)
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+ num [1:3126] 263 54 201 104 71 100 328 629 99 92 ...
+```
+
+
+:::
+
+```{.r .cell-code}
+reviews2 = na.omit(reviews2)
 str(reviews2)
 ```
 
@@ -4817,8 +4833,9 @@ ggplot(data_reviews, aes(x = reviews2)) +
     x = "Número de reviews", 
     y = "Densidad muestral"
   ) +
+  ylim(0,0.006) +
   theme_minimal() + 
-  theme(plot.title = element_text(hjust = 0.5))
+  theme(plot.title = element_text(hjust=0.5))
 ```
 
 ::: {.cell-output-display}
@@ -4842,17 +4859,17 @@ H_0 & : \mu_{\mathrm{\texttt{Pollença}}} = \mu_{\mathrm{Palma}} \\
 H_1 & : \mu_{\mathrm{\texttt{Pollença}}} \leq \mu_{\mathrm{Palma}}
 \end{aligned}
 \right.
-$$
-Primero calculamos los datos que nos piden
+$$ Primero calculamos los datos que nos piden
 
 
 ::: {.cell}
 
 ```{.r .cell-code}
+# Extraemos y limpiamos los precios de Pollença
 price_Pollença = listings_common0_select %>%
 filter(neighbourhood_cleansed == "Pollença" & price > 50 &
 price < 400) %>% select(price)
-str(price_Pollença) # Es una tibble
+str(price_Pollença) # Verificamos la estructura del dataframe (tibble)
 ```
 
 ::: {.cell-output .cell-output-stdout}
@@ -4866,7 +4883,7 @@ tibble [6,745 × 1] (S3: tbl_df/tbl/data.frame)
 :::
 
 ```{.r .cell-code}
-price_Pollença = na.omit(price_Pollença$price) # Es un array numeric
+price_Pollença = na.omit(price_Pollença$price) # Eliminamos valores NA y convertimos en un vector numérico
 str(price_Pollença)
 ```
 
@@ -4880,9 +4897,10 @@ str(price_Pollença)
 :::
 
 ```{.r .cell-code}
+# Extraemos y limpiamos los precios de Palma
 price_Palma = listings_common0_select %>%
 filter(neighbourhood_cleansed == "Palma de Mallorca" & price > 50 & price < 400) %>% select(price)
-str(price_Palma) # Es una tibble
+str(price_Palma) # Verificamos la estructura del dataframe (tibble)
 ```
 
 ::: {.cell-output .cell-output-stdout}
@@ -4896,7 +4914,7 @@ tibble [2,648 × 1] (S3: tbl_df/tbl/data.frame)
 :::
 
 ```{.r .cell-code}
-price_Palma = na.omit(price_Palma$price) # Es un array numeric
+price_Palma = na.omit(price_Palma$price) # Eliminamos valores NA y convertimos en un vector numérico
 str(price_Palma)
 ```
 
@@ -4919,6 +4937,7 @@ El contraste se puede realizar con la función `t.test` de R muestras independie
 ::: {.cell}
 
 ```{.r .cell-code}
+# Contraste t para muestras independientes (hipótesis unilateral: Pollença <= Palma)
 t.test(price_Pollença, price_Palma, alternative = "less", 
        mu = 0, conf.level = 0.95, var.equal = TRUE)
 ```
@@ -4944,12 +4963,13 @@ mean of x mean of y
 :::
 
 
-El p-valor es muy alto ... (COMENTAR??)
+El p-valor es muy alto
 
 
 ::: {.cell}
 
 ```{.r .cell-code}
+# Repetimos el contraste, pero sin asumir varianzas iguales
 t.test(price_Pollença, price_Palma, alternative = "less", 
        mu = 0, conf.level = 0.95, var.equal = FALSE)
 ```
@@ -4975,14 +4995,13 @@ mean of x mean of y
 :::
 
 
-Idem..... (COMENTAR??)
-
 Para decidir si las varianzas son iguales o no hacemos
 
 
 ::: {.cell}
 
 ```{.r .cell-code}
+# Verificamos si las varianzas son iguales entre ambas muestras
 var.test(price_Pollença, price_Palma)
 ```
 
@@ -5009,19 +5028,118 @@ ratio of variances
 
 Y vemos que las varianzas no son iguales. Por tanto, el contraste se realiza con var.equal = FALSE.
 
-# REDACTAR LAS CONCLUSIONES Y EXPLICAR EL PROBLEMA
-
 ## Pregunta 4 (**1punto**)
 
 Con los datos de `listings_common0_select`, contrastar si las medias de los precios en Palma entre los periodos "2023-12-17" y "2024-03-23" son iguales contra que son menores en 2023. Construid la hipótesis nula y alternativa, calculad el $p$-valor y el intervalo de confianza asociado al contraste. Haced un diagrama de caja comparativo de los precios ~~por municipio~~ por periodo y coméntalo.
 
 ### Solución
 
+Sea $\mu_{2023}$ Y $\mu_{2024} las medias de los precios en Palma en los periodos "2023-12-17" y "2024-03-23" respectivamente. La hipótesis nula y alternativa son:
+
 
 ::: {.cell}
 
+```{.r .cell-code}
+# Calculamos el contraste de hipótesis
+# Las medias de los precios en Palma entre "2023-12-17" y "2024-03-23"
+# H0: \( \mu_{2023} = \mu_{2024} \)
+# H1: \( \mu_{2023} < \mu_{2024} \)
+
+# Seleccionamos los precios de los periodos especificados
+price_2023= listings_common0_select %>% filter(neighbourhood_cleansed=="Palma de Mallorca" & date=="2023-12-17") %>% arrange(id)
+
+price_2024= listings_common0_select %>% filter(neighbourhood_cleansed=="Palma de Mallorca" & date=="2024-03-23") %>% arrange(id)
+
+# Verificamos que sean los mismos apartamentos
+all(table(price_2023$id==price_2024$id))
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+[1] TRUE
+```
+
+
+:::
 :::
 
+Luego son los mismo apartamentos así que tenemos muestras dependientes el precio del apartamento en 2023 y el del MISMO apartamento en 2024. El test es:
+
+
+::: {.cell}
+
+```{.r .cell-code}
+# Realizamos el test t para muestras dependientes (paired)
+t.test(price_2023$price, price_2024$price, alternative = "less", mu=0, conf.level=0.95,paired=TRUE)
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+
+	Paired t-test
+
+data:  price_2023$price and price_2024$price
+t = 2.3951, df = 910, p-value = 0.9916
+alternative hypothesis: true mean difference is less than 0
+95 percent confidence interval:
+     -Inf 33.82886
+sample estimates:
+mean difference 
+        20.0472 
+```
+
+
+:::
+:::
+
+Aceptamos que la media es mayor en 2024 que en 2023
+
+Interpretación del resultado:
+
+No se rechaza la hipótesis nula: no hay evidencia suficiente para afirmar que los precios en 2023 son menores que los de 2024.
+
+El p-valor alto (0.9916) y el intervalo de confianza (-Inf, 33.83) sugieren que cualquier diferencia observada podría deberse al azar.
+
+Aunque la media en 2024 parece mayor (diferencia promedio = 20.05), esta no es estadísticamente significativa.
+
+
+::: {.cell}
+
+```{.r .cell-code}
+# Creamos el diagrama de caja comparativo por periodo
+library(ggplot2)
+
+price_comparison <- listings_common0_select %>% 
+  filter(neighbourhood_cleansed == "Palma de Mallorca" & date %in% c("2023-12-17", "2024-03-23")) %>% 
+  mutate(period = ifelse(date == "2023-12-17", "2023", "2024"))
+
+ggplot(price_comparison, aes(x = period, y = price, fill = period)) +
+  geom_boxplot() +
+  labs(
+    title = "Comparación de precios por periodo",
+    x = "Periodo",
+    y = "Precio",
+    fill = "Periodo"
+  ) +
+  theme_minimal()
+```
+
+::: {.cell-output-display}
+![](SOLUCIONES_taller_EVALUABLE_ABB_files/figure-html/unnamed-chunk-14-1.png){width=672}
+:::
+:::
+
+Observaciones del gráfico:
+
+-Distribución central: Ambas cajas son similares en tamaño y ubicación. La mediana (línea dentro de las cajas) parece ligeramente más alta para 2024, sugiriendo un incremento moderado en los precios promedio.
+
+-Rango de precios: Los precios muestran una alta dispersión, con valores atípicos muy elevados en ambos periodos. El rango de los valores extremos parece similar, aunque hay más puntos alejados del cuerpo principal de datos en 2024.
+
+-Similitud general: Aunque se observa una ligera diferencia en las medianas y la posición de las cajas, estas no parecen lo suficientemente marcadas como para indicar un cambio significativo.
+
+-Conclusión: El gráfico apoya los resultados del test t: no hay evidencia de una diferencia estadísticamente significativa entre los precios de los dos periodos. Si bien 2024 muestra precios ligeramente más altos en promedio, la variación en los datos y la presencia de valores atípicos sugieren que la diferencia podría deberse al azar.
 
 ## Pregunta 5 (**1punto**)
 
@@ -5037,13 +5155,15 @@ Calculemos las proporciones muestrales
 ::: {.cell}
 
 ```{.r .cell-code}
+# Filtramos los datos de valoraciones para Pollença
 rating_Pollença = listings_common0_select %>%
-filter(neighbourhood_cleansed == "Pollença" & date == "2024-03-23")
-rating_Pollença = na.omit(rating_Pollença$review_scores_rating)
+  filter(neighbourhood_cleansed == "Pollença" & date == "2024-03-23")
+rating_Pollença = na.omit(rating_Pollença$review_scores_rating) # Eliminamos valores NA
 
+# Filtramos los datos de valoraciones para Palma
 rating_Palma = listings_common0_select %>%
-filter(neighbourhood_cleansed == "Palma de Mallorca" & date == "2024-03-23")
-rating_Palma = na.omit(rating_Palma$review_scores_rating)
+  filter(neighbourhood_cleansed == "Palma de Mallorca" & date == "2024-03-23")
+rating_Palma = na.omit(rating_Palma$review_scores_rating) # Eliminamos valores NA
 ```
 :::
 
@@ -5054,9 +5174,9 @@ Las proporciones y tamaño de las muestras son
 ::: {.cell}
 
 ```{.r .cell-code}
-## Pollença
-p_Pollença = mean(rating_Pollença > 4)
-n_Pollença = length(rating_Pollença)
+# Calculamos la proporción de apartamentos con valoración > 4 en Pollença
+p_Pollença = mean(rating_Pollença > 4) # Proporción de valoraciones mayores a 4
+n_Pollença = length(rating_Pollença)   # Número total de apartamentos evaluados
 
 p_Pollença
 ```
@@ -5090,9 +5210,9 @@ n_Pollença
 ::: {.cell}
 
 ```{.r .cell-code}
-## Palma
-p_Palma = mean(rating_Palma > 4)
-n_Palma = length(rating_Palma)
+# Calculamos la proporción de apartamentos con valoración > 4 en Palma
+p_Palma = mean(rating_Palma > 4) # Proporción de valoraciones mayores a 4
+n_Palma = length(rating_Palma)   # Número total de apartamentos evaluados
 
 p_Palma
 ```
@@ -5133,18 +5253,18 @@ H_0 & : p_{\text{Pollença}} = p_{\text{Palma}} \\
 H_1 & : p_{\text{Pollença}} \neq p_{\text{Palma}}
 \end{aligned}
 \right.
-$$
-Para que obtengamos el contraste clásico de la Z y su intervalo de confianza ponemos el parámetro `correct=FALSE` para que no aplique la corrección de Yates.
+$$ Para que obtengamos el contraste clásico de la Z y su intervalo de confianza ponemos el parámetro `correct=FALSE` para que no aplique la corrección de Yates.
 
 
 ::: {.cell}
 
 ```{.r .cell-code}
-prop.test(c(sum(rating_Pollença > 4), sum(rating_Palma > 4)),
-          c(n_Pollença, n_Palma),
-          alternative = "two.sided",
-          conf.level = 0.95,
-          correct = FALSE)
+# Realizamos el contraste de proporciones
+prop.test(c(sum(rating_Pollença > 4), sum(rating_Palma > 4)), # Sumas de éxitos
+          c(n_Pollença, n_Palma),                             # Tamaños de las muestras
+          alternative = "two.sided",                          # Hipótesis bilateral
+          conf.level = 0.95,                                  # Nivel de confianza
+          correct = FALSE)                                    # Sin corrección de Yates
 ```
 
 ::: {.cell-output .cell-output-stdout}
@@ -5203,16 +5323,83 @@ intervalo_confianza
 :::
 
 
-
 ## Pregunta 6 (**1punto**)
 
 Calcular la proporción de apartamentos de los periodos "2023-12-17" y "2024-03-23" con media de valoración `review_scores_rating` mayor que 4 en Palma ~~y en Pollença~~ son iguales contra que son distintas.
 
 ### Solución
 
+Ahora son proporciones de dos muestras dependientes. Las proporciones y tamaño de las muestras para los mismos id en cada periodo: "2023-12-17" y "2024-03-23" son:
+
+Aunque ya estaba calculada recalculamos la de Palma 2024
+
 
 ::: {.cell}
 
+```{.r .cell-code}
+# Filtramos los datos de valoraciones para Palma de Mallorca en la fecha 2023-12-17
+rating_2023 = listings_common0_select %>%
+  filter(neighbourhood_cleansed == "Palma de Mallorca" & date == "2023-12-17") %>%
+  arrange(id) %>% select(id, review_scores_rating)
+
+# Filtramos los datos de valoraciones para Palma de Mallorca en la fecha 2024-03-23
+rating_2024 = listings_common0_select %>%
+  filter(neighbourhood_cleansed == "Palma de Mallorca" & date == "2024-03-23") %>%
+  arrange(id) %>% select(id, review_scores_rating)
+
+# Combinamos las valoraciones de ambas fechas utilizando un 'left join' por la columna 'id'
+rating_23_24 = rating_2023 %>% left_join(rating_2024, by = "id")
+
+# Creamos una tabla de frecuencias cruzadas para comparar las valoraciones > 4 en ambas fechas
+tabla = table(rating_23_24$review_scores_rating.x > 4, rating_23_24$review_scores_rating.y > 4)
+
+tabla
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+       
+        FALSE TRUE
+  FALSE    32    1
+  TRUE      2  805
+```
+
+
+:::
+:::
+
+::: {.cell}
+
+```{.r .cell-code}
+# Realizamos la prueba de McNemar sobre la tabla de contingencia previamente calculada
+mcnemar.test(tabla)
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+
+	McNemar's Chi-squared test with continuity correction
+
+data:  tabla
+McNemar's chi-squared = 0, df = 1, p-value = 1
+```
+
+
+:::
+:::
+
+
+Luego lasa proporciones de las valoraciones superior a 4 son iguales en la muestra de 2023 y la de 2024
+
+
+::: {.cell}
+
+```{.r .cell-code}
+# Eliminamos los valores NA (valores faltantes) de la columna review_scores_rating del conjunto de datos rating_2024
+rating_2024 = na.omit(rating_2024$review_scores_rating)
+```
 :::
 
 
