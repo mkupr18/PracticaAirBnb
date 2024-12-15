@@ -122,14 +122,14 @@ aux_price = listings_common0_select %>% select(id,
                                               date, 
                                               price, 
                                               neighbourhood_cleansed)
-                                              
+# Agrupamos los datos por municipio y fecha y calculamos los estadísticos descriptivos                                         
 table_price = aux_price %>% group_by(neighbourhood_cleansed, date) %>%
-   summarise(mean_price = mean(price, na.rm = TRUE) ,
-            sd_price = sd(price, na.rm = TRUE) ,
-            median_price = median(price, na.rm = TRUE),
-            min_price = min(price, na.rm = TRUE),
-            max_price = max(price, na.rm = TRUE),
-            n_price = n()) %>% arrange(neighbourhood_cleansed, date)
+   summarise(mean_price = mean(price, na.rm = TRUE) ,   # Promedio
+            sd_price = sd(price, na.rm = TRUE) ,        # Desviación estándar
+            median_price = median(price, na.rm = TRUE), # Mediana
+            min_price = min(price, na.rm = TRUE),       # Mínimo
+            max_price = max(price, na.rm = TRUE),       # Máximo
+            n_price = n()) %>% arrange(neighbourhood_cleansed, date)  # Conteo y ordenar por municipio y fecha
 
 # Presentación de resultados en tabla HTML
 knitr::kable(table_price,"html") %>%
@@ -142,12 +142,13 @@ aux_reviews = listings_common0_select %>% select(id,
                                               neighbourhood_cleansed)
                                               
 table_reviews = aux_reviews %>% group_by(neighbourhood_cleansed, date) %>%
-   summarise(mean_reviews = mean(number_of_reviews, na.rm = TRUE) ,
-            sd_reviews = sd(number_of_reviews, na.rm = TRUE) ,
-            median_reviews = median(number_of_reviews, na.rm = TRUE),
-            min_reviews = min(number_of_reviews, na.rm = TRUE),
-            max_reviews = max(number_of_reviews, na.rm = TRUE),
-            n_reviews = n()) %>% arrange(neighbourhood_cleansed, date)         
+   summarise(mean_reviews = mean(number_of_reviews, na.rm = TRUE) ,     # Promedio
+            sd_reviews = sd(number_of_reviews, na.rm = TRUE) ,          # Desvación estándar
+            median_reviews = median(number_of_reviews, na.rm = TRUE),   # Mediana
+            min_reviews = min(number_of_reviews, na.rm = TRUE),         # Mínimo
+            max_reviews = max(number_of_reviews, na.rm = TRUE),         # Máximo
+            n_reviews = n()) %>% arrange(neighbourhood_cleansed, date)  # Conteo y ordenar por municipio y fecha
+      
 # Presentación de resultados en tabla HTML
 knitr::kable(table_reviews,"html") %>%
   kableExtra::kable_styling(bootstrap_options = "striped", full_width=F)
@@ -161,26 +162,28 @@ Consideremos las variables `price` y `number_of_reviews` de Pollença y Palma de
 
 ```{r}
 
-# Analizamos el precio
+# Analizamos los precios
 price2 = listings_common0_select %>% filter(neighbourhood_cleansed %in% c("Pollença", "Palma de Mallorca") & date == "2024-09-13")
 
- # Juntamos los precios de los dos municipios
+# Juntamos los precios de los dos municipios en un solo vector
 str(price2)
-price2=price2$price 
+price2=price2$price   # Extraemos solo la columna price
 str(price2)
 
- # Filtramos los precios para que estén entre 50 y 400
+# Filtramos los precios para que estén entre 50 y 400
 price2=na.omit(price2[price2>50 & price2<400])
+
+# Calculamos la media y la desviación estándar de los precios filtrados.
 mean_price=mean(price2)
 sd_price=sd(price2)
 mean_price 
 sd_price
 
 
-# Data frame de precios
+# Creamos data frame de precios con los datos filtrados
 data <- data.frame(price2 = price2)
 
-# Genera el gráfico con ggplot
+# Generamos el gráfico con ggplot2
 ggplot(data, aes(x = price2)) + 
   geom_histogram(aes(y = ..density..), bins = 30, fill = "lightblue", color = "black") + 
   geom_density(color = "red", size = 1) + 
@@ -189,7 +192,7 @@ ggplot(data, aes(x = price2)) +
     title = "Histograma de precios Pollença y Palma\n 2024-09-13", # Título
     x = "Precios",               # Etiqueta del eje x
     y = "Densidad muestral") +   # Etiqueta del eje Y
-  ylim(0, 0.006) + 
+  ylim(0, 0.006) +               # Ajustamos los límites del eje
   theme_minimal() + 
   theme(
     plot.title = element_text(hjust = 0.5)) # Centra el título
@@ -198,21 +201,22 @@ ggplot(data, aes(x = price2)) +
 El histograma representa la distribución de los precios para valores filtrados entre 50 y 400.
 La curva roja representa la estimación de densidad mediante un kernel density (no paramétrica). Esta sigue la distribución empírica de los datos. Mientras que la curva azul, que representa densidad de una distribución normal basada en la media y la desviación estándar de la muestra no ajuste perfectamente a los datos especialmente en la parte izquierda.
 
-En conclusión, al observar el gráfico, la distribución de precios no sigue exactamente una distribución normal.
+En conclusión, la distribución de precios no sigue exactamente una distribución normal.
 
 
 Ahora calculamos las estadíticas con la variable number_of_reviews
 ```{r}
 # Analizamos reviews
 
-# Filtramos los datos
+# Filtramos los datos seleccionando solo los registros de los municipios Pollença y Palma de Mallorca
+# y del periodo "2024-09-13".
 reviews2 = listings_common0_select %>%filter(neighbourhood_cleansed %in% c("Pollença", "Palma de Mallorca") & date == "2024-09-13")
 str(reviews2)
 
-# Limpiamos la variable `number_of_reviews`
-reviews2 = reviews2$number_of_reviews
+reviews2 = reviews2$number_of_reviews.  # Extraemos solo number_of_reviews
 str(reviews2)
-reviews2 = na.omit(reviews2)
+
+reviews2 = na.omit(reviews2)            # Eliminamos valores faltantes (NA) del vector para evitar errores en los cálculos
 str(reviews2)
 
 
@@ -222,18 +226,20 @@ sd_reviews <- sd(reviews2)
 mean_reviews
 sd_reviews
 
-# Generamos el gráfico con ggplot
+# Creamos data frame de reviews con los datos filtrados
 data_reviews <- data.frame(reviews2 = reviews2)
+
+# Generamos el gráfico con ggplot2
 ggplot(data_reviews, aes(x = reviews2)) + 
   geom_histogram(aes(y = ..density..), bins = 30, fill = "lightgreen", color = "black") + 
   geom_density(color = "red", size = 1) + 
   stat_function(fun = dnorm, args = list(mean = mean_reviews, sd = sd_reviews), color = "blue", size = 1) +
   labs(
     title = "Histograma de número de reviews \n Pollença y Palma",
-    x = "Número de reviews", 
-    y = "Densidad muestral"
+    x = "Número de reviews",    # Etiqueta del eje x
+    y = "Densidad muestral"     # Etiqueta del eje y
   ) +
-  ylim(0,0.006) +
+  ylim(0,0.006) +               # Ajustamos los límites del eje
   theme_minimal() + 
   theme(plot.title = element_text(hjust=0.5))
 
@@ -366,13 +372,13 @@ ggplot(price_comparison, aes(x = period, y = price, fill = period)) +
 ```
 Observaciones del gráfico:
 
--Distribución central: Ambas cajas son similares en tamaño y ubicación. La mediana (línea dentro de las cajas) parece ligeramente más alta para 2024, sugiriendo un incremento moderado en los precios promedio.
+- Distribución central: Ambas cajas son similares en tamaño y ubicación. La mediana (línea dentro de las cajas) parece ligeramente más alta para 2024, sugiriendo un incremento moderado en los precios promedio.
 
--Rango de precios: Los precios muestran una alta dispersión, con valores atípicos muy elevados en ambos periodos. El rango de los valores extremos parece similar, aunque hay más puntos alejados del cuerpo principal de datos en 2024.
+- Rango de precios: Los precios muestran una alta dispersión, con valores atípicos muy elevados en ambos periodos. El rango de los valores extremos parece similar, aunque hay más puntos alejados del cuerpo principal de datos en 2024.
 
--Similitud general: Aunque se observa una ligera diferencia en las medianas y la posición de las cajas, estas no parecen lo suficientemente marcadas como para indicar un cambio significativo.
+- Similitud general: Aunque se observa una ligera diferencia en las medianas y la posición de las cajas, estas no parecen lo suficientemente marcadas como para indicar un cambio significativo.
 
--Conclusión: El gráfico apoya los resultados del test t: no hay evidencia de una diferencia estadísticamente significativa entre los precios de los dos periodos. Si bien 2024 muestra precios ligeramente más altos en promedio, la variación en los datos y la presencia de valores atípicos sugieren que la diferencia podría deberse al azar.
+En conclusión, el gráfico apoya los resultados del test t: no hay evidencia de una diferencia estadísticamente significativa entre los precios de los dos periodos. Si bien 2024 muestra precios ligeramente más altos en promedio, la variación en los datos y la presencia de valores atípicos sugieren que la diferencia podría deberse al azar.
 
 ## Pregunta 5 (**1punto**)
 
