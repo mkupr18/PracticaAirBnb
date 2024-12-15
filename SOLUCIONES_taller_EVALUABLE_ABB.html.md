@@ -4704,10 +4704,6 @@ sd_price
 :::
 
 ```{.r .cell-code}
-# Creamos el diagrama con ggpolt 2
-mean_price <- mean(price2)
-sd_price <- sd(price2)
-
 # Data frame de precios
 data <- data.frame(price2 = price2)
 
@@ -4718,7 +4714,7 @@ ggplot(data, aes(x = price2)) +
   stat_function (fun = dnorm, args = list(mean = mean_price, sd = sd_price), color = "blue", size = 1) +
   labs(
     title = "Histograma de precios Pollença y Palma\n 2024-09-13", # Título
-    x = "Precios",            # Etiqueta del eje x
+    x = "Precios",               # Etiqueta del eje x
     y = "Densidad muestral") +   # Etiqueta del eje Y
   ylim(0, 0.006) + 
   theme_minimal() + 
@@ -4729,6 +4725,17 @@ ggplot(data, aes(x = price2)) +
 ::: {.cell-output-display}
 ![](SOLUCIONES_taller_EVALUABLE_ABB_files/figure-html/unnamed-chunk-7-1.png){width=672}
 :::
+:::
+
+El histograma representa la distribución de los precios para valores filtrados entre 50 y 400.
+La curva roja representa la estimación de densidad mediante un kernel density (no paramétrica). Esta sigue la distribución empírica de los datos. Mientras que la curva azul, que representa densidad de una distribución normal basada en la media y la desviación estándar de la muestra no ajuste perfectamente a los datos especialmente en la parte izquierda.
+
+En conclusión, al observar el gráfico, la distribución de precios no sigue exactamente una distribución normal.
+
+
+Ahora calculamos las estadíticas con la variable number_of_reviews
+
+::: {.cell}
 
 ```{.r .cell-code}
 # Analizamos reviews
@@ -4839,9 +4846,14 @@ ggplot(data_reviews, aes(x = reviews2)) +
 ```
 
 ::: {.cell-output-display}
-![](SOLUCIONES_taller_EVALUABLE_ABB_files/figure-html/unnamed-chunk-7-2.png){width=672}
+![](SOLUCIONES_taller_EVALUABLE_ABB_files/figure-html/unnamed-chunk-8-1.png){width=672}
 :::
 :::
+
+El histograma muestra la distribución empírica de los datos de number_of_reviews.
+La curva roja corresponde a la estimación de la densidad Kernel, que sigue de cerca la forma del histograma, especialmente la concentración de datos en valores bajos.
+La curva azul representa la distribución normal teórica calculada con la media y la desviación estándar de la muestra. Esta no se ajusta bien a los datos, ya que decrece más rápido en comparación con la densidad Kernel.
+En conclusión, la variable number_of_reviews no sigue una distribución normal.
 
 
 ## Pregunta 3 (**1punto**)
@@ -5127,7 +5139,7 @@ ggplot(price_comparison, aes(x = period, y = price, fill = period)) +
 ```
 
 ::: {.cell-output-display}
-![](SOLUCIONES_taller_EVALUABLE_ABB_files/figure-html/unnamed-chunk-14-1.png){width=672}
+![](SOLUCIONES_taller_EVALUABLE_ABB_files/figure-html/unnamed-chunk-15-1.png){width=672}
 :::
 :::
 
@@ -5413,6 +5425,7 @@ Como ayuda estudiar el siguiente código, utilizadlo y comentadlo.
 ::: {.cell}
 
 ```{.r .cell-code}
+# Cargar la librería necesaria
 library(stringr)
 head(reviews)
 ```
@@ -5435,6 +5448,7 @@ head(reviews)
 :::
 
 ```{.r .cell-code}
+# Obtener las longitudes de los comentarios
 length_rewiews=stringr::str_count(reviews$comments,"\\w+")
 head(table(length_rewiews))
 ```
@@ -5454,6 +5468,7 @@ length_rewiews
 ::: {.cell}
 
 ```{.r .cell-code}
+# Frecuencia de las longitudes
 aux=table(length_rewiews)
 head(aux)
 ```
@@ -5483,6 +5498,7 @@ head(names(aux))
 :::
 
 ```{.r .cell-code}
+# Crear el tibble con frecuencias, rangos y logaritmos
 tbl=tibble( L=as.numeric(names(aux)),Freq=as.numeric(aux),
             Rank=rank(L),Log_Freq=log(Freq),Log_Rank=log(Rank))
 str(tbl)
@@ -5506,7 +5522,10 @@ tibble [626 × 5] (S3: tbl_df/tbl/data.frame)
 ::: {.cell}
 
 ```{.r .cell-code}
+# Filtrar datos para rango entre 10 y 1000
 tbl2=tbl %>% filter(Rank>10) %>% filter(Rank<1000)
+
+# Regresión lineal simple de Freq contra Rank
 sol1=lm(tbl2$Freq~tbl2$Rank)
 summary(sol1)
 ```
@@ -5538,6 +5557,7 @@ F-statistic: 415.1 on 1 and 614 DF,  p-value: < 2.2e-16
 :::
 
 ```{.r .cell-code}
+# Regresión lineal de Freq contra Log_Rank
 sol2=lm(tbl2$Freq~tbl2$Log_Rank)
 summary(sol2)
 ```
@@ -5569,6 +5589,7 @@ F-statistic:  2146 on 1 and 614 DF,  p-value: < 2.2e-16
 :::
 
 ```{.r .cell-code}
+# Regresión lineal de Log_Freq contra Log_Rank (relación log-log)
 sol3=lm(tbl2$Log_Freq~tbl2$Log_Rank)
 summary(sol3)
 ```
@@ -5603,7 +5624,81 @@ F-statistic:  6497 on 1 and 614 DF,  p-value: < 2.2e-16
 
 ### Solución
 
+Vamos a mostrar gráficamente los resultados obtenidos con el codigo anterior
+
 
 ::: {.cell}
 
+```{.r .cell-code}
+# Freq vs Rank
+plot(tbl2$Rank, tbl2$Freq, col = "green", main = "Frecuencia vs Rango",
+     xlab = "Rango", ylab = "Frecuencia", pch = 16, cex.lab = 1.5, cex.main = 1.8)
+```
+
+::: {.cell-output-display}
+![](SOLUCIONES_taller_EVALUABLE_ABB_files/figure-html/unnamed-chunk-29-1.png){width=672}
 :::
+:::
+
+Esta gráfica muestra cómo varía la frecuencia de las longitudes de los comentarios en función de su rango.
+
+Proporciona una visión general de la relación entre estas dos variables en escala lineal.
+
+En general, la relación no parece seguir una línea recta clara en escala lineal, lo que indica que el modelo lineal simple no es apropiado para analizar esta relación.
+
+::: {.cell}
+
+```{.r .cell-code}
+# Rank vs Log_Freq
+plot(tbl2$Rank, tbl2$Log_Freq, col = "blue", main = "Rango vs Log(Frecuencia)",
+     xlab = "Rango", ylab = "Log(Frecuencia)", pch = 16, cex.lab = 1.5, cex.main = 1.8)
+```
+
+::: {.cell-output-display}
+![](SOLUCIONES_taller_EVALUABLE_ABB_files/figure-html/unnamed-chunk-30-1.png){width=672}
+:::
+:::
+
+Representa el rango en el eje x y el logaritmo de la frecuencia en el eje y.
+
+Introduce el logaritmo para reducir la disparidad en las frecuencias altas, facilitando la observación de patrones más sutiles.
+
+Si bien hay una tendencia decreciente, la relación sigue sin ser completamente lineal, lo que sugiere que una escala log-log podría ser más adecuada.
+
+::: {.cell}
+
+```{.r .cell-code}
+# Freq vs Log_Rank
+plot(tbl2$Log_Rank, tbl2$Freq, col = "red", main = "Frecuencia vs Log(Rango)",
+     xlab = "Log(Rango)", ylab = "Frecuencia", pch = 16, cex.lab = 1.5, cex.main = 1.8)
+```
+
+::: {.cell-output-display}
+![](SOLUCIONES_taller_EVALUABLE_ABB_files/figure-html/unnamed-chunk-31-1.png){width=672}
+:::
+:::
+
+Representa la frecuencia en el eje y y el logaritmo del rango en el eje x.
+
+Permite observar si la frecuencia depende logarítmicamente del rango.
+
+No se observa una relación lineal clara, lo que refuerza la necesidad de escalar ambas variables logarítmicamente.
+
+::: {.cell}
+
+```{.r .cell-code}
+# Log_Freq vs Log_Rank
+plot(tbl2$Log_Rank, tbl2$Log_Freq, col = "purple", main = "Log(Frecuencia) vs Log(Rango)",
+     xlab = "Log(Rango)", ylab = "Log(Frecuencia)", pch = 16, cex.lab = 1.5, cex.main = 1.8)
+```
+
+::: {.cell-output-display}
+![](SOLUCIONES_taller_EVALUABLE_ABB_files/figure-html/unnamed-chunk-32-1.png){width=672}
+:::
+:::
+
+Representa el logaritmo de la frecuencia en el eje y y el logaritmo del rango en el eje x.
+
+Evalúa la Ley de Zipf, ya que una relación lineal en esta escala indica una ley potencial, con pendiente cercana a -1.
+
+En esta escala log-log, los puntos generalmente se alinean, lo que sugiere que la Ley de Zipf puede ajustarse a los datos.

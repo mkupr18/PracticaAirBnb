@@ -513,39 +513,87 @@ La [Zipf's law es una ley empírica](https://en.wikipedia.org/wiki/Zipf%27s_law#
 Como ayuda estudiar el siguiente código, utilizadlo y comentadlo.
 
 ```{r}
+# Cargar la librería necesaria
 library(stringr)
 head(reviews)
+
+# Obtener las longitudes de los comentarios
 length_rewiews=stringr::str_count(reviews$comments,"\\w+")
 head(table(length_rewiews))
 ```
 
 ```{r}
+# Frecuencia de las longitudes
 aux=table(length_rewiews)
 head(aux)
 head(names(aux))
 
+# Crear el tibble con frecuencias, rangos y logaritmos
 tbl=tibble( L=as.numeric(names(aux)),Freq=as.numeric(aux),
             Rank=rank(L),Log_Freq=log(Freq),Log_Rank=log(Rank))
 str(tbl)
 ```
 
 ```{r}
+# Filtrar datos para rango entre 10 y 1000
 tbl2=tbl %>% filter(Rank>10) %>% filter(Rank<1000)
+
+# Regresión lineal simple de Freq contra Rank
 sol1=lm(tbl2$Freq~tbl2$Rank)
 summary(sol1)
 
+# Regresión lineal de Freq contra Log_Rank
 sol2=lm(tbl2$Freq~tbl2$Log_Rank)
 summary(sol2)
 
+# Regresión lineal de Log_Freq contra Log_Rank (relación log-log)
 sol3=lm(tbl2$Log_Freq~tbl2$Log_Rank)
 summary(sol3)
 ```
 
 ### Solución
 
-```{r}
-plot(tbl2$Rank,tbl2$Freq,col="green")
+Vamos a mostrar gráficamente los resultados obtenidos con el codigo anterior
 
-plot(tbl2$Rank,tbl2$Freq,col="blue")
+```{r}
+# Freq vs Rank
+plot(tbl2$Rank, tbl2$Freq, col = "green", main = "Frecuencia vs Rango",
+     xlab = "Rango", ylab = "Frecuencia", pch = 16, cex.lab = 1.5, cex.main = 1.8)
+```
+Esta gráfica muestra cómo varía la frecuencia de las longitudes de los comentarios en función de su rango.
+
+Proporciona una visión general de la relación entre estas dos variables en escala lineal.
+
+En general, la relación no parece seguir una línea recta clara en escala lineal, lo que indica que el modelo lineal simple no es apropiado para analizar esta relación.
+```{r}
+# Rank vs Log_Freq
+plot(tbl2$Rank, tbl2$Log_Freq, col = "blue", main = "Rango vs Log(Frecuencia)",
+     xlab = "Rango", ylab = "Log(Frecuencia)", pch = 16, cex.lab = 1.5, cex.main = 1.8)
 
 ```
+Representa el rango en el eje x y el logaritmo de la frecuencia en el eje y.
+
+Introduce el logaritmo para reducir la disparidad en las frecuencias altas, facilitando la observación de patrones más sutiles.
+
+Si bien hay una tendencia decreciente, la relación sigue sin ser completamente lineal, lo que sugiere que una escala log-log podría ser más adecuada.
+```{r}
+# Freq vs Log_Rank
+plot(tbl2$Log_Rank, tbl2$Freq, col = "red", main = "Frecuencia vs Log(Rango)",
+     xlab = "Log(Rango)", ylab = "Frecuencia", pch = 16, cex.lab = 1.5, cex.main = 1.8)
+```
+Representa la frecuencia en el eje y y el logaritmo del rango en el eje x.
+
+Permite observar si la frecuencia depende logarítmicamente del rango.
+
+No se observa una relación lineal clara, lo que refuerza la necesidad de escalar ambas variables logarítmicamente.
+```{r}
+# Log_Freq vs Log_Rank
+plot(tbl2$Log_Rank, tbl2$Log_Freq, col = "purple", main = "Log(Frecuencia) vs Log(Rango)",
+     xlab = "Log(Rango)", ylab = "Log(Frecuencia)", pch = 16, cex.lab = 1.5, cex.main = 1.8)
+
+```
+Representa el logaritmo de la frecuencia en el eje y y el logaritmo del rango en el eje x.
+
+Evalúa la Ley de Zipf, ya que una relación lineal en esta escala indica una ley potencial, con pendiente cercana a -1.
+
+En esta escala log-log, los puntos generalmente se alinean, lo que sugiere que la Ley de Zipf puede ajustarse a los datos.
