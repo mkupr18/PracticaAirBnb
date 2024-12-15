@@ -147,7 +147,8 @@ table_reviews = aux_reviews %>% group_by(neighbourhood_cleansed, date) %>%
             median_reviews = median(number_of_reviews, na.rm = TRUE),
             min_reviews = min(number_of_reviews, na.rm = TRUE),
             max_reviews = max(number_of_reviews, na.rm = TRUE),
-            n_reviews = n()) %>% arrange(neighbourhood_cleansed, date)         
+            n_reviews = n()) %>% arrange(neighbourhood_cleansed, date)   
+
 # Presentación de resultados en tabla HTML
 knitr::kable(table_reviews,"html") %>%
   kableExtra::kable_styling(bootstrap_options = "striped", full_width=F)
@@ -195,13 +196,15 @@ ggplot(data, aes(x = price2)) +
     plot.title = element_text(hjust = 0.5)) # Centra el título
     
 ```
+
 El histograma representa la distribución de los precios para valores filtrados entre 50 y 400.
+
 La curva roja representa la estimación de densidad mediante un kernel density (no paramétrica). Esta sigue la distribución empírica de los datos. Mientras que la curva azul, que representa densidad de una distribución normal basada en la media y la desviación estándar de la muestra no ajuste perfectamente a los datos especialmente en la parte izquierda.
 
 En conclusión, al observar el gráfico, la distribución de precios no sigue exactamente una distribución normal.
 
-
 Ahora calculamos las estadíticas con la variable number_of_reviews
+
 ```{r}
 # Analizamos reviews
 
@@ -238,11 +241,14 @@ ggplot(data_reviews, aes(x = reviews2)) +
   theme(plot.title = element_text(hjust=0.5))
 
 ```
-El histograma muestra la distribución empírica de los datos de number_of_reviews.
-La curva roja corresponde a la estimación de la densidad Kernel, que sigue de cerca la forma del histograma, especialmente la concentración de datos en valores bajos.
-La curva azul representa la distribución normal teórica calculada con la media y la desviación estándar de la muestra. Esta no se ajusta bien a los datos, ya que decrece más rápido en comparación con la densidad Kernel.
-En conclusión, la variable number_of_reviews no sigue una distribución normal.
 
+El histograma muestra la distribución empírica de los datos de number_of_reviews.
+
+La curva roja corresponde a la estimación de la densidad Kernel, que sigue de cerca la forma del histograma, especialmente la concentración de datos en valores bajos.
+
+La curva azul representa la distribución normal teórica calculada con la media y la desviación estándar de la muestra. Esta no se ajusta bien a los datos, ya que decrece más rápido en comparación con la densidad Kernel.
+
+En conclusión, la variable number_of_reviews no sigue una distribución normal.
 
 ## Pregunta 3 (**1punto**)
 
@@ -259,7 +265,8 @@ H_0 & : \mu_{\mathrm{\texttt{Pollença}}} = \mu_{\mathrm{Palma}} \\
 H_1 & : \mu_{\mathrm{\texttt{Pollença}}} \leq \mu_{\mathrm{Palma}}
 \end{aligned}
 \right.
-$$ Primero calculamos los datos que nos piden
+$$ 
+Primero calculamos los datos que nos piden
 
 ```{r}
 # Extraemos y limpiamos los precios de Pollença
@@ -277,7 +284,6 @@ str(price_Palma) # Verificamos la estructura del dataframe (tibble)
 price_Palma = na.omit(price_Palma$price) # Eliminamos valores NA y convertimos en un vector numérico
 str(price_Palma)
 ```
-
 Hemos guardado en los objetos `price_Pollença` y `price_Palma` los precios de Pollença y Palma respectivamente sin NA's y comprendidos entre 50 y 400 euros.
 
 El contraste se puede realizar con la función `t.test` de R muestras independientes y tamaños `r length(price_Pollença)` y `r length(price_Palma)` respectivamente.
@@ -287,7 +293,6 @@ El contraste se puede realizar con la función `t.test` de R muestras independie
 t.test(price_Pollença, price_Palma, alternative = "less", 
        mu = 0, conf.level = 0.95, var.equal = TRUE)
 ```
-
 El p-valor es muy alto
 
 ```{r}
@@ -295,15 +300,28 @@ El p-valor es muy alto
 t.test(price_Pollença, price_Palma, alternative = "less", 
        mu = 0, conf.level = 0.95, var.equal = FALSE)
 ```
-
 Para decidir si las varianzas son iguales o no hacemos
 
 ```{r}
 # Verificamos si las varianzas son iguales entre ambas muestras
 var.test(price_Pollença, price_Palma)
 ```
-
 Y vemos que las varianzas no son iguales. Por tanto, el contraste se realiza con var.equal = FALSE.
+
+
+Las dos pruebas t, tanto la versión estándar como la de Welch, indican que las medias de los precios en Pollença y Palma de Mallorca son significativamente diferentes.
+
+El p-valor es 1, lo que significa que no hay evidencia para rechazar la hipótesis nula de que la diferencia en las medias es igual a 0 en la dirección planteada. Esto implica que, aunque los precios promedio sean diferentes, la diferencia observada podría ser atribuida al azar en los datos.
+
+La diferencia promedio de precios es de aproximadamente 36.59 unidades, lo que podría considerarse relevante desde el punto de vista práctico.
+
+El F-test muestra que la relación entre las varianzas es 0.798, lo que indica que la varianza de los precios en Pollença es menor que la de Palma de Mallorca.
+
+El p-valor es 1.504e-12, lo cual es extremadamente pequeño y sugiere que las varianzas son significativamente diferentes. Esto justifica la aplicación de la versión de Welch del t-test, ya que las varianzas no son iguales.
+
+El intervalo de confianza para la diferencia de medias incluye valores negativos y positivos, lo que refuerza la conclusión de que no hay una diferencia significativa entre las medias en la dirección planteada. Sin embargo, el límite superior del intervalo indica que la diferencia máxima observada sería de aproximadamente 39.8 unidades.
+
+Aunque las medias muestren una diferencia aparente entre los precios en Pollença y Palma de Mallorca, no hay suficiente evidencia estadística para afirmar que esta diferencia es significativa. Sin embargo, la diferencia en las varianzas sí es significativa, lo que sugiere que los precios en Palma de Mallorca son más dispersos (mayor variabilidad) en comparación con los de Pollença.
 
 ## Pregunta 4 (**1punto**)
 
@@ -311,7 +329,7 @@ Con los datos de `listings_common0_select`, contrastar si las medias de los prec
 
 ### Solución
 
-Sea $\mu_{2023}$ Y $\mu_{2024} las medias de los precios en Palma en los periodos "2023-12-17" y "2024-03-23" respectivamente. La hipótesis nula y alternativa son:
+Sea $\mu_{2023}$ Y $\mu_{2024}$ las medias de los precios en Palma en los periodos "2023-12-17" y "2024-03-23" respectivamente. La hipótesis nula y alternativa son:
 
 ```{r}
 # Calculamos el contraste de hipótesis
@@ -337,7 +355,7 @@ t.test(price_2023$price, price_2024$price, alternative = "less", mu=0, conf.leve
 ```
 Aceptamos que la media es mayor en 2024 que en 2023
 
-Interpretación del resultado:
+- Interpretación del resultado:
 
 No se rechaza la hipótesis nula: no hay evidencia suficiente para afirmar que los precios en 2023 son menores que los de 2024.
 
@@ -366,13 +384,13 @@ ggplot(price_comparison, aes(x = period, y = price, fill = period)) +
 ```
 Observaciones del gráfico:
 
--Distribución central: Ambas cajas son similares en tamaño y ubicación. La mediana (línea dentro de las cajas) parece ligeramente más alta para 2024, sugiriendo un incremento moderado en los precios promedio.
+- Distribución central: Ambas cajas son similares en tamaño y ubicación. La mediana (línea dentro de las cajas) parece ligeramente más alta para 2024, sugiriendo un incremento moderado en los precios promedio.
 
--Rango de precios: Los precios muestran una alta dispersión, con valores atípicos muy elevados en ambos periodos. El rango de los valores extremos parece similar, aunque hay más puntos alejados del cuerpo principal de datos en 2024.
+- Rango de precios: Los precios muestran una alta dispersión, con valores atípicos muy elevados en ambos periodos. El rango de los valores extremos parece similar, aunque hay más puntos alejados del cuerpo principal de datos en 2024.
 
--Similitud general: Aunque se observa una ligera diferencia en las medianas y la posición de las cajas, estas no parecen lo suficientemente marcadas como para indicar un cambio significativo.
+- Similitud general: Aunque se observa una ligera diferencia en las medianas y la posición de las cajas, estas no parecen lo suficientemente marcadas como para indicar un cambio significativo.
 
--Conclusión: El gráfico apoya los resultados del test t: no hay evidencia de una diferencia estadísticamente significativa entre los precios de los dos periodos. Si bien 2024 muestra precios ligeramente más altos en promedio, la variación en los datos y la presencia de valores atípicos sugieren que la diferencia podría deberse al azar.
+- Conclusión: El gráfico apoya los resultados del test t: no hay evidencia de una diferencia estadísticamente significativa entre los precios de los dos periodos. Si bien 2024 muestra precios ligeramente más altos en promedio, la variación en los datos y la presencia de valores atípicos sugieren que la diferencia podría deberse al azar.
 
 ## Pregunta 5 (**1punto**)
 
@@ -431,7 +449,8 @@ H_0 & : p_{\text{Pollença}} = p_{\text{Palma}} \\
 H_1 & : p_{\text{Pollença}} \neq p_{\text{Palma}}
 \end{aligned}
 \right.
-$$ Para que obtengamos el contraste clásico de la Z y su intervalo de confianza ponemos el parámetro `correct=FALSE` para que no aplique la corrección de Yates.
+$$ 
+Para que obtengamos el contraste clásico de la Z y su intervalo de confianza ponemos el parámetro `correct=FALSE` para que no aplique la corrección de Yates.
 
 ```{r}
 # Realizamos el contraste de proporciones
@@ -441,7 +460,6 @@ prop.test(c(sum(rating_Pollença > 4), sum(rating_Palma > 4)), # Sumas de éxito
           conf.level = 0.95,                                  # Nivel de confianza
           correct = FALSE)                                    # Sin corrección de Yates
 ```
-
 Rechazamos la igualdad el intervalo de confianza es el que se ve pero lo podemos calcular también
 
 ```{r}
@@ -463,6 +481,31 @@ intervalo_confianza <- c(
 
 intervalo_confianza
 ```
+- Proporciones de valoraciones mayores a 4:
+
+Pollença: El 90.01% de las valoraciones en esta localidad son mayores a 4.
+Palma de Mallorca: El 95.91% de las valoraciones son mayores a 4.
+
+La proporción de valoraciones mayores a 4 en Palma de Mallorca es más alta que en Pollença.
+
+- Prueba de igualdad de proporciones:
+
+La prueba estadística para comparar proporciones tiene un estadístico de prueba 
+X al cuadrado = 26.197, con 1 grado de libertad.
+
+El p-valor obtenido es 3.083e-07, que es muy pequeño, indicando una diferencia estadísticamente significativa entre las proporciones de valoraciones superiores a 4 en ambas localidades.
+
+Esto significa que es muy poco probable que la diferencia observada entre las proporciones sea atribuida al azar.
+
+- Intervalo de confianza:
+
+El intervalo de confianza para la diferencia de proporciones es de [-0.079, -0.039], lo que confirma que la proporción de valoraciones mayores a 4 en Palma de Mallorca es entre un 3.9% y un 7.9% mayor que en Pollença.
+
+- Conclusión general:
+
+Aunque ambas localidades tienen una alta proporción de valoraciones positivas, los alojamientos en Palma de Mallorca reciben valoraciones superiores a 4 con mayor frecuencia que los de Pollença.
+
+Esto podría reflejar una mayor satisfacción general en Palma de Mallorca, posiblemente debido a diferencias en la calidad del servicio, las instalaciones, o la percepción de los usuarios.
 
 ## Pregunta 6 (**1punto**)
 
@@ -499,12 +542,34 @@ tabla
 mcnemar.test(tabla)
 ```
 
-Luego lasa proporciones de las valoraciones superior a 4 son iguales en la muestra de 2023 y la de 2024
+Luego la tasa de proporciones de las valoraciones superior a 4 son iguales en la muestra de 2023 y la de 2024
 
 ```{r}
-# Eliminamos los valores NA (valores faltantes) de la columna review_scores_rating del conjunto de datos rating_2024
+# Eliminamos los valores NA de la columna review_scores_rating del conjunto de datos rating_2024
 rating_2024 = na.omit(rating_2024$review_scores_rating)
 ```
+
+- Tabla de contingencia:
+
+La tabla compara la proporción de valoraciones superiores a 4 entre dos momentos distintos.
+
+Valoraciones consistentes (ambas >4 o ambas ≤4):
+805 alojamientos tuvieron valoraciones superiores a 4 en ambos momentos.
+32 alojamientos tuvieron valoraciones iguales o inferiores a 4 en ambos momentos.
+
+Cambios en las valoraciones:
+Solo 1 alojamiento pasó de una valoración ≤4 a >4.
+2 alojamientos pasaron de una valoración >4 a ≤4.
+
+- Prueba de McNemar:
+
+El estadístico chi-cuadrado obtenido es 0, con un grado de libertad.
+El p-valor es 1, indicando que no hay evidencia estadística de un cambio significativo en las proporciones de valoraciones superiores a 4 entre los dos momentos evaluados.
+
+- Conclusión general:
+
+El nivel de satisfacción, medido por valoraciones superiores a 4, se mantuvo estable entre los dos periodos evaluados.
+Esto podría indicar una estabilidad en la calidad percibida de los alojamientos.
 
 ## Pregunta 7 (**1punto**)
 
@@ -513,11 +578,11 @@ La [Zipf's law es una ley empírica](https://en.wikipedia.org/wiki/Zipf%27s_law#
 Como ayuda estudiar el siguiente código, utilizadlo y comentadlo.
 
 ```{r}
-# Cargar la librería necesaria
+# Cargamos la librería necesaria
 library(stringr)
 head(reviews)
 
-# Obtener las longitudes de los comentarios
+# Obtenemos las longitudes de los comentarios
 length_rewiews=stringr::str_count(reviews$comments,"\\w+")
 head(table(length_rewiews))
 ```
@@ -528,14 +593,14 @@ aux=table(length_rewiews)
 head(aux)
 head(names(aux))
 
-# Crear el tibble con frecuencias, rangos y logaritmos
+# Creamos el tibble con frecuencias, rangos y logaritmos
 tbl=tibble( L=as.numeric(names(aux)),Freq=as.numeric(aux),
             Rank=rank(L),Log_Freq=log(Freq),Log_Rank=log(Rank))
 str(tbl)
 ```
 
 ```{r}
-# Filtrar datos para rango entre 10 y 1000
+# Filtramos los datos para rango entre 10 y 1000
 tbl2=tbl %>% filter(Rank>10) %>% filter(Rank<1000)
 
 # Regresión lineal simple de Freq contra Rank
@@ -560,11 +625,13 @@ Vamos a mostrar gráficamente los resultados obtenidos con el codigo anterior
 plot(tbl2$Rank, tbl2$Freq, col = "green", main = "Frecuencia vs Rango",
      xlab = "Rango", ylab = "Frecuencia", pch = 16, cex.lab = 1.5, cex.main = 1.8)
 ```
+
 Esta gráfica muestra cómo varía la frecuencia de las longitudes de los comentarios en función de su rango.
 
 Proporciona una visión general de la relación entre estas dos variables en escala lineal.
 
 En general, la relación no parece seguir una línea recta clara en escala lineal, lo que indica que el modelo lineal simple no es apropiado para analizar esta relación.
+
 ```{r}
 # Rank vs Log_Freq
 plot(tbl2$Rank, tbl2$Log_Freq, col = "blue", main = "Rango vs Log(Frecuencia)",
@@ -572,26 +639,30 @@ plot(tbl2$Rank, tbl2$Log_Freq, col = "blue", main = "Rango vs Log(Frecuencia)",
 
 ```
 Representa el rango en el eje x y el logaritmo de la frecuencia en el eje y.
-
+s
 Introduce el logaritmo para reducir la disparidad en las frecuencias altas, facilitando la observación de patrones más sutiles.
 
 Si bien hay una tendencia decreciente, la relación sigue sin ser completamente lineal, lo que sugiere que una escala log-log podría ser más adecuada.
+
 ```{r}
 # Freq vs Log_Rank
 plot(tbl2$Log_Rank, tbl2$Freq, col = "red", main = "Frecuencia vs Log(Rango)",
      xlab = "Log(Rango)", ylab = "Frecuencia", pch = 16, cex.lab = 1.5, cex.main = 1.8)
 ```
+
 Representa la frecuencia en el eje y y el logaritmo del rango en el eje x.
 
 Permite observar si la frecuencia depende logarítmicamente del rango.
 
 No se observa una relación lineal clara, lo que refuerza la necesidad de escalar ambas variables logarítmicamente.
+
 ```{r}
 # Log_Freq vs Log_Rank
 plot(tbl2$Log_Rank, tbl2$Log_Freq, col = "purple", main = "Log(Frecuencia) vs Log(Rango)",
      xlab = "Log(Rango)", ylab = "Log(Frecuencia)", pch = 16, cex.lab = 1.5, cex.main = 1.8)
 
 ```
+
 Representa el logaritmo de la frecuencia en el eje y y el logaritmo del rango en el eje x.
 
 Evalúa la Ley de Zipf, ya que una relación lineal en esta escala indica una ley potencial, con pendiente cercana a -1.
