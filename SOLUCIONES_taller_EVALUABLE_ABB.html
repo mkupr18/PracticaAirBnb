@@ -347,7 +347,7 @@ window.Quarto = {
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `neighbourhoods' from data source 
-  `C:\Users\JaumeJH\Documents\GitHub\PracticaAirBnb\data\mallorca\2024-09-13\neighbourhoods.geojson' 
+  `C:\Users\mkupr\Documents\GitHub\PracticaAirBnb\data\mallorca\2024-09-13\neighbourhoods.geojson' 
   using driver `GeoJSON'
 Simple feature collection with 53 features and 2 fields
 Geometry type: MULTIPOLYGON
@@ -2557,10 +2557,11 @@ Geodetic CRS:  WGS 84</code></pre>
 <span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">median_reviews =</span> <span class="fu">median</span>(number_of_reviews, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
 <span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_reviews =</span> <span class="fu">min</span>(number_of_reviews, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
 <span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_reviews =</span> <span class="fu">max</span>(number_of_reviews, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_reviews =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(neighbourhood_cleansed, date)         </span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Presentación de resultados en tabla HTML</span></span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(table_reviews,<span class="st">"html"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"striped"</span>, <span class="at">full_width=</span>F)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_reviews =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(neighbourhood_cleansed, date)   </span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Presentación de resultados en tabla HTML</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(table_reviews,<span class="st">"html"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"striped"</span>, <span class="at">full_width=</span>F)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="table table-striped caption-top table-sm small" data-quarto-postprocess="true">
@@ -4791,7 +4792,8 @@ Geodetic CRS:  WGS 84</code></pre>
 </div>
 </div>
 </div>
-<p>El histograma representa la distribución de los precios para valores filtrados entre 50 y 400. La curva roja representa la estimación de densidad mediante un kernel density (no paramétrica). Esta sigue la distribución empírica de los datos. Mientras que la curva azul, que representa densidad de una distribución normal basada en la media y la desviación estándar de la muestra no ajuste perfectamente a los datos especialmente en la parte izquierda.</p>
+<p>El histograma representa la distribución de los precios para valores filtrados entre 50 y 400.</p>
+<p>La curva roja representa la estimación de densidad mediante un kernel density (no paramétrica). Esta sigue la distribución empírica de los datos. Mientras que la curva azul, que representa densidad de una distribución normal basada en la media y la desviación estándar de la muestra no ajuste perfectamente a los datos especialmente en la parte izquierda.</p>
 <p>En conclusión, al observar el gráfico, la distribución de precios no sigue exactamente una distribución normal.</p>
 <p>Ahora calculamos las estadíticas con la variable number_of_reviews</p>
 <div class="cell">
@@ -4881,7 +4883,10 @@ Geodetic CRS:  WGS 84</code></pre>
 </div>
 </div>
 </div>
-<p>El histograma muestra la distribución empírica de los datos de number_of_reviews. La curva roja corresponde a la estimación de la densidad Kernel, que sigue de cerca la forma del histograma, especialmente la concentración de datos en valores bajos. La curva azul representa la distribución normal teórica calculada con la media y la desviación estándar de la muestra. Esta no se ajusta bien a los datos, ya que decrece más rápido en comparación con la densidad Kernel. En conclusión, la variable number_of_reviews no sigue una distribución normal.</p>
+<p>El histograma muestra la distribución empírica de los datos de number_of_reviews.</p>
+<p>La curva roja corresponde a la estimación de la densidad Kernel, que sigue de cerca la forma del histograma, especialmente la concentración de datos en valores bajos.</p>
+<p>La curva azul representa la distribución normal teórica calculada con la media y la desviación estándar de la muestra. Esta no se ajusta bien a los datos, ya que decrece más rápido en comparación con la densidad Kernel.</p>
+<p>En conclusión, la variable number_of_reviews no sigue una distribución normal.</p>
 </section>
 </section>
 <section id="pregunta-3-1punto" class="level2">
@@ -5006,6 +5011,13 @@ ratio of variances
 </div>
 </div>
 <p>Y vemos que las varianzas no son iguales. Por tanto, el contraste se realiza con var.equal = FALSE.</p>
+<p>Las dos pruebas t, tanto la versión estándar como la de Welch, indican que las medias de los precios en Pollença y Palma de Mallorca son significativamente diferentes.</p>
+<p>El p-valor es 1, lo que significa que no hay evidencia para rechazar la hipótesis nula de que la diferencia en las medias es igual a 0 en la dirección planteada. Esto implica que, aunque los precios promedio sean diferentes, la diferencia observada podría ser atribuida al azar en los datos.</p>
+<p>La diferencia promedio de precios es de aproximadamente 36.59 unidades, lo que podría considerarse relevante desde el punto de vista práctico.</p>
+<p>El F-test muestra que la relación entre las varianzas es 0.798, lo que indica que la varianza de los precios en Pollença es menor que la de Palma de Mallorca.</p>
+<p>El p-valor es 1.504e-12, lo cual es extremadamente pequeño y sugiere que las varianzas son significativamente diferentes. Esto justifica la aplicación de la versión de Welch del t-test, ya que las varianzas no son iguales.</p>
+<p>El intervalo de confianza para la diferencia de medias incluye valores negativos y positivos, lo que refuerza la conclusión de que no hay una diferencia significativa entre las medias en la dirección planteada. Sin embargo, el límite superior del intervalo indica que la diferencia máxima observada sería de aproximadamente 39.8 unidades.</p>
+<p>Aunque las medias muestren una diferencia aparente entre los precios en Pollença y Palma de Mallorca, no hay suficiente evidencia estadística para afirmar que esta diferencia es significativa. Sin embargo, la diferencia en las varianzas sí es significativa, lo que sugiere que los precios en Palma de Mallorca son más dispersos (mayor variabilidad) en comparación con los de Pollença.</p>
 </section>
 </section>
 <section id="pregunta-4-1punto" class="level2">
@@ -5013,7 +5025,7 @@ ratio of variances
 <p>Con los datos de <code>listings_common0_select</code>, contrastar si las medias de los precios en Palma entre los periodos “2023-12-17” y “2024-03-23” son iguales contra que son menores en 2023. Construid la hipótesis nula y alternativa, calculad el <span class="math inline">p</span>-valor y el intervalo de confianza asociado al contraste. Haced un diagrama de caja comparativo de los precios <del>por municipio</del> por periodo y coméntalo.</p>
 <section id="solución-3" class="level3">
 <h3 class="anchored" data-anchor-id="solución-3">Solución</h3>
-<p>Sea <span class="math inline">\mu_{2023}</span> Y $_{2024} las medias de los precios en Palma en los periodos “2023-12-17” y “2024-03-23” respectivamente. La hipótesis nula y alternativa son:</p>
+<p>Sea <span class="math inline">\mu_{2023}</span> Y <span class="math inline">\mu_{2024}</span> las medias de los precios en Palma en los periodos “2023-12-17” y “2024-03-23” respectivamente. La hipótesis nula y alternativa son:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
@@ -5056,7 +5068,9 @@ mean difference
 </div>
 </div>
 <p>Aceptamos que la media es mayor en 2024 que en 2023</p>
-<p>Interpretación del resultado:</p>
+<ul>
+<li>Interpretación del resultado:</li>
+</ul>
 <p>No se rechaza la hipótesis nula: no hay evidencia suficiente para afirmar que los precios en 2023 son menores que los de 2024.</p>
 <p>El p-valor alto (0.9916) y el intervalo de confianza (-Inf, 33.83) sugieren que cualquier diferencia observada podría deberse al azar.</p>
 <p>Aunque la media en 2024 parece mayor (diferencia promedio = 20.05), esta no es estadísticamente significativa.</p>
@@ -5089,10 +5103,12 @@ mean difference
 </div>
 </div>
 <p>Observaciones del gráfico:</p>
-<p>-Distribución central: Ambas cajas son similares en tamaño y ubicación. La mediana (línea dentro de las cajas) parece ligeramente más alta para 2024, sugiriendo un incremento moderado en los precios promedio.</p>
-<p>-Rango de precios: Los precios muestran una alta dispersión, con valores atípicos muy elevados en ambos periodos. El rango de los valores extremos parece similar, aunque hay más puntos alejados del cuerpo principal de datos en 2024.</p>
-<p>-Similitud general: Aunque se observa una ligera diferencia en las medianas y la posición de las cajas, estas no parecen lo suficientemente marcadas como para indicar un cambio significativo.</p>
-<p>-Conclusión: El gráfico apoya los resultados del test t: no hay evidencia de una diferencia estadísticamente significativa entre los precios de los dos periodos. Si bien 2024 muestra precios ligeramente más altos en promedio, la variación en los datos y la presencia de valores atípicos sugieren que la diferencia podría deberse al azar.</p>
+<ul>
+<li><p>Distribución central: Ambas cajas son similares en tamaño y ubicación. La mediana (línea dentro de las cajas) parece ligeramente más alta para 2024, sugiriendo un incremento moderado en los precios promedio.</p></li>
+<li><p>Rango de precios: Los precios muestran una alta dispersión, con valores atípicos muy elevados en ambos periodos. El rango de los valores extremos parece similar, aunque hay más puntos alejados del cuerpo principal de datos en 2024.</p></li>
+<li><p>Similitud general: Aunque se observa una ligera diferencia en las medianas y la posición de las cajas, estas no parecen lo suficientemente marcadas como para indicar un cambio significativo.</p></li>
+<li><p>Conclusión: El gráfico apoya los resultados del test t: no hay evidencia de una diferencia estadísticamente significativa entre los precios de los dos periodos. Si bien 2024 muestra precios ligeramente más altos en promedio, la variación en los datos y la presencia de valores atípicos sugieren que la diferencia podría deberse al azar.</p></li>
+</ul>
 </section>
 </section>
 <section id="pregunta-5-1punto" class="level2">
@@ -5219,6 +5235,26 @@ sample estimates:
 <pre><code>[1] -0.07905124 -0.03881286</code></pre>
 </div>
 </div>
+<ul>
+<li>Proporciones de valoraciones mayores a 4:</li>
+</ul>
+<p>Pollença: El 90.01% de las valoraciones en esta localidad son mayores a 4. Palma de Mallorca: El 95.91% de las valoraciones son mayores a 4.</p>
+<p>La proporción de valoraciones mayores a 4 en Palma de Mallorca es más alta que en Pollença.</p>
+<ul>
+<li>Prueba de igualdad de proporciones:</li>
+</ul>
+<p>La prueba estadística para comparar proporciones tiene un estadístico de prueba X al cuadrado = 26.197, con 1 grado de libertad.</p>
+<p>El p-valor obtenido es 3.083e-07, que es muy pequeño, indicando una diferencia estadísticamente significativa entre las proporciones de valoraciones superiores a 4 en ambas localidades.</p>
+<p>Esto significa que es muy poco probable que la diferencia observada entre las proporciones sea atribuida al azar.</p>
+<ul>
+<li>Intervalo de confianza:</li>
+</ul>
+<p>El intervalo de confianza para la diferencia de proporciones es de [-0.079, -0.039], lo que confirma que la proporción de valoraciones mayores a 4 en Palma de Mallorca es entre un 3.9% y un 7.9% mayor que en Pollença.</p>
+<ul>
+<li>Conclusión general:</li>
+</ul>
+<p>Aunque ambas localidades tienen una alta proporción de valoraciones positivas, los alojamientos en Palma de Mallorca reciben valoraciones superiores a 4 con mayor frecuencia que los de Pollença.</p>
+<p>Esto podría reflejar una mayor satisfacción general en Palma de Mallorca, posiblemente debido a diferencias en la calidad del servicio, las instalaciones, o la percepción de los usuarios.</p>
 </section>
 </section>
 <section id="pregunta-6-1punto" class="level2">
@@ -5270,14 +5306,28 @@ data:  tabla
 McNemar's chi-squared = 0, df = 1, p-value = 1</code></pre>
 </div>
 </div>
-<p>Luego lasa proporciones de las valoraciones superior a 4 son iguales en la muestra de 2023 y la de 2024</p>
+<p>Luego la tasa de proporciones de las valoraciones superior a 4 son iguales en la muestra de 2023 y la de 2024</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Eliminamos los valores NA (valores faltantes) de la columna review_scores_rating del conjunto de datos rating_2024</span></span>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Eliminamos los valores NA de la columna review_scores_rating del conjunto de datos rating_2024</span></span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>rating_2024 <span class="ot">=</span> <span class="fu">na.omit</span>(rating_2024<span class="sc">$</span>review_scores_rating)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<ul>
+<li>Tabla de contingencia:</li>
+</ul>
+<p>La tabla compara la proporción de valoraciones superiores a 4 entre dos momentos distintos.</p>
+<p>Valoraciones consistentes (ambas &gt;4 o ambas ≤4): 805 alojamientos tuvieron valoraciones superiores a 4 en ambos momentos. 32 alojamientos tuvieron valoraciones iguales o inferiores a 4 en ambos momentos.</p>
+<p>Cambios en las valoraciones: Solo 1 alojamiento pasó de una valoración ≤4 a &gt;4. 2 alojamientos pasaron de una valoración &gt;4 a ≤4.</p>
+<ul>
+<li>Prueba de McNemar:</li>
+</ul>
+<p>El estadístico chi-cuadrado obtenido es 0, con un grado de libertad. El p-valor es 1, indicando que no hay evidencia estadística de un cambio significativo en las proporciones de valoraciones superiores a 4 entre los dos momentos evaluados.</p>
+<ul>
+<li>Conclusión general:</li>
+</ul>
+<p>El nivel de satisfacción, medido por valoraciones superiores a 4, se mantuvo estable entre los dos periodos evaluados. Esto podría indicar una estabilidad en la calidad percibida de los alojamientos.</p>
 </section>
 </section>
 <section id="pregunta-7-1punto" class="level2">
@@ -5287,7 +5337,7 @@ McNemar's chi-squared = 0, df = 1, p-value = 1</code></pre>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar la librería necesaria</span></span>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargamos la librería necesaria</span></span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
 <span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(reviews)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -5304,7 +5354,7 @@ McNemar's chi-squared = 0, df = 1, p-value = 1</code></pre>
 </div>
 <details class="code-fold">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtener las longitudes de los comentarios</span></span>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtenemos las longitudes de los comentarios</span></span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>length_rewiews<span class="ot">=</span>stringr<span class="sc">::</span><span class="fu">str_count</span>(reviews<span class="sc">$</span>comments,<span class="st">"</span><span class="sc">\\</span><span class="st">w+"</span>)</span>
 <span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">table</span>(length_rewiews))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -5335,7 +5385,7 @@ McNemar's chi-squared = 0, df = 1, p-value = 1</code></pre>
 </div>
 <details class="code-fold">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear el tibble con frecuencias, rangos y logaritmos</span></span>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos el tibble con frecuencias, rangos y logaritmos</span></span>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>tbl<span class="ot">=</span><span class="fu">tibble</span>( <span class="at">L=</span><span class="fu">as.numeric</span>(<span class="fu">names</span>(aux)),<span class="at">Freq=</span><span class="fu">as.numeric</span>(aux),</span>
 <span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">Rank=</span><span class="fu">rank</span>(L),<span class="at">Log_Freq=</span><span class="fu">log</span>(Freq),<span class="at">Log_Rank=</span><span class="fu">log</span>(Rank))</span>
 <span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(tbl)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -5352,7 +5402,7 @@ McNemar's chi-squared = 0, df = 1, p-value = 1</code></pre>
 <div class="cell">
 <details class="code-fold">
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar datos para rango entre 10 y 1000</span></span>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtramos los datos para rango entre 10 y 1000</span></span>
 <span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>tbl2<span class="ot">=</span>tbl <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Rank<span class="sc">&gt;</span><span class="dv">10</span>) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Rank<span class="sc">&lt;</span><span class="dv">1000</span>)</span>
 <span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Regresión lineal simple de Freq contra Rank</span></span>
@@ -5468,8 +5518,7 @@ F-statistic:  6497 on 1 and 614 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </div>
-<p>Representa el rango en el eje x y el logaritmo de la frecuencia en el eje y.</p>
-<p>Introduce el logaritmo para reducir la disparidad en las frecuencias altas, facilitando la observación de patrones más sutiles.</p>
+<p>Representa el rango en el eje x y el logaritmo de la frecuencia en el eje y. s Introduce el logaritmo para reducir la disparidad en las frecuencias altas, facilitando la observación de patrones más sutiles.</p>
 <p>Si bien hay una tendencia decreciente, la relación sigue sin ser completamente lineal, lo que sugiere que una escala log-log podría ser más adecuada.</p>
 <div class="cell">
 <details class="code-fold">
@@ -6124,454 +6173,525 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb97-159"><a href="#cb97-159" aria-hidden="true" tabindex="-1"></a>            <span class="at">median_reviews =</span> <span class="fu">median</span>(number_of_reviews, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
 <span id="cb97-160"><a href="#cb97-160" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_reviews =</span> <span class="fu">min</span>(number_of_reviews, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
 <span id="cb97-161"><a href="#cb97-161" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_reviews =</span> <span class="fu">max</span>(number_of_reviews, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb97-162"><a href="#cb97-162" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_reviews =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(neighbourhood_cleansed, date)         </span>
-<span id="cb97-163"><a href="#cb97-163" aria-hidden="true" tabindex="-1"></a><span class="co"># Presentación de resultados en tabla HTML</span></span>
-<span id="cb97-164"><a href="#cb97-164" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(table_reviews,<span class="st">"html"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb97-165"><a href="#cb97-165" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"striped"</span>, <span class="at">full_width=</span>F)</span>
-<span id="cb97-166"><a href="#cb97-166" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb97-167"><a href="#cb97-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-168"><a href="#cb97-168" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pregunta 2 (**1punto**)</span></span>
-<span id="cb97-169"><a href="#cb97-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-170"><a href="#cb97-170" aria-hidden="true" tabindex="-1"></a>Consideremos las variables <span class="in">`price`</span> y <span class="in">`number_of_reviews`</span> de Pollença y Palma del periodo "2024-09-13", del fichero <span class="in">`listing_common0_select.RData`</span>. Estudiad si estos datos se aproximan a una distribución normal gráficamente. Para ello, dibujad el histograma, la función "kernel-density" que aproxima la densidad y la densidad de la normal de media y varianza las de las muestras de las variables <span class="in">`price`</span> (para precios mayores de 50 y menores de 400) y <span class="in">`number_of_reviews`</span> para Palma y Pollença</span>
-<span id="cb97-171"><a href="#cb97-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-172"><a href="#cb97-172" aria-hidden="true" tabindex="-1"></a><span class="fu">### Solución</span></span>
-<span id="cb97-173"><a href="#cb97-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-176"><a href="#cb97-176" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-177"><a href="#cb97-177" aria-hidden="true" tabindex="-1"></a><span class="co"># Analizamos el precio</span></span>
-<span id="cb97-178"><a href="#cb97-178" aria-hidden="true" tabindex="-1"></a>price2 <span class="ot">=</span> listings_common0_select <span class="sc">%&gt;%</span> <span class="fu">filter</span>(neighbourhood_cleansed <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Pollença"</span>, <span class="st">"Palma de Mallorca"</span>) <span class="sc">&amp;</span> date <span class="sc">==</span> <span class="st">"2024-09-13"</span>)</span>
-<span id="cb97-179"><a href="#cb97-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-180"><a href="#cb97-180" aria-hidden="true" tabindex="-1"></a> <span class="co"># Juntamos los precios de los dos municipios</span></span>
-<span id="cb97-181"><a href="#cb97-181" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(price2)</span>
-<span id="cb97-182"><a href="#cb97-182" aria-hidden="true" tabindex="-1"></a>price2<span class="ot">=</span>price2<span class="sc">$</span>price </span>
-<span id="cb97-183"><a href="#cb97-183" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(price2)</span>
-<span id="cb97-184"><a href="#cb97-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-185"><a href="#cb97-185" aria-hidden="true" tabindex="-1"></a> <span class="co"># Filtramos los precios para que estén entre 50 y 400</span></span>
-<span id="cb97-186"><a href="#cb97-186" aria-hidden="true" tabindex="-1"></a>price2<span class="ot">=</span><span class="fu">na.omit</span>(price2[price2<span class="sc">&gt;</span><span class="dv">50</span> <span class="sc">&amp;</span> price2<span class="sc">&lt;</span><span class="dv">400</span>])</span>
-<span id="cb97-187"><a href="#cb97-187" aria-hidden="true" tabindex="-1"></a>mean_price<span class="ot">=</span><span class="fu">mean</span>(price2)</span>
-<span id="cb97-188"><a href="#cb97-188" aria-hidden="true" tabindex="-1"></a>sd_price<span class="ot">=</span><span class="fu">sd</span>(price2)</span>
-<span id="cb97-189"><a href="#cb97-189" aria-hidden="true" tabindex="-1"></a>mean_price </span>
-<span id="cb97-190"><a href="#cb97-190" aria-hidden="true" tabindex="-1"></a>sd_price</span>
-<span id="cb97-191"><a href="#cb97-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-162"><a href="#cb97-162" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_reviews =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(neighbourhood_cleansed, date)   </span>
+<span id="cb97-163"><a href="#cb97-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-164"><a href="#cb97-164" aria-hidden="true" tabindex="-1"></a><span class="co"># Presentación de resultados en tabla HTML</span></span>
+<span id="cb97-165"><a href="#cb97-165" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(table_reviews,<span class="st">"html"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb97-166"><a href="#cb97-166" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"striped"</span>, <span class="at">full_width=</span>F)</span>
+<span id="cb97-167"><a href="#cb97-167" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-168"><a href="#cb97-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-169"><a href="#cb97-169" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pregunta 2 (**1punto**)</span></span>
+<span id="cb97-170"><a href="#cb97-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-171"><a href="#cb97-171" aria-hidden="true" tabindex="-1"></a>Consideremos las variables <span class="in">`price`</span> y <span class="in">`number_of_reviews`</span> de Pollença y Palma del periodo "2024-09-13", del fichero <span class="in">`listing_common0_select.RData`</span>. Estudiad si estos datos se aproximan a una distribución normal gráficamente. Para ello, dibujad el histograma, la función "kernel-density" que aproxima la densidad y la densidad de la normal de media y varianza las de las muestras de las variables <span class="in">`price`</span> (para precios mayores de 50 y menores de 400) y <span class="in">`number_of_reviews`</span> para Palma y Pollença</span>
+<span id="cb97-172"><a href="#cb97-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-173"><a href="#cb97-173" aria-hidden="true" tabindex="-1"></a><span class="fu">### Solución</span></span>
+<span id="cb97-174"><a href="#cb97-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-177"><a href="#cb97-177" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-178"><a href="#cb97-178" aria-hidden="true" tabindex="-1"></a><span class="co"># Analizamos el precio</span></span>
+<span id="cb97-179"><a href="#cb97-179" aria-hidden="true" tabindex="-1"></a>price2 <span class="ot">=</span> listings_common0_select <span class="sc">%&gt;%</span> <span class="fu">filter</span>(neighbourhood_cleansed <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Pollença"</span>, <span class="st">"Palma de Mallorca"</span>) <span class="sc">&amp;</span> date <span class="sc">==</span> <span class="st">"2024-09-13"</span>)</span>
+<span id="cb97-180"><a href="#cb97-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-181"><a href="#cb97-181" aria-hidden="true" tabindex="-1"></a> <span class="co"># Juntamos los precios de los dos municipios</span></span>
+<span id="cb97-182"><a href="#cb97-182" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(price2)</span>
+<span id="cb97-183"><a href="#cb97-183" aria-hidden="true" tabindex="-1"></a>price2<span class="ot">=</span>price2<span class="sc">$</span>price </span>
+<span id="cb97-184"><a href="#cb97-184" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(price2)</span>
+<span id="cb97-185"><a href="#cb97-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-186"><a href="#cb97-186" aria-hidden="true" tabindex="-1"></a> <span class="co"># Filtramos los precios para que estén entre 50 y 400</span></span>
+<span id="cb97-187"><a href="#cb97-187" aria-hidden="true" tabindex="-1"></a>price2<span class="ot">=</span><span class="fu">na.omit</span>(price2[price2<span class="sc">&gt;</span><span class="dv">50</span> <span class="sc">&amp;</span> price2<span class="sc">&lt;</span><span class="dv">400</span>])</span>
+<span id="cb97-188"><a href="#cb97-188" aria-hidden="true" tabindex="-1"></a>mean_price<span class="ot">=</span><span class="fu">mean</span>(price2)</span>
+<span id="cb97-189"><a href="#cb97-189" aria-hidden="true" tabindex="-1"></a>sd_price<span class="ot">=</span><span class="fu">sd</span>(price2)</span>
+<span id="cb97-190"><a href="#cb97-190" aria-hidden="true" tabindex="-1"></a>mean_price </span>
+<span id="cb97-191"><a href="#cb97-191" aria-hidden="true" tabindex="-1"></a>sd_price</span>
 <span id="cb97-192"><a href="#cb97-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-193"><a href="#cb97-193" aria-hidden="true" tabindex="-1"></a><span class="co"># Data frame de precios</span></span>
-<span id="cb97-194"><a href="#cb97-194" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">price2 =</span> price2)</span>
-<span id="cb97-195"><a href="#cb97-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-196"><a href="#cb97-196" aria-hidden="true" tabindex="-1"></a><span class="co"># Genera el gráfico con ggplot</span></span>
-<span id="cb97-197"><a href="#cb97-197" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> price2)) <span class="sc">+</span> </span>
-<span id="cb97-198"><a href="#cb97-198" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span> </span>
-<span id="cb97-199"><a href="#cb97-199" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb97-200"><a href="#cb97-200" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span> (<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> mean_price, <span class="at">sd =</span> sd_price), <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb97-201"><a href="#cb97-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb97-202"><a href="#cb97-202" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Histograma de precios Pollença y Palma</span><span class="sc">\n</span><span class="st"> 2024-09-13"</span>, <span class="co"># Título</span></span>
-<span id="cb97-203"><a href="#cb97-203" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Precios"</span>,               <span class="co"># Etiqueta del eje x</span></span>
-<span id="cb97-204"><a href="#cb97-204" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Densidad muestral"</span>) <span class="sc">+</span>   <span class="co"># Etiqueta del eje Y</span></span>
-<span id="cb97-205"><a href="#cb97-205" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fl">0.006</span>) <span class="sc">+</span> </span>
-<span id="cb97-206"><a href="#cb97-206" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb97-207"><a href="#cb97-207" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb97-208"><a href="#cb97-208" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="co"># Centra el título</span></span>
-<span id="cb97-209"><a href="#cb97-209" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb97-210"><a href="#cb97-210" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb97-211"><a href="#cb97-211" aria-hidden="true" tabindex="-1"></a>El histograma representa la distribución de los precios para valores filtrados entre 50 y 400.</span>
-<span id="cb97-212"><a href="#cb97-212" aria-hidden="true" tabindex="-1"></a>La curva roja representa la estimación de densidad mediante un kernel density (no paramétrica). Esta sigue la distribución empírica de los datos. Mientras que la curva azul, que representa densidad de una distribución normal basada en la media y la desviación estándar de la muestra no ajuste perfectamente a los datos especialmente en la parte izquierda.</span>
-<span id="cb97-213"><a href="#cb97-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-214"><a href="#cb97-214" aria-hidden="true" tabindex="-1"></a>En conclusión, al observar el gráfico, la distribución de precios no sigue exactamente una distribución normal.</span>
-<span id="cb97-215"><a href="#cb97-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-193"><a href="#cb97-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-194"><a href="#cb97-194" aria-hidden="true" tabindex="-1"></a><span class="co"># Data frame de precios</span></span>
+<span id="cb97-195"><a href="#cb97-195" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">price2 =</span> price2)</span>
+<span id="cb97-196"><a href="#cb97-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-197"><a href="#cb97-197" aria-hidden="true" tabindex="-1"></a><span class="co"># Genera el gráfico con ggplot</span></span>
+<span id="cb97-198"><a href="#cb97-198" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> price2)) <span class="sc">+</span> </span>
+<span id="cb97-199"><a href="#cb97-199" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span> </span>
+<span id="cb97-200"><a href="#cb97-200" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb97-201"><a href="#cb97-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span> (<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> mean_price, <span class="at">sd =</span> sd_price), <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb97-202"><a href="#cb97-202" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb97-203"><a href="#cb97-203" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Histograma de precios Pollença y Palma</span><span class="sc">\n</span><span class="st"> 2024-09-13"</span>, <span class="co"># Título</span></span>
+<span id="cb97-204"><a href="#cb97-204" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Precios"</span>,               <span class="co"># Etiqueta del eje x</span></span>
+<span id="cb97-205"><a href="#cb97-205" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Densidad muestral"</span>) <span class="sc">+</span>   <span class="co"># Etiqueta del eje Y</span></span>
+<span id="cb97-206"><a href="#cb97-206" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fl">0.006</span>) <span class="sc">+</span> </span>
+<span id="cb97-207"><a href="#cb97-207" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb97-208"><a href="#cb97-208" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb97-209"><a href="#cb97-209" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="co"># Centra el título</span></span>
+<span id="cb97-210"><a href="#cb97-210" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb97-211"><a href="#cb97-211" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-212"><a href="#cb97-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-213"><a href="#cb97-213" aria-hidden="true" tabindex="-1"></a>El histograma representa la distribución de los precios para valores filtrados entre 50 y 400.</span>
+<span id="cb97-214"><a href="#cb97-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-215"><a href="#cb97-215" aria-hidden="true" tabindex="-1"></a>La curva roja representa la estimación de densidad mediante un kernel density (no paramétrica). Esta sigue la distribución empírica de los datos. Mientras que la curva azul, que representa densidad de una distribución normal basada en la media y la desviación estándar de la muestra no ajuste perfectamente a los datos especialmente en la parte izquierda.</span>
 <span id="cb97-216"><a href="#cb97-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-217"><a href="#cb97-217" aria-hidden="true" tabindex="-1"></a>Ahora calculamos las estadíticas con la variable number_of_reviews</span>
-<span id="cb97-220"><a href="#cb97-220" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-221"><a href="#cb97-221" aria-hidden="true" tabindex="-1"></a><span class="co"># Analizamos reviews</span></span>
-<span id="cb97-222"><a href="#cb97-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-223"><a href="#cb97-223" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtramos los datos</span></span>
-<span id="cb97-224"><a href="#cb97-224" aria-hidden="true" tabindex="-1"></a>reviews2 <span class="ot">=</span> listings_common0_select <span class="sc">%&gt;%</span><span class="fu">filter</span>(neighbourhood_cleansed <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Pollença"</span>, <span class="st">"Palma de Mallorca"</span>) <span class="sc">&amp;</span> date <span class="sc">==</span> <span class="st">"2024-09-13"</span>)</span>
-<span id="cb97-225"><a href="#cb97-225" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(reviews2)</span>
-<span id="cb97-226"><a href="#cb97-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-227"><a href="#cb97-227" aria-hidden="true" tabindex="-1"></a><span class="co"># Limpiamos la variable `number_of_reviews`</span></span>
-<span id="cb97-228"><a href="#cb97-228" aria-hidden="true" tabindex="-1"></a>reviews2 <span class="ot">=</span> reviews2<span class="sc">$</span>number_of_reviews</span>
-<span id="cb97-229"><a href="#cb97-229" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(reviews2)</span>
-<span id="cb97-230"><a href="#cb97-230" aria-hidden="true" tabindex="-1"></a>reviews2 <span class="ot">=</span> <span class="fu">na.omit</span>(reviews2)</span>
-<span id="cb97-231"><a href="#cb97-231" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(reviews2)</span>
-<span id="cb97-232"><a href="#cb97-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-233"><a href="#cb97-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-234"><a href="#cb97-234" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculamos la media y la desviación estándar</span></span>
-<span id="cb97-235"><a href="#cb97-235" aria-hidden="true" tabindex="-1"></a>mean_reviews <span class="ot">&lt;-</span> <span class="fu">mean</span>(reviews2)</span>
-<span id="cb97-236"><a href="#cb97-236" aria-hidden="true" tabindex="-1"></a>sd_reviews <span class="ot">&lt;-</span> <span class="fu">sd</span>(reviews2)</span>
-<span id="cb97-237"><a href="#cb97-237" aria-hidden="true" tabindex="-1"></a>mean_reviews</span>
-<span id="cb97-238"><a href="#cb97-238" aria-hidden="true" tabindex="-1"></a>sd_reviews</span>
-<span id="cb97-239"><a href="#cb97-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-240"><a href="#cb97-240" aria-hidden="true" tabindex="-1"></a><span class="co"># Generamos el gráfico con ggplot</span></span>
-<span id="cb97-241"><a href="#cb97-241" aria-hidden="true" tabindex="-1"></a>data_reviews <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">reviews2 =</span> reviews2)</span>
-<span id="cb97-242"><a href="#cb97-242" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_reviews, <span class="fu">aes</span>(<span class="at">x =</span> reviews2)) <span class="sc">+</span> </span>
-<span id="cb97-243"><a href="#cb97-243" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> <span class="st">"lightgreen"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span> </span>
-<span id="cb97-244"><a href="#cb97-244" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb97-245"><a href="#cb97-245" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> mean_reviews, <span class="at">sd =</span> sd_reviews), <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb97-246"><a href="#cb97-246" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb97-247"><a href="#cb97-247" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Histograma de número de reviews </span><span class="sc">\n</span><span class="st"> Pollença y Palma"</span>,</span>
-<span id="cb97-248"><a href="#cb97-248" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Número de reviews"</span>, </span>
-<span id="cb97-249"><a href="#cb97-249" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Densidad muestral"</span></span>
-<span id="cb97-250"><a href="#cb97-250" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb97-251"><a href="#cb97-251" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="fl">0.006</span>) <span class="sc">+</span></span>
-<span id="cb97-252"><a href="#cb97-252" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb97-253"><a href="#cb97-253" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>))</span>
-<span id="cb97-254"><a href="#cb97-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-255"><a href="#cb97-255" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb97-256"><a href="#cb97-256" aria-hidden="true" tabindex="-1"></a>El histograma muestra la distribución empírica de los datos de number_of_reviews.</span>
-<span id="cb97-257"><a href="#cb97-257" aria-hidden="true" tabindex="-1"></a>La curva roja corresponde a la estimación de la densidad Kernel, que sigue de cerca la forma del histograma, especialmente la concentración de datos en valores bajos.</span>
-<span id="cb97-258"><a href="#cb97-258" aria-hidden="true" tabindex="-1"></a>La curva azul representa la distribución normal teórica calculada con la media y la desviación estándar de la muestra. Esta no se ajusta bien a los datos, ya que decrece más rápido en comparación con la densidad Kernel.</span>
-<span id="cb97-259"><a href="#cb97-259" aria-hidden="true" tabindex="-1"></a>En conclusión, la variable number_of_reviews no sigue una distribución normal.</span>
-<span id="cb97-260"><a href="#cb97-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-217"><a href="#cb97-217" aria-hidden="true" tabindex="-1"></a>En conclusión, al observar el gráfico, la distribución de precios no sigue exactamente una distribución normal.</span>
+<span id="cb97-218"><a href="#cb97-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-219"><a href="#cb97-219" aria-hidden="true" tabindex="-1"></a>Ahora calculamos las estadíticas con la variable number_of_reviews</span>
+<span id="cb97-220"><a href="#cb97-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-223"><a href="#cb97-223" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-224"><a href="#cb97-224" aria-hidden="true" tabindex="-1"></a><span class="co"># Analizamos reviews</span></span>
+<span id="cb97-225"><a href="#cb97-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-226"><a href="#cb97-226" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtramos los datos</span></span>
+<span id="cb97-227"><a href="#cb97-227" aria-hidden="true" tabindex="-1"></a>reviews2 <span class="ot">=</span> listings_common0_select <span class="sc">%&gt;%</span><span class="fu">filter</span>(neighbourhood_cleansed <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Pollença"</span>, <span class="st">"Palma de Mallorca"</span>) <span class="sc">&amp;</span> date <span class="sc">==</span> <span class="st">"2024-09-13"</span>)</span>
+<span id="cb97-228"><a href="#cb97-228" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(reviews2)</span>
+<span id="cb97-229"><a href="#cb97-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-230"><a href="#cb97-230" aria-hidden="true" tabindex="-1"></a><span class="co"># Limpiamos la variable `number_of_reviews`</span></span>
+<span id="cb97-231"><a href="#cb97-231" aria-hidden="true" tabindex="-1"></a>reviews2 <span class="ot">=</span> reviews2<span class="sc">$</span>number_of_reviews</span>
+<span id="cb97-232"><a href="#cb97-232" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(reviews2)</span>
+<span id="cb97-233"><a href="#cb97-233" aria-hidden="true" tabindex="-1"></a>reviews2 <span class="ot">=</span> <span class="fu">na.omit</span>(reviews2)</span>
+<span id="cb97-234"><a href="#cb97-234" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(reviews2)</span>
+<span id="cb97-235"><a href="#cb97-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-236"><a href="#cb97-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-237"><a href="#cb97-237" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculamos la media y la desviación estándar</span></span>
+<span id="cb97-238"><a href="#cb97-238" aria-hidden="true" tabindex="-1"></a>mean_reviews <span class="ot">&lt;-</span> <span class="fu">mean</span>(reviews2)</span>
+<span id="cb97-239"><a href="#cb97-239" aria-hidden="true" tabindex="-1"></a>sd_reviews <span class="ot">&lt;-</span> <span class="fu">sd</span>(reviews2)</span>
+<span id="cb97-240"><a href="#cb97-240" aria-hidden="true" tabindex="-1"></a>mean_reviews</span>
+<span id="cb97-241"><a href="#cb97-241" aria-hidden="true" tabindex="-1"></a>sd_reviews</span>
+<span id="cb97-242"><a href="#cb97-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-243"><a href="#cb97-243" aria-hidden="true" tabindex="-1"></a><span class="co"># Generamos el gráfico con ggplot</span></span>
+<span id="cb97-244"><a href="#cb97-244" aria-hidden="true" tabindex="-1"></a>data_reviews <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">reviews2 =</span> reviews2)</span>
+<span id="cb97-245"><a href="#cb97-245" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_reviews, <span class="fu">aes</span>(<span class="at">x =</span> reviews2)) <span class="sc">+</span> </span>
+<span id="cb97-246"><a href="#cb97-246" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> <span class="st">"lightgreen"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span> </span>
+<span id="cb97-247"><a href="#cb97-247" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb97-248"><a href="#cb97-248" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> mean_reviews, <span class="at">sd =</span> sd_reviews), <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb97-249"><a href="#cb97-249" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb97-250"><a href="#cb97-250" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Histograma de número de reviews </span><span class="sc">\n</span><span class="st"> Pollença y Palma"</span>,</span>
+<span id="cb97-251"><a href="#cb97-251" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Número de reviews"</span>, </span>
+<span id="cb97-252"><a href="#cb97-252" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Densidad muestral"</span></span>
+<span id="cb97-253"><a href="#cb97-253" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb97-254"><a href="#cb97-254" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="fl">0.006</span>) <span class="sc">+</span></span>
+<span id="cb97-255"><a href="#cb97-255" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb97-256"><a href="#cb97-256" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>))</span>
+<span id="cb97-257"><a href="#cb97-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-258"><a href="#cb97-258" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-259"><a href="#cb97-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-260"><a href="#cb97-260" aria-hidden="true" tabindex="-1"></a>El histograma muestra la distribución empírica de los datos de number_of_reviews.</span>
 <span id="cb97-261"><a href="#cb97-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-262"><a href="#cb97-262" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pregunta 3 (**1punto**)</span></span>
+<span id="cb97-262"><a href="#cb97-262" aria-hidden="true" tabindex="-1"></a>La curva roja corresponde a la estimación de la densidad Kernel, que sigue de cerca la forma del histograma, especialmente la concentración de datos en valores bajos.</span>
 <span id="cb97-263"><a href="#cb97-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-264"><a href="#cb97-264" aria-hidden="true" tabindex="-1"></a>Con los datos de <span class="in">`listings_common0_select`</span> de todos los periodos, contrastar si la media del precio en Pollença es igual a la de Palma **contra** que es mayor que en Palma para los precios mayores que 50 euros y menores de 400. Construid la hipótesis nula y alternativa, calculad el $p$-valor y el intervalo de confianza asociado al contraste. Justifica técnicamente la conclusión del contraste.</span>
+<span id="cb97-264"><a href="#cb97-264" aria-hidden="true" tabindex="-1"></a>La curva azul representa la distribución normal teórica calculada con la media y la desviación estándar de la muestra. Esta no se ajusta bien a los datos, ya que decrece más rápido en comparación con la densidad Kernel.</span>
 <span id="cb97-265"><a href="#cb97-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-266"><a href="#cb97-266" aria-hidden="true" tabindex="-1"></a><span class="fu">### Solución</span></span>
+<span id="cb97-266"><a href="#cb97-266" aria-hidden="true" tabindex="-1"></a>En conclusión, la variable number_of_reviews no sigue una distribución normal.</span>
 <span id="cb97-267"><a href="#cb97-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-268"><a href="#cb97-268" aria-hidden="true" tabindex="-1"></a>Sea $\mu_{\texttt{Pollença}}$ y $\mu_{Palma}$ las medias de los precios en Pollença y Palma respectivamente. La hipótesis nula y aleternativa son:</span>
+<span id="cb97-268"><a href="#cb97-268" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pregunta 3 (**1punto**)</span></span>
 <span id="cb97-269"><a href="#cb97-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-270"><a href="#cb97-270" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb97-271"><a href="#cb97-271" aria-hidden="true" tabindex="-1"></a>\left<span class="sc">\{</span></span>
-<span id="cb97-272"><a href="#cb97-272" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb97-273"><a href="#cb97-273" aria-hidden="true" tabindex="-1"></a>H_0 &amp; : \mu_{\mathrm{\texttt{Pollença}}} = \mu_{\mathrm{Palma}} <span class="sc">\\</span></span>
-<span id="cb97-274"><a href="#cb97-274" aria-hidden="true" tabindex="-1"></a>H_1 &amp; : \mu_{\mathrm{\texttt{Pollença}}} \leq \mu_{\mathrm{Palma}}</span>
-<span id="cb97-275"><a href="#cb97-275" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb97-276"><a href="#cb97-276" aria-hidden="true" tabindex="-1"></a>\right.</span>
-<span id="cb97-277"><a href="#cb97-277" aria-hidden="true" tabindex="-1"></a>$$ Primero calculamos los datos que nos piden</span>
-<span id="cb97-278"><a href="#cb97-278" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-281"><a href="#cb97-281" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-282"><a href="#cb97-282" aria-hidden="true" tabindex="-1"></a><span class="co"># Extraemos y limpiamos los precios de Pollença</span></span>
-<span id="cb97-283"><a href="#cb97-283" aria-hidden="true" tabindex="-1"></a>price_Pollença <span class="ot">=</span> listings_common0_select <span class="sc">%&gt;%</span></span>
-<span id="cb97-284"><a href="#cb97-284" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(neighbourhood_cleansed <span class="sc">==</span> <span class="st">"Pollença"</span> <span class="sc">&amp;</span> price <span class="sc">&gt;</span> <span class="dv">50</span> <span class="sc">&amp;</span></span>
-<span id="cb97-285"><a href="#cb97-285" aria-hidden="true" tabindex="-1"></a>price <span class="sc">&lt;</span> <span class="dv">400</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(price)</span>
-<span id="cb97-286"><a href="#cb97-286" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(price_Pollença) <span class="co"># Verificamos la estructura del dataframe (tibble)</span></span>
-<span id="cb97-287"><a href="#cb97-287" aria-hidden="true" tabindex="-1"></a>price_Pollença <span class="ot">=</span> <span class="fu">na.omit</span>(price_Pollença<span class="sc">$</span>price) <span class="co"># Eliminamos valores NA y convertimos en un vector numérico</span></span>
-<span id="cb97-288"><a href="#cb97-288" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(price_Pollença)</span>
-<span id="cb97-289"><a href="#cb97-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-290"><a href="#cb97-290" aria-hidden="true" tabindex="-1"></a><span class="co"># Extraemos y limpiamos los precios de Palma</span></span>
-<span id="cb97-291"><a href="#cb97-291" aria-hidden="true" tabindex="-1"></a>price_Palma <span class="ot">=</span> listings_common0_select <span class="sc">%&gt;%</span></span>
-<span id="cb97-292"><a href="#cb97-292" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(neighbourhood_cleansed <span class="sc">==</span> <span class="st">"Palma de Mallorca"</span> <span class="sc">&amp;</span> price <span class="sc">&gt;</span> <span class="dv">50</span> <span class="sc">&amp;</span> price <span class="sc">&lt;</span> <span class="dv">400</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(price)</span>
-<span id="cb97-293"><a href="#cb97-293" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(price_Palma) <span class="co"># Verificamos la estructura del dataframe (tibble)</span></span>
-<span id="cb97-294"><a href="#cb97-294" aria-hidden="true" tabindex="-1"></a>price_Palma <span class="ot">=</span> <span class="fu">na.omit</span>(price_Palma<span class="sc">$</span>price) <span class="co"># Eliminamos valores NA y convertimos en un vector numérico</span></span>
-<span id="cb97-295"><a href="#cb97-295" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(price_Palma)</span>
-<span id="cb97-296"><a href="#cb97-296" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb97-297"><a href="#cb97-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-298"><a href="#cb97-298" aria-hidden="true" tabindex="-1"></a>Hemos guardado en los objetos <span class="in">`price_Pollença`</span> y <span class="in">`price_Palma`</span> los precios de Pollença y Palma respectivamente sin NA's y comprendidos entre 50 y 400 euros.</span>
-<span id="cb97-299"><a href="#cb97-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-300"><a href="#cb97-300" aria-hidden="true" tabindex="-1"></a>El contraste se puede realizar con la función <span class="in">`t.test`</span> de R muestras independientes y tamaños <span class="in">`r length(price_Pollença)`</span> y <span class="in">`r length(price_Palma)`</span> respectivamente.</span>
-<span id="cb97-301"><a href="#cb97-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-304"><a href="#cb97-304" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-305"><a href="#cb97-305" aria-hidden="true" tabindex="-1"></a><span class="co"># Contraste t para muestras independientes (hipótesis unilateral: Pollença &lt;= Palma)</span></span>
-<span id="cb97-306"><a href="#cb97-306" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(price_Pollença, price_Palma, <span class="at">alternative =</span> <span class="st">"less"</span>, </span>
-<span id="cb97-307"><a href="#cb97-307" aria-hidden="true" tabindex="-1"></a>       <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb97-308"><a href="#cb97-308" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb97-309"><a href="#cb97-309" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-310"><a href="#cb97-310" aria-hidden="true" tabindex="-1"></a>El p-valor es muy alto</span>
-<span id="cb97-311"><a href="#cb97-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-314"><a href="#cb97-314" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-315"><a href="#cb97-315" aria-hidden="true" tabindex="-1"></a><span class="co"># Repetimos el contraste, pero sin asumir varianzas iguales</span></span>
-<span id="cb97-316"><a href="#cb97-316" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(price_Pollença, price_Palma, <span class="at">alternative =</span> <span class="st">"less"</span>, </span>
-<span id="cb97-317"><a href="#cb97-317" aria-hidden="true" tabindex="-1"></a>       <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb97-318"><a href="#cb97-318" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb97-319"><a href="#cb97-319" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-320"><a href="#cb97-320" aria-hidden="true" tabindex="-1"></a>Para decidir si las varianzas son iguales o no hacemos</span>
-<span id="cb97-321"><a href="#cb97-321" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-324"><a href="#cb97-324" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-325"><a href="#cb97-325" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificamos si las varianzas son iguales entre ambas muestras</span></span>
-<span id="cb97-326"><a href="#cb97-326" aria-hidden="true" tabindex="-1"></a><span class="fu">var.test</span>(price_Pollença, price_Palma)</span>
-<span id="cb97-327"><a href="#cb97-327" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb97-328"><a href="#cb97-328" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-329"><a href="#cb97-329" aria-hidden="true" tabindex="-1"></a>Y vemos que las varianzas no son iguales. Por tanto, el contraste se realiza con var.equal = FALSE.</span>
-<span id="cb97-330"><a href="#cb97-330" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-331"><a href="#cb97-331" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pregunta 4 (**1punto**)</span></span>
-<span id="cb97-332"><a href="#cb97-332" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-333"><a href="#cb97-333" aria-hidden="true" tabindex="-1"></a>Con los datos de <span class="in">`listings_common0_select`</span>, contrastar si las medias de los precios en Palma entre los periodos "2023-12-17" y "2024-03-23" son iguales contra que son menores en 2023. Construid la hipótesis nula y alternativa, calculad el $p$-valor y el intervalo de confianza asociado al contraste. Haced un diagrama de caja comparativo de los precios ~~por municipio~~ por periodo y coméntalo.</span>
+<span id="cb97-270"><a href="#cb97-270" aria-hidden="true" tabindex="-1"></a>Con los datos de <span class="in">`listings_common0_select`</span> de todos los periodos, contrastar si la media del precio en Pollença es igual a la de Palma **contra** que es mayor que en Palma para los precios mayores que 50 euros y menores de 400. Construid la hipótesis nula y alternativa, calculad el $p$-valor y el intervalo de confianza asociado al contraste. Justifica técnicamente la conclusión del contraste.</span>
+<span id="cb97-271"><a href="#cb97-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-272"><a href="#cb97-272" aria-hidden="true" tabindex="-1"></a><span class="fu">### Solución</span></span>
+<span id="cb97-273"><a href="#cb97-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-274"><a href="#cb97-274" aria-hidden="true" tabindex="-1"></a>Sea $\mu_{\texttt{Pollença}}$ y $\mu_{Palma}$ las medias de los precios en Pollença y Palma respectivamente. La hipótesis nula y aleternativa son:</span>
+<span id="cb97-275"><a href="#cb97-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-276"><a href="#cb97-276" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb97-277"><a href="#cb97-277" aria-hidden="true" tabindex="-1"></a>\left<span class="sc">\{</span></span>
+<span id="cb97-278"><a href="#cb97-278" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb97-279"><a href="#cb97-279" aria-hidden="true" tabindex="-1"></a>H_0 &amp; : \mu_{\mathrm{\texttt{Pollença}}} = \mu_{\mathrm{Palma}} <span class="sc">\\</span></span>
+<span id="cb97-280"><a href="#cb97-280" aria-hidden="true" tabindex="-1"></a>H_1 &amp; : \mu_{\mathrm{\texttt{Pollença}}} \leq \mu_{\mathrm{Palma}}</span>
+<span id="cb97-281"><a href="#cb97-281" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb97-282"><a href="#cb97-282" aria-hidden="true" tabindex="-1"></a>\right.</span>
+<span id="cb97-283"><a href="#cb97-283" aria-hidden="true" tabindex="-1"></a>$$ </span>
+<span id="cb97-284"><a href="#cb97-284" aria-hidden="true" tabindex="-1"></a>Primero calculamos los datos que nos piden</span>
+<span id="cb97-285"><a href="#cb97-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-288"><a href="#cb97-288" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-289"><a href="#cb97-289" aria-hidden="true" tabindex="-1"></a><span class="co"># Extraemos y limpiamos los precios de Pollença</span></span>
+<span id="cb97-290"><a href="#cb97-290" aria-hidden="true" tabindex="-1"></a>price_Pollença <span class="ot">=</span> listings_common0_select <span class="sc">%&gt;%</span></span>
+<span id="cb97-291"><a href="#cb97-291" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(neighbourhood_cleansed <span class="sc">==</span> <span class="st">"Pollença"</span> <span class="sc">&amp;</span> price <span class="sc">&gt;</span> <span class="dv">50</span> <span class="sc">&amp;</span></span>
+<span id="cb97-292"><a href="#cb97-292" aria-hidden="true" tabindex="-1"></a>price <span class="sc">&lt;</span> <span class="dv">400</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(price)</span>
+<span id="cb97-293"><a href="#cb97-293" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(price_Pollença) <span class="co"># Verificamos la estructura del dataframe (tibble)</span></span>
+<span id="cb97-294"><a href="#cb97-294" aria-hidden="true" tabindex="-1"></a>price_Pollença <span class="ot">=</span> <span class="fu">na.omit</span>(price_Pollença<span class="sc">$</span>price) <span class="co"># Eliminamos valores NA y convertimos en un vector numérico</span></span>
+<span id="cb97-295"><a href="#cb97-295" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(price_Pollença)</span>
+<span id="cb97-296"><a href="#cb97-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-297"><a href="#cb97-297" aria-hidden="true" tabindex="-1"></a><span class="co"># Extraemos y limpiamos los precios de Palma</span></span>
+<span id="cb97-298"><a href="#cb97-298" aria-hidden="true" tabindex="-1"></a>price_Palma <span class="ot">=</span> listings_common0_select <span class="sc">%&gt;%</span></span>
+<span id="cb97-299"><a href="#cb97-299" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(neighbourhood_cleansed <span class="sc">==</span> <span class="st">"Palma de Mallorca"</span> <span class="sc">&amp;</span> price <span class="sc">&gt;</span> <span class="dv">50</span> <span class="sc">&amp;</span> price <span class="sc">&lt;</span> <span class="dv">400</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(price)</span>
+<span id="cb97-300"><a href="#cb97-300" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(price_Palma) <span class="co"># Verificamos la estructura del dataframe (tibble)</span></span>
+<span id="cb97-301"><a href="#cb97-301" aria-hidden="true" tabindex="-1"></a>price_Palma <span class="ot">=</span> <span class="fu">na.omit</span>(price_Palma<span class="sc">$</span>price) <span class="co"># Eliminamos valores NA y convertimos en un vector numérico</span></span>
+<span id="cb97-302"><a href="#cb97-302" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(price_Palma)</span>
+<span id="cb97-303"><a href="#cb97-303" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-304"><a href="#cb97-304" aria-hidden="true" tabindex="-1"></a>Hemos guardado en los objetos <span class="in">`price_Pollença`</span> y <span class="in">`price_Palma`</span> los precios de Pollença y Palma respectivamente sin NA's y comprendidos entre 50 y 400 euros.</span>
+<span id="cb97-305"><a href="#cb97-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-306"><a href="#cb97-306" aria-hidden="true" tabindex="-1"></a>El contraste se puede realizar con la función <span class="in">`t.test`</span> de R muestras independientes y tamaños <span class="in">`r length(price_Pollença)`</span> y <span class="in">`r length(price_Palma)`</span> respectivamente.</span>
+<span id="cb97-307"><a href="#cb97-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-310"><a href="#cb97-310" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-311"><a href="#cb97-311" aria-hidden="true" tabindex="-1"></a><span class="co"># Contraste t para muestras independientes (hipótesis unilateral: Pollença &lt;= Palma)</span></span>
+<span id="cb97-312"><a href="#cb97-312" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(price_Pollença, price_Palma, <span class="at">alternative =</span> <span class="st">"less"</span>, </span>
+<span id="cb97-313"><a href="#cb97-313" aria-hidden="true" tabindex="-1"></a>       <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb97-314"><a href="#cb97-314" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-315"><a href="#cb97-315" aria-hidden="true" tabindex="-1"></a>El p-valor es muy alto</span>
+<span id="cb97-316"><a href="#cb97-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-319"><a href="#cb97-319" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-320"><a href="#cb97-320" aria-hidden="true" tabindex="-1"></a><span class="co"># Repetimos el contraste, pero sin asumir varianzas iguales</span></span>
+<span id="cb97-321"><a href="#cb97-321" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(price_Pollença, price_Palma, <span class="at">alternative =</span> <span class="st">"less"</span>, </span>
+<span id="cb97-322"><a href="#cb97-322" aria-hidden="true" tabindex="-1"></a>       <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb97-323"><a href="#cb97-323" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-324"><a href="#cb97-324" aria-hidden="true" tabindex="-1"></a>Para decidir si las varianzas son iguales o no hacemos</span>
+<span id="cb97-325"><a href="#cb97-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-328"><a href="#cb97-328" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-329"><a href="#cb97-329" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificamos si las varianzas son iguales entre ambas muestras</span></span>
+<span id="cb97-330"><a href="#cb97-330" aria-hidden="true" tabindex="-1"></a><span class="fu">var.test</span>(price_Pollença, price_Palma)</span>
+<span id="cb97-331"><a href="#cb97-331" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-332"><a href="#cb97-332" aria-hidden="true" tabindex="-1"></a>Y vemos que las varianzas no son iguales. Por tanto, el contraste se realiza con var.equal = FALSE.</span>
+<span id="cb97-333"><a href="#cb97-333" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb97-334"><a href="#cb97-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-335"><a href="#cb97-335" aria-hidden="true" tabindex="-1"></a><span class="fu">### Solución</span></span>
+<span id="cb97-335"><a href="#cb97-335" aria-hidden="true" tabindex="-1"></a>Las dos pruebas t, tanto la versión estándar como la de Welch, indican que las medias de los precios en Pollença y Palma de Mallorca son significativamente diferentes.</span>
 <span id="cb97-336"><a href="#cb97-336" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-337"><a href="#cb97-337" aria-hidden="true" tabindex="-1"></a>Sea $\mu_{2023}$ Y $\mu_{2024} las medias de los precios en Palma en los periodos "2023-12-17" y "2024-03-23" respectivamente. La hipótesis nula y alternativa son:</span>
+<span id="cb97-337"><a href="#cb97-337" aria-hidden="true" tabindex="-1"></a>El p-valor es 1, lo que significa que no hay evidencia para rechazar la hipótesis nula de que la diferencia en las medias es igual a 0 en la dirección planteada. Esto implica que, aunque los precios promedio sean diferentes, la diferencia observada podría ser atribuida al azar en los datos.</span>
 <span id="cb97-338"><a href="#cb97-338" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-341"><a href="#cb97-341" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-342"><a href="#cb97-342" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculamos el contraste de hipótesis</span></span>
-<span id="cb97-343"><a href="#cb97-343" aria-hidden="true" tabindex="-1"></a><span class="co"># Las medias de los precios en Palma entre "2023-12-17" y "2024-03-23"</span></span>
-<span id="cb97-344"><a href="#cb97-344" aria-hidden="true" tabindex="-1"></a><span class="co"># H0: \( \mu_{2023} = \mu_{2024} \)</span></span>
-<span id="cb97-345"><a href="#cb97-345" aria-hidden="true" tabindex="-1"></a><span class="co"># H1: \( \mu_{2023} &lt; \mu_{2024} \)</span></span>
+<span id="cb97-339"><a href="#cb97-339" aria-hidden="true" tabindex="-1"></a>La diferencia promedio de precios es de aproximadamente 36.59 unidades, lo que podría considerarse relevante desde el punto de vista práctico.</span>
+<span id="cb97-340"><a href="#cb97-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-341"><a href="#cb97-341" aria-hidden="true" tabindex="-1"></a>El F-test muestra que la relación entre las varianzas es 0.798, lo que indica que la varianza de los precios en Pollença es menor que la de Palma de Mallorca.</span>
+<span id="cb97-342"><a href="#cb97-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-343"><a href="#cb97-343" aria-hidden="true" tabindex="-1"></a>El p-valor es 1.504e-12, lo cual es extremadamente pequeño y sugiere que las varianzas son significativamente diferentes. Esto justifica la aplicación de la versión de Welch del t-test, ya que las varianzas no son iguales.</span>
+<span id="cb97-344"><a href="#cb97-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-345"><a href="#cb97-345" aria-hidden="true" tabindex="-1"></a>El intervalo de confianza para la diferencia de medias incluye valores negativos y positivos, lo que refuerza la conclusión de que no hay una diferencia significativa entre las medias en la dirección planteada. Sin embargo, el límite superior del intervalo indica que la diferencia máxima observada sería de aproximadamente 39.8 unidades.</span>
 <span id="cb97-346"><a href="#cb97-346" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-347"><a href="#cb97-347" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionamos los precios de los periodos especificados</span></span>
-<span id="cb97-348"><a href="#cb97-348" aria-hidden="true" tabindex="-1"></a>price_2023<span class="ot">=</span> listings_common0_select <span class="sc">%&gt;%</span> <span class="fu">filter</span>(neighbourhood_cleansed<span class="sc">==</span><span class="st">"Palma de Mallorca"</span> <span class="sc">&amp;</span> date<span class="sc">==</span><span class="st">"2023-12-17"</span>) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(id)</span>
-<span id="cb97-349"><a href="#cb97-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-350"><a href="#cb97-350" aria-hidden="true" tabindex="-1"></a>price_2024<span class="ot">=</span> listings_common0_select <span class="sc">%&gt;%</span> <span class="fu">filter</span>(neighbourhood_cleansed<span class="sc">==</span><span class="st">"Palma de Mallorca"</span> <span class="sc">&amp;</span> date<span class="sc">==</span><span class="st">"2024-03-23"</span>) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(id)</span>
-<span id="cb97-351"><a href="#cb97-351" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-352"><a href="#cb97-352" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificamos que sean los mismos apartamentos</span></span>
-<span id="cb97-353"><a href="#cb97-353" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">table</span>(price_2023<span class="sc">$</span>id<span class="sc">==</span>price_2024<span class="sc">$</span>id))</span>
+<span id="cb97-347"><a href="#cb97-347" aria-hidden="true" tabindex="-1"></a>Aunque las medias muestren una diferencia aparente entre los precios en Pollença y Palma de Mallorca, no hay suficiente evidencia estadística para afirmar que esta diferencia es significativa. Sin embargo, la diferencia en las varianzas sí es significativa, lo que sugiere que los precios en Palma de Mallorca son más dispersos (mayor variabilidad) en comparación con los de Pollença.</span>
+<span id="cb97-348"><a href="#cb97-348" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-349"><a href="#cb97-349" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pregunta 4 (**1punto**)</span></span>
+<span id="cb97-350"><a href="#cb97-350" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-351"><a href="#cb97-351" aria-hidden="true" tabindex="-1"></a>Con los datos de <span class="in">`listings_common0_select`</span>, contrastar si las medias de los precios en Palma entre los periodos "2023-12-17" y "2024-03-23" son iguales contra que son menores en 2023. Construid la hipótesis nula y alternativa, calculad el $p$-valor y el intervalo de confianza asociado al contraste. Haced un diagrama de caja comparativo de los precios ~~por municipio~~ por periodo y coméntalo.</span>
+<span id="cb97-352"><a href="#cb97-352" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-353"><a href="#cb97-353" aria-hidden="true" tabindex="-1"></a><span class="fu">### Solución</span></span>
 <span id="cb97-354"><a href="#cb97-354" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-355"><a href="#cb97-355" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb97-356"><a href="#cb97-356" aria-hidden="true" tabindex="-1"></a>Luego son los mismo apartamentos así que tenemos muestras dependientes el precio del apartamento en 2023 y el del MISMO apartamento en 2024. El test es:</span>
-<span id="cb97-357"><a href="#cb97-357" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-360"><a href="#cb97-360" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-361"><a href="#cb97-361" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizamos el test t para muestras dependientes (paired)</span></span>
-<span id="cb97-362"><a href="#cb97-362" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(price_2023<span class="sc">$</span>price, price_2024<span class="sc">$</span>price, <span class="at">alternative =</span> <span class="st">"less"</span>, <span class="at">mu=</span><span class="dv">0</span>, <span class="at">conf.level=</span><span class="fl">0.95</span>,<span class="at">paired=</span><span class="cn">TRUE</span>)</span>
-<span id="cb97-363"><a href="#cb97-363" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-364"><a href="#cb97-364" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb97-365"><a href="#cb97-365" aria-hidden="true" tabindex="-1"></a>Aceptamos que la media es mayor en 2024 que en 2023</span>
-<span id="cb97-366"><a href="#cb97-366" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-367"><a href="#cb97-367" aria-hidden="true" tabindex="-1"></a>Interpretación del resultado:</span>
-<span id="cb97-368"><a href="#cb97-368" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-369"><a href="#cb97-369" aria-hidden="true" tabindex="-1"></a>No se rechaza la hipótesis nula: no hay evidencia suficiente para afirmar que los precios en 2023 son menores que los de 2024.</span>
-<span id="cb97-370"><a href="#cb97-370" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-371"><a href="#cb97-371" aria-hidden="true" tabindex="-1"></a>El p-valor alto (0.9916) y el intervalo de confianza (-Inf, 33.83) sugieren que cualquier diferencia observada podría deberse al azar.</span>
+<span id="cb97-355"><a href="#cb97-355" aria-hidden="true" tabindex="-1"></a>Sea $\mu_{2023}$ Y $\mu_{2024}$ las medias de los precios en Palma en los periodos "2023-12-17" y "2024-03-23" respectivamente. La hipótesis nula y alternativa son:</span>
+<span id="cb97-356"><a href="#cb97-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-359"><a href="#cb97-359" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-360"><a href="#cb97-360" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculamos el contraste de hipótesis</span></span>
+<span id="cb97-361"><a href="#cb97-361" aria-hidden="true" tabindex="-1"></a><span class="co"># Las medias de los precios en Palma entre "2023-12-17" y "2024-03-23"</span></span>
+<span id="cb97-362"><a href="#cb97-362" aria-hidden="true" tabindex="-1"></a><span class="co"># H0: \( \mu_{2023} = \mu_{2024} \)</span></span>
+<span id="cb97-363"><a href="#cb97-363" aria-hidden="true" tabindex="-1"></a><span class="co"># H1: \( \mu_{2023} &lt; \mu_{2024} \)</span></span>
+<span id="cb97-364"><a href="#cb97-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-365"><a href="#cb97-365" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionamos los precios de los periodos especificados</span></span>
+<span id="cb97-366"><a href="#cb97-366" aria-hidden="true" tabindex="-1"></a>price_2023<span class="ot">=</span> listings_common0_select <span class="sc">%&gt;%</span> <span class="fu">filter</span>(neighbourhood_cleansed<span class="sc">==</span><span class="st">"Palma de Mallorca"</span> <span class="sc">&amp;</span> date<span class="sc">==</span><span class="st">"2023-12-17"</span>) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(id)</span>
+<span id="cb97-367"><a href="#cb97-367" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-368"><a href="#cb97-368" aria-hidden="true" tabindex="-1"></a>price_2024<span class="ot">=</span> listings_common0_select <span class="sc">%&gt;%</span> <span class="fu">filter</span>(neighbourhood_cleansed<span class="sc">==</span><span class="st">"Palma de Mallorca"</span> <span class="sc">&amp;</span> date<span class="sc">==</span><span class="st">"2024-03-23"</span>) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(id)</span>
+<span id="cb97-369"><a href="#cb97-369" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-370"><a href="#cb97-370" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificamos que sean los mismos apartamentos</span></span>
+<span id="cb97-371"><a href="#cb97-371" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">table</span>(price_2023<span class="sc">$</span>id<span class="sc">==</span>price_2024<span class="sc">$</span>id))</span>
 <span id="cb97-372"><a href="#cb97-372" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-373"><a href="#cb97-373" aria-hidden="true" tabindex="-1"></a>Aunque la media en 2024 parece mayor (diferencia promedio = 20.05), esta no es estadísticamente significativa.</span>
-<span id="cb97-374"><a href="#cb97-374" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-377"><a href="#cb97-377" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-378"><a href="#cb97-378" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos el diagrama de caja comparativo por periodo</span></span>
-<span id="cb97-379"><a href="#cb97-379" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb97-380"><a href="#cb97-380" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-381"><a href="#cb97-381" aria-hidden="true" tabindex="-1"></a>price_comparison <span class="ot">&lt;-</span> listings_common0_select <span class="sc">%&gt;%</span> </span>
-<span id="cb97-382"><a href="#cb97-382" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(neighbourhood_cleansed <span class="sc">==</span> <span class="st">"Palma de Mallorca"</span> <span class="sc">&amp;</span> date <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"2023-12-17"</span>, <span class="st">"2024-03-23"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb97-383"><a href="#cb97-383" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">period =</span> <span class="fu">ifelse</span>(date <span class="sc">==</span> <span class="st">"2023-12-17"</span>, <span class="st">"2023"</span>, <span class="st">"2024"</span>))</span>
+<span id="cb97-373"><a href="#cb97-373" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-374"><a href="#cb97-374" aria-hidden="true" tabindex="-1"></a>Luego son los mismo apartamentos así que tenemos muestras dependientes el precio del apartamento en 2023 y el del MISMO apartamento en 2024. El test es:</span>
+<span id="cb97-375"><a href="#cb97-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-378"><a href="#cb97-378" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-379"><a href="#cb97-379" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizamos el test t para muestras dependientes (paired)</span></span>
+<span id="cb97-380"><a href="#cb97-380" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(price_2023<span class="sc">$</span>price, price_2024<span class="sc">$</span>price, <span class="at">alternative =</span> <span class="st">"less"</span>, <span class="at">mu=</span><span class="dv">0</span>, <span class="at">conf.level=</span><span class="fl">0.95</span>,<span class="at">paired=</span><span class="cn">TRUE</span>)</span>
+<span id="cb97-381"><a href="#cb97-381" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-382"><a href="#cb97-382" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-383"><a href="#cb97-383" aria-hidden="true" tabindex="-1"></a>Aceptamos que la media es mayor en 2024 que en 2023</span>
 <span id="cb97-384"><a href="#cb97-384" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-385"><a href="#cb97-385" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(price_comparison, <span class="fu">aes</span>(<span class="at">x =</span> period, <span class="at">y =</span> price, <span class="at">fill =</span> period)) <span class="sc">+</span></span>
-<span id="cb97-386"><a href="#cb97-386" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb97-387"><a href="#cb97-387" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb97-388"><a href="#cb97-388" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Comparación de precios por periodo"</span>,</span>
-<span id="cb97-389"><a href="#cb97-389" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Periodo"</span>,</span>
-<span id="cb97-390"><a href="#cb97-390" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Precio"</span>,</span>
-<span id="cb97-391"><a href="#cb97-391" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Periodo"</span></span>
-<span id="cb97-392"><a href="#cb97-392" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb97-393"><a href="#cb97-393" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb97-394"><a href="#cb97-394" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-395"><a href="#cb97-395" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb97-396"><a href="#cb97-396" aria-hidden="true" tabindex="-1"></a>Observaciones del gráfico:</span>
-<span id="cb97-397"><a href="#cb97-397" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-398"><a href="#cb97-398" aria-hidden="true" tabindex="-1"></a>-Distribución central: Ambas cajas son similares en tamaño y ubicación. La mediana (línea dentro de las cajas) parece ligeramente más alta para 2024, sugiriendo un incremento moderado en los precios promedio.</span>
-<span id="cb97-399"><a href="#cb97-399" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-400"><a href="#cb97-400" aria-hidden="true" tabindex="-1"></a>-Rango de precios: Los precios muestran una alta dispersión, con valores atípicos muy elevados en ambos periodos. El rango de los valores extremos parece similar, aunque hay más puntos alejados del cuerpo principal de datos en 2024.</span>
-<span id="cb97-401"><a href="#cb97-401" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-402"><a href="#cb97-402" aria-hidden="true" tabindex="-1"></a>-Similitud general: Aunque se observa una ligera diferencia en las medianas y la posición de las cajas, estas no parecen lo suficientemente marcadas como para indicar un cambio significativo.</span>
-<span id="cb97-403"><a href="#cb97-403" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-404"><a href="#cb97-404" aria-hidden="true" tabindex="-1"></a>-Conclusión: El gráfico apoya los resultados del test t: no hay evidencia de una diferencia estadísticamente significativa entre los precios de los dos periodos. Si bien 2024 muestra precios ligeramente más altos en promedio, la variación en los datos y la presencia de valores atípicos sugieren que la diferencia podría deberse al azar.</span>
-<span id="cb97-405"><a href="#cb97-405" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-406"><a href="#cb97-406" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pregunta 5 (**1punto**)</span></span>
-<span id="cb97-407"><a href="#cb97-407" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-408"><a href="#cb97-408" aria-hidden="true" tabindex="-1"></a>Calcular la proporción de apartamentos de la muestra "2024-03-23" con media de valoración <span class="in">`review_scores_rating`</span> mayor que 4 en Palma y en Pollença son iguales contra que son distintas. Construid un intervalo de confianza para la diferencia de proporciones.</span>
-<span id="cb97-409"><a href="#cb97-409" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-410"><a href="#cb97-410" aria-hidden="true" tabindex="-1"></a><span class="fu">### Solución</span></span>
-<span id="cb97-411"><a href="#cb97-411" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-412"><a href="#cb97-412" aria-hidden="true" tabindex="-1"></a>Sea $p_{\texttt{Pollença}}$ y $p_{\texttt{Palma}}$ las proporciones de apartamentos con media de valoración <span class="in">`review_scores_rating`</span> mayor que 4 en Pollença y Palma respectivamente.</span>
-<span id="cb97-413"><a href="#cb97-413" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-414"><a href="#cb97-414" aria-hidden="true" tabindex="-1"></a>Calculemos las proporciones muestrales</span>
+<span id="cb97-385"><a href="#cb97-385" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Interpretación del resultado:</span>
+<span id="cb97-386"><a href="#cb97-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-387"><a href="#cb97-387" aria-hidden="true" tabindex="-1"></a>No se rechaza la hipótesis nula: no hay evidencia suficiente para afirmar que los precios en 2023 son menores que los de 2024.</span>
+<span id="cb97-388"><a href="#cb97-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-389"><a href="#cb97-389" aria-hidden="true" tabindex="-1"></a>El p-valor alto (0.9916) y el intervalo de confianza (-Inf, 33.83) sugieren que cualquier diferencia observada podría deberse al azar.</span>
+<span id="cb97-390"><a href="#cb97-390" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-391"><a href="#cb97-391" aria-hidden="true" tabindex="-1"></a>Aunque la media en 2024 parece mayor (diferencia promedio = 20.05), esta no es estadísticamente significativa.</span>
+<span id="cb97-392"><a href="#cb97-392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-395"><a href="#cb97-395" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-396"><a href="#cb97-396" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos el diagrama de caja comparativo por periodo</span></span>
+<span id="cb97-397"><a href="#cb97-397" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb97-398"><a href="#cb97-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-399"><a href="#cb97-399" aria-hidden="true" tabindex="-1"></a>price_comparison <span class="ot">&lt;-</span> listings_common0_select <span class="sc">%&gt;%</span> </span>
+<span id="cb97-400"><a href="#cb97-400" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(neighbourhood_cleansed <span class="sc">==</span> <span class="st">"Palma de Mallorca"</span> <span class="sc">&amp;</span> date <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"2023-12-17"</span>, <span class="st">"2024-03-23"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb97-401"><a href="#cb97-401" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">period =</span> <span class="fu">ifelse</span>(date <span class="sc">==</span> <span class="st">"2023-12-17"</span>, <span class="st">"2023"</span>, <span class="st">"2024"</span>))</span>
+<span id="cb97-402"><a href="#cb97-402" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-403"><a href="#cb97-403" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(price_comparison, <span class="fu">aes</span>(<span class="at">x =</span> period, <span class="at">y =</span> price, <span class="at">fill =</span> period)) <span class="sc">+</span></span>
+<span id="cb97-404"><a href="#cb97-404" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb97-405"><a href="#cb97-405" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb97-406"><a href="#cb97-406" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Comparación de precios por periodo"</span>,</span>
+<span id="cb97-407"><a href="#cb97-407" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Periodo"</span>,</span>
+<span id="cb97-408"><a href="#cb97-408" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Precio"</span>,</span>
+<span id="cb97-409"><a href="#cb97-409" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Periodo"</span></span>
+<span id="cb97-410"><a href="#cb97-410" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb97-411"><a href="#cb97-411" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb97-412"><a href="#cb97-412" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-413"><a href="#cb97-413" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-414"><a href="#cb97-414" aria-hidden="true" tabindex="-1"></a>Observaciones del gráfico:</span>
 <span id="cb97-415"><a href="#cb97-415" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-418"><a href="#cb97-418" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-419"><a href="#cb97-419" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtramos los datos de valoraciones para Pollença</span></span>
-<span id="cb97-420"><a href="#cb97-420" aria-hidden="true" tabindex="-1"></a>rating_Pollença <span class="ot">=</span> listings_common0_select <span class="sc">%&gt;%</span></span>
-<span id="cb97-421"><a href="#cb97-421" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(neighbourhood_cleansed <span class="sc">==</span> <span class="st">"Pollença"</span> <span class="sc">&amp;</span> date <span class="sc">==</span> <span class="st">"2024-03-23"</span>)</span>
-<span id="cb97-422"><a href="#cb97-422" aria-hidden="true" tabindex="-1"></a>rating_Pollença <span class="ot">=</span> <span class="fu">na.omit</span>(rating_Pollença<span class="sc">$</span>review_scores_rating) <span class="co"># Eliminamos valores NA</span></span>
+<span id="cb97-416"><a href="#cb97-416" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Distribución central: Ambas cajas son similares en tamaño y ubicación. La mediana (línea dentro de las cajas) parece ligeramente más alta para 2024, sugiriendo un incremento moderado en los precios promedio.</span>
+<span id="cb97-417"><a href="#cb97-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-418"><a href="#cb97-418" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Rango de precios: Los precios muestran una alta dispersión, con valores atípicos muy elevados en ambos periodos. El rango de los valores extremos parece similar, aunque hay más puntos alejados del cuerpo principal de datos en 2024.</span>
+<span id="cb97-419"><a href="#cb97-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-420"><a href="#cb97-420" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Similitud general: Aunque se observa una ligera diferencia en las medianas y la posición de las cajas, estas no parecen lo suficientemente marcadas como para indicar un cambio significativo.</span>
+<span id="cb97-421"><a href="#cb97-421" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-422"><a href="#cb97-422" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Conclusión: El gráfico apoya los resultados del test t: no hay evidencia de una diferencia estadísticamente significativa entre los precios de los dos periodos. Si bien 2024 muestra precios ligeramente más altos en promedio, la variación en los datos y la presencia de valores atípicos sugieren que la diferencia podría deberse al azar.</span>
 <span id="cb97-423"><a href="#cb97-423" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-424"><a href="#cb97-424" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtramos los datos de valoraciones para Palma</span></span>
-<span id="cb97-425"><a href="#cb97-425" aria-hidden="true" tabindex="-1"></a>rating_Palma <span class="ot">=</span> listings_common0_select <span class="sc">%&gt;%</span></span>
-<span id="cb97-426"><a href="#cb97-426" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(neighbourhood_cleansed <span class="sc">==</span> <span class="st">"Palma de Mallorca"</span> <span class="sc">&amp;</span> date <span class="sc">==</span> <span class="st">"2024-03-23"</span>)</span>
-<span id="cb97-427"><a href="#cb97-427" aria-hidden="true" tabindex="-1"></a>rating_Palma <span class="ot">=</span> <span class="fu">na.omit</span>(rating_Palma<span class="sc">$</span>review_scores_rating) <span class="co"># Eliminamos valores NA</span></span>
-<span id="cb97-428"><a href="#cb97-428" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-424"><a href="#cb97-424" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pregunta 5 (**1punto**)</span></span>
+<span id="cb97-425"><a href="#cb97-425" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-426"><a href="#cb97-426" aria-hidden="true" tabindex="-1"></a>Calcular la proporción de apartamentos de la muestra "2024-03-23" con media de valoración <span class="in">`review_scores_rating`</span> mayor que 4 en Palma y en Pollença son iguales contra que son distintas. Construid un intervalo de confianza para la diferencia de proporciones.</span>
+<span id="cb97-427"><a href="#cb97-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-428"><a href="#cb97-428" aria-hidden="true" tabindex="-1"></a><span class="fu">### Solución</span></span>
 <span id="cb97-429"><a href="#cb97-429" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-430"><a href="#cb97-430" aria-hidden="true" tabindex="-1"></a>Las proporciones y tamaño de las muestras son</span>
+<span id="cb97-430"><a href="#cb97-430" aria-hidden="true" tabindex="-1"></a>Sea $p_{\texttt{Pollença}}$ y $p_{\texttt{Palma}}$ las proporciones de apartamentos con media de valoración <span class="in">`review_scores_rating`</span> mayor que 4 en Pollença y Palma respectivamente.</span>
 <span id="cb97-431"><a href="#cb97-431" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-434"><a href="#cb97-434" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-435"><a href="#cb97-435" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculamos la proporción de apartamentos con valoración &gt; 4 en Pollença</span></span>
-<span id="cb97-436"><a href="#cb97-436" aria-hidden="true" tabindex="-1"></a>p_Pollença <span class="ot">=</span> <span class="fu">mean</span>(rating_Pollença <span class="sc">&gt;</span> <span class="dv">4</span>) <span class="co"># Proporción de valoraciones mayores a 4</span></span>
-<span id="cb97-437"><a href="#cb97-437" aria-hidden="true" tabindex="-1"></a>n_Pollença <span class="ot">=</span> <span class="fu">length</span>(rating_Pollença)   <span class="co"># Número total de apartamentos evaluados</span></span>
-<span id="cb97-438"><a href="#cb97-438" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-439"><a href="#cb97-439" aria-hidden="true" tabindex="-1"></a>p_Pollença</span>
-<span id="cb97-440"><a href="#cb97-440" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-432"><a href="#cb97-432" aria-hidden="true" tabindex="-1"></a>Calculemos las proporciones muestrales</span>
+<span id="cb97-433"><a href="#cb97-433" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-436"><a href="#cb97-436" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-437"><a href="#cb97-437" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtramos los datos de valoraciones para Pollença</span></span>
+<span id="cb97-438"><a href="#cb97-438" aria-hidden="true" tabindex="-1"></a>rating_Pollença <span class="ot">=</span> listings_common0_select <span class="sc">%&gt;%</span></span>
+<span id="cb97-439"><a href="#cb97-439" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(neighbourhood_cleansed <span class="sc">==</span> <span class="st">"Pollença"</span> <span class="sc">&amp;</span> date <span class="sc">==</span> <span class="st">"2024-03-23"</span>)</span>
+<span id="cb97-440"><a href="#cb97-440" aria-hidden="true" tabindex="-1"></a>rating_Pollença <span class="ot">=</span> <span class="fu">na.omit</span>(rating_Pollença<span class="sc">$</span>review_scores_rating) <span class="co"># Eliminamos valores NA</span></span>
 <span id="cb97-441"><a href="#cb97-441" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-444"><a href="#cb97-444" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-445"><a href="#cb97-445" aria-hidden="true" tabindex="-1"></a>n_Pollença</span>
+<span id="cb97-442"><a href="#cb97-442" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtramos los datos de valoraciones para Palma</span></span>
+<span id="cb97-443"><a href="#cb97-443" aria-hidden="true" tabindex="-1"></a>rating_Palma <span class="ot">=</span> listings_common0_select <span class="sc">%&gt;%</span></span>
+<span id="cb97-444"><a href="#cb97-444" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(neighbourhood_cleansed <span class="sc">==</span> <span class="st">"Palma de Mallorca"</span> <span class="sc">&amp;</span> date <span class="sc">==</span> <span class="st">"2024-03-23"</span>)</span>
+<span id="cb97-445"><a href="#cb97-445" aria-hidden="true" tabindex="-1"></a>rating_Palma <span class="ot">=</span> <span class="fu">na.omit</span>(rating_Palma<span class="sc">$</span>review_scores_rating) <span class="co"># Eliminamos valores NA</span></span>
 <span id="cb97-446"><a href="#cb97-446" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb97-447"><a href="#cb97-447" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-450"><a href="#cb97-450" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-451"><a href="#cb97-451" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculamos la proporción de apartamentos con valoración &gt; 4 en Palma</span></span>
-<span id="cb97-452"><a href="#cb97-452" aria-hidden="true" tabindex="-1"></a>p_Palma <span class="ot">=</span> <span class="fu">mean</span>(rating_Palma <span class="sc">&gt;</span> <span class="dv">4</span>) <span class="co"># Proporción de valoraciones mayores a 4</span></span>
-<span id="cb97-453"><a href="#cb97-453" aria-hidden="true" tabindex="-1"></a>n_Palma <span class="ot">=</span> <span class="fu">length</span>(rating_Palma)   <span class="co"># Número total de apartamentos evaluados</span></span>
-<span id="cb97-454"><a href="#cb97-454" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-455"><a href="#cb97-455" aria-hidden="true" tabindex="-1"></a>p_Palma</span>
-<span id="cb97-456"><a href="#cb97-456" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb97-457"><a href="#cb97-457" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-460"><a href="#cb97-460" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-461"><a href="#cb97-461" aria-hidden="true" tabindex="-1"></a>n_Palma</span>
-<span id="cb97-462"><a href="#cb97-462" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb97-463"><a href="#cb97-463" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-464"><a href="#cb97-464" aria-hidden="true" tabindex="-1"></a>La hipótesis nula y alternativa son:</span>
+<span id="cb97-448"><a href="#cb97-448" aria-hidden="true" tabindex="-1"></a>Las proporciones y tamaño de las muestras son</span>
+<span id="cb97-449"><a href="#cb97-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-452"><a href="#cb97-452" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-453"><a href="#cb97-453" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculamos la proporción de apartamentos con valoración &gt; 4 en Pollença</span></span>
+<span id="cb97-454"><a href="#cb97-454" aria-hidden="true" tabindex="-1"></a>p_Pollença <span class="ot">=</span> <span class="fu">mean</span>(rating_Pollença <span class="sc">&gt;</span> <span class="dv">4</span>) <span class="co"># Proporción de valoraciones mayores a 4</span></span>
+<span id="cb97-455"><a href="#cb97-455" aria-hidden="true" tabindex="-1"></a>n_Pollença <span class="ot">=</span> <span class="fu">length</span>(rating_Pollença)   <span class="co"># Número total de apartamentos evaluados</span></span>
+<span id="cb97-456"><a href="#cb97-456" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-457"><a href="#cb97-457" aria-hidden="true" tabindex="-1"></a>p_Pollença</span>
+<span id="cb97-458"><a href="#cb97-458" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-459"><a href="#cb97-459" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-462"><a href="#cb97-462" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-463"><a href="#cb97-463" aria-hidden="true" tabindex="-1"></a>n_Pollença</span>
+<span id="cb97-464"><a href="#cb97-464" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb97-465"><a href="#cb97-465" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-466"><a href="#cb97-466" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb97-467"><a href="#cb97-467" aria-hidden="true" tabindex="-1"></a>\left<span class="sc">\{</span></span>
-<span id="cb97-468"><a href="#cb97-468" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb97-469"><a href="#cb97-469" aria-hidden="true" tabindex="-1"></a>H_0 &amp; : p_{\text{Pollença}} = p_{\text{Palma}} <span class="sc">\\</span></span>
-<span id="cb97-470"><a href="#cb97-470" aria-hidden="true" tabindex="-1"></a>H_1 &amp; : p_{\text{Pollença}} \neq p_{\text{Palma}}</span>
-<span id="cb97-471"><a href="#cb97-471" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb97-472"><a href="#cb97-472" aria-hidden="true" tabindex="-1"></a>\right.</span>
-<span id="cb97-473"><a href="#cb97-473" aria-hidden="true" tabindex="-1"></a>$$ Para que obtengamos el contraste clásico de la Z y su intervalo de confianza ponemos el parámetro <span class="in">`correct=FALSE`</span> para que no aplique la corrección de Yates.</span>
-<span id="cb97-474"><a href="#cb97-474" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-477"><a href="#cb97-477" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-478"><a href="#cb97-478" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizamos el contraste de proporciones</span></span>
-<span id="cb97-479"><a href="#cb97-479" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">c</span>(<span class="fu">sum</span>(rating_Pollença <span class="sc">&gt;</span> <span class="dv">4</span>), <span class="fu">sum</span>(rating_Palma <span class="sc">&gt;</span> <span class="dv">4</span>)), <span class="co"># Sumas de éxitos</span></span>
-<span id="cb97-480"><a href="#cb97-480" aria-hidden="true" tabindex="-1"></a>          <span class="fu">c</span>(n_Pollença, n_Palma),                             <span class="co"># Tamaños de las muestras</span></span>
-<span id="cb97-481"><a href="#cb97-481" aria-hidden="true" tabindex="-1"></a>          <span class="at">alternative =</span> <span class="st">"two.sided"</span>,                          <span class="co"># Hipótesis bilateral</span></span>
-<span id="cb97-482"><a href="#cb97-482" aria-hidden="true" tabindex="-1"></a>          <span class="at">conf.level =</span> <span class="fl">0.95</span>,                                  <span class="co"># Nivel de confianza</span></span>
-<span id="cb97-483"><a href="#cb97-483" aria-hidden="true" tabindex="-1"></a>          <span class="at">correct =</span> <span class="cn">FALSE</span>)                                    <span class="co"># Sin corrección de Yates</span></span>
-<span id="cb97-484"><a href="#cb97-484" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb97-485"><a href="#cb97-485" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-486"><a href="#cb97-486" aria-hidden="true" tabindex="-1"></a>Rechazamos la igualdad el intervalo de confianza es el que se ve pero lo podemos calcular también</span>
-<span id="cb97-487"><a href="#cb97-487" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-490"><a href="#cb97-490" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-491"><a href="#cb97-491" aria-hidden="true" tabindex="-1"></a><span class="co"># Parámetro Z para un nivel de confianza del 95%</span></span>
-<span id="cb97-492"><a href="#cb97-492" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
+<span id="cb97-468"><a href="#cb97-468" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-469"><a href="#cb97-469" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculamos la proporción de apartamentos con valoración &gt; 4 en Palma</span></span>
+<span id="cb97-470"><a href="#cb97-470" aria-hidden="true" tabindex="-1"></a>p_Palma <span class="ot">=</span> <span class="fu">mean</span>(rating_Palma <span class="sc">&gt;</span> <span class="dv">4</span>) <span class="co"># Proporción de valoraciones mayores a 4</span></span>
+<span id="cb97-471"><a href="#cb97-471" aria-hidden="true" tabindex="-1"></a>n_Palma <span class="ot">=</span> <span class="fu">length</span>(rating_Palma)   <span class="co"># Número total de apartamentos evaluados</span></span>
+<span id="cb97-472"><a href="#cb97-472" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-473"><a href="#cb97-473" aria-hidden="true" tabindex="-1"></a>p_Palma</span>
+<span id="cb97-474"><a href="#cb97-474" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-475"><a href="#cb97-475" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-478"><a href="#cb97-478" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-479"><a href="#cb97-479" aria-hidden="true" tabindex="-1"></a>n_Palma</span>
+<span id="cb97-480"><a href="#cb97-480" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-481"><a href="#cb97-481" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-482"><a href="#cb97-482" aria-hidden="true" tabindex="-1"></a>La hipótesis nula y alternativa son:</span>
+<span id="cb97-483"><a href="#cb97-483" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-484"><a href="#cb97-484" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb97-485"><a href="#cb97-485" aria-hidden="true" tabindex="-1"></a>\left<span class="sc">\{</span></span>
+<span id="cb97-486"><a href="#cb97-486" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb97-487"><a href="#cb97-487" aria-hidden="true" tabindex="-1"></a>H_0 &amp; : p_{\text{Pollença}} = p_{\text{Palma}} <span class="sc">\\</span></span>
+<span id="cb97-488"><a href="#cb97-488" aria-hidden="true" tabindex="-1"></a>H_1 &amp; : p_{\text{Pollença}} \neq p_{\text{Palma}}</span>
+<span id="cb97-489"><a href="#cb97-489" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb97-490"><a href="#cb97-490" aria-hidden="true" tabindex="-1"></a>\right.</span>
+<span id="cb97-491"><a href="#cb97-491" aria-hidden="true" tabindex="-1"></a>$$ </span>
+<span id="cb97-492"><a href="#cb97-492" aria-hidden="true" tabindex="-1"></a>Para que obtengamos el contraste clásico de la Z y su intervalo de confianza ponemos el parámetro <span class="in">`correct=FALSE`</span> para que no aplique la corrección de Yates.</span>
 <span id="cb97-493"><a href="#cb97-493" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-494"><a href="#cb97-494" aria-hidden="true" tabindex="-1"></a><span class="co"># Error de margen</span></span>
-<span id="cb97-495"><a href="#cb97-495" aria-hidden="true" tabindex="-1"></a>error_margen <span class="ot">&lt;-</span> z <span class="sc">*</span> <span class="fu">sqrt</span>(</span>
-<span id="cb97-496"><a href="#cb97-496" aria-hidden="true" tabindex="-1"></a>  p_Pollença <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p_Pollença) <span class="sc">/</span> n_Pollença <span class="sc">+</span> </span>
-<span id="cb97-497"><a href="#cb97-497" aria-hidden="true" tabindex="-1"></a>  p_Palma <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p_Palma) <span class="sc">/</span> n_Palma</span>
-<span id="cb97-498"><a href="#cb97-498" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb97-499"><a href="#cb97-499" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-500"><a href="#cb97-500" aria-hidden="true" tabindex="-1"></a><span class="co"># Intervalo de confianza</span></span>
-<span id="cb97-501"><a href="#cb97-501" aria-hidden="true" tabindex="-1"></a>intervalo_confianza <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb97-502"><a href="#cb97-502" aria-hidden="true" tabindex="-1"></a>  (p_Pollença <span class="sc">-</span> p_Palma) <span class="sc">-</span> error_margen,</span>
-<span id="cb97-503"><a href="#cb97-503" aria-hidden="true" tabindex="-1"></a>  (p_Pollença <span class="sc">-</span> p_Palma) <span class="sc">+</span> error_margen</span>
-<span id="cb97-504"><a href="#cb97-504" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb97-496"><a href="#cb97-496" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-497"><a href="#cb97-497" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizamos el contraste de proporciones</span></span>
+<span id="cb97-498"><a href="#cb97-498" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">c</span>(<span class="fu">sum</span>(rating_Pollença <span class="sc">&gt;</span> <span class="dv">4</span>), <span class="fu">sum</span>(rating_Palma <span class="sc">&gt;</span> <span class="dv">4</span>)), <span class="co"># Sumas de éxitos</span></span>
+<span id="cb97-499"><a href="#cb97-499" aria-hidden="true" tabindex="-1"></a>          <span class="fu">c</span>(n_Pollença, n_Palma),                             <span class="co"># Tamaños de las muestras</span></span>
+<span id="cb97-500"><a href="#cb97-500" aria-hidden="true" tabindex="-1"></a>          <span class="at">alternative =</span> <span class="st">"two.sided"</span>,                          <span class="co"># Hipótesis bilateral</span></span>
+<span id="cb97-501"><a href="#cb97-501" aria-hidden="true" tabindex="-1"></a>          <span class="at">conf.level =</span> <span class="fl">0.95</span>,                                  <span class="co"># Nivel de confianza</span></span>
+<span id="cb97-502"><a href="#cb97-502" aria-hidden="true" tabindex="-1"></a>          <span class="at">correct =</span> <span class="cn">FALSE</span>)                                    <span class="co"># Sin corrección de Yates</span></span>
+<span id="cb97-503"><a href="#cb97-503" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-504"><a href="#cb97-504" aria-hidden="true" tabindex="-1"></a>Rechazamos la igualdad el intervalo de confianza es el que se ve pero lo podemos calcular también</span>
 <span id="cb97-505"><a href="#cb97-505" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-506"><a href="#cb97-506" aria-hidden="true" tabindex="-1"></a>intervalo_confianza</span>
-<span id="cb97-507"><a href="#cb97-507" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb97-508"><a href="#cb97-508" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-509"><a href="#cb97-509" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pregunta 6 (**1punto**)</span></span>
-<span id="cb97-510"><a href="#cb97-510" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-511"><a href="#cb97-511" aria-hidden="true" tabindex="-1"></a>Calcular la proporción de apartamentos de los periodos "2023-12-17" y "2024-03-23" con media de valoración <span class="in">`review_scores_rating`</span> mayor que 4 en Palma ~~y en Pollença~~ son iguales contra que son distintas.</span>
-<span id="cb97-512"><a href="#cb97-512" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-513"><a href="#cb97-513" aria-hidden="true" tabindex="-1"></a><span class="fu">### Solución</span></span>
-<span id="cb97-514"><a href="#cb97-514" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-515"><a href="#cb97-515" aria-hidden="true" tabindex="-1"></a>Ahora son proporciones de dos muestras dependientes. Las proporciones y tamaño de las muestras para los mismos id en cada periodo: "2023-12-17" y "2024-03-23" son:</span>
-<span id="cb97-516"><a href="#cb97-516" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-517"><a href="#cb97-517" aria-hidden="true" tabindex="-1"></a>Aunque ya estaba calculada recalculamos la de Palma 2024</span>
-<span id="cb97-518"><a href="#cb97-518" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-521"><a href="#cb97-521" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-522"><a href="#cb97-522" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtramos los datos de valoraciones para Palma de Mallorca en la fecha 2023-12-17</span></span>
-<span id="cb97-523"><a href="#cb97-523" aria-hidden="true" tabindex="-1"></a>rating_2023 <span class="ot">=</span> listings_common0_select <span class="sc">%&gt;%</span></span>
-<span id="cb97-524"><a href="#cb97-524" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(neighbourhood_cleansed <span class="sc">==</span> <span class="st">"Palma de Mallorca"</span> <span class="sc">&amp;</span> date <span class="sc">==</span> <span class="st">"2023-12-17"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb97-525"><a href="#cb97-525" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(id) <span class="sc">%&gt;%</span> <span class="fu">select</span>(id, review_scores_rating)</span>
-<span id="cb97-526"><a href="#cb97-526" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-527"><a href="#cb97-527" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtramos los datos de valoraciones para Palma de Mallorca en la fecha 2024-03-23</span></span>
-<span id="cb97-528"><a href="#cb97-528" aria-hidden="true" tabindex="-1"></a>rating_2024 <span class="ot">=</span> listings_common0_select <span class="sc">%&gt;%</span></span>
-<span id="cb97-529"><a href="#cb97-529" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(neighbourhood_cleansed <span class="sc">==</span> <span class="st">"Palma de Mallorca"</span> <span class="sc">&amp;</span> date <span class="sc">==</span> <span class="st">"2024-03-23"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb97-530"><a href="#cb97-530" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(id) <span class="sc">%&gt;%</span> <span class="fu">select</span>(id, review_scores_rating)</span>
-<span id="cb97-531"><a href="#cb97-531" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-532"><a href="#cb97-532" aria-hidden="true" tabindex="-1"></a><span class="co"># Combinamos las valoraciones de ambas fechas utilizando un 'left join' por la columna 'id'</span></span>
-<span id="cb97-533"><a href="#cb97-533" aria-hidden="true" tabindex="-1"></a>rating_23_24 <span class="ot">=</span> rating_2023 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(rating_2024, <span class="at">by =</span> <span class="st">"id"</span>)</span>
+<span id="cb97-508"><a href="#cb97-508" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-509"><a href="#cb97-509" aria-hidden="true" tabindex="-1"></a><span class="co"># Parámetro Z para un nivel de confianza del 95%</span></span>
+<span id="cb97-510"><a href="#cb97-510" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
+<span id="cb97-511"><a href="#cb97-511" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-512"><a href="#cb97-512" aria-hidden="true" tabindex="-1"></a><span class="co"># Error de margen</span></span>
+<span id="cb97-513"><a href="#cb97-513" aria-hidden="true" tabindex="-1"></a>error_margen <span class="ot">&lt;-</span> z <span class="sc">*</span> <span class="fu">sqrt</span>(</span>
+<span id="cb97-514"><a href="#cb97-514" aria-hidden="true" tabindex="-1"></a>  p_Pollença <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p_Pollença) <span class="sc">/</span> n_Pollença <span class="sc">+</span> </span>
+<span id="cb97-515"><a href="#cb97-515" aria-hidden="true" tabindex="-1"></a>  p_Palma <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p_Palma) <span class="sc">/</span> n_Palma</span>
+<span id="cb97-516"><a href="#cb97-516" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb97-517"><a href="#cb97-517" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-518"><a href="#cb97-518" aria-hidden="true" tabindex="-1"></a><span class="co"># Intervalo de confianza</span></span>
+<span id="cb97-519"><a href="#cb97-519" aria-hidden="true" tabindex="-1"></a>intervalo_confianza <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb97-520"><a href="#cb97-520" aria-hidden="true" tabindex="-1"></a>  (p_Pollença <span class="sc">-</span> p_Palma) <span class="sc">-</span> error_margen,</span>
+<span id="cb97-521"><a href="#cb97-521" aria-hidden="true" tabindex="-1"></a>  (p_Pollença <span class="sc">-</span> p_Palma) <span class="sc">+</span> error_margen</span>
+<span id="cb97-522"><a href="#cb97-522" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb97-523"><a href="#cb97-523" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-524"><a href="#cb97-524" aria-hidden="true" tabindex="-1"></a>intervalo_confianza</span>
+<span id="cb97-525"><a href="#cb97-525" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-526"><a href="#cb97-526" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Proporciones de valoraciones mayores a 4:</span>
+<span id="cb97-527"><a href="#cb97-527" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-528"><a href="#cb97-528" aria-hidden="true" tabindex="-1"></a>Pollença: El 90.01% de las valoraciones en esta localidad son mayores a 4.</span>
+<span id="cb97-529"><a href="#cb97-529" aria-hidden="true" tabindex="-1"></a>Palma de Mallorca: El 95.91% de las valoraciones son mayores a 4.</span>
+<span id="cb97-530"><a href="#cb97-530" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-531"><a href="#cb97-531" aria-hidden="true" tabindex="-1"></a>La proporción de valoraciones mayores a 4 en Palma de Mallorca es más alta que en Pollença.</span>
+<span id="cb97-532"><a href="#cb97-532" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-533"><a href="#cb97-533" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Prueba de igualdad de proporciones:</span>
 <span id="cb97-534"><a href="#cb97-534" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-535"><a href="#cb97-535" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos una tabla de frecuencias cruzadas para comparar las valoraciones &gt; 4 en ambas fechas</span></span>
-<span id="cb97-536"><a href="#cb97-536" aria-hidden="true" tabindex="-1"></a>tabla <span class="ot">=</span> <span class="fu">table</span>(rating_23_24<span class="sc">$</span>review_scores_rating.x <span class="sc">&gt;</span> <span class="dv">4</span>, rating_23_24<span class="sc">$</span>review_scores_rating.y <span class="sc">&gt;</span> <span class="dv">4</span>)</span>
+<span id="cb97-535"><a href="#cb97-535" aria-hidden="true" tabindex="-1"></a>La prueba estadística para comparar proporciones tiene un estadístico de prueba </span>
+<span id="cb97-536"><a href="#cb97-536" aria-hidden="true" tabindex="-1"></a>X al cuadrado = 26.197, con 1 grado de libertad.</span>
 <span id="cb97-537"><a href="#cb97-537" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-538"><a href="#cb97-538" aria-hidden="true" tabindex="-1"></a>tabla</span>
-<span id="cb97-539"><a href="#cb97-539" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb97-540"><a href="#cb97-540" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-543"><a href="#cb97-543" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-544"><a href="#cb97-544" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizamos la prueba de McNemar sobre la tabla de contingencia previamente calculada</span></span>
-<span id="cb97-545"><a href="#cb97-545" aria-hidden="true" tabindex="-1"></a><span class="fu">mcnemar.test</span>(tabla)</span>
-<span id="cb97-546"><a href="#cb97-546" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-538"><a href="#cb97-538" aria-hidden="true" tabindex="-1"></a>El p-valor obtenido es 3.083e-07, que es muy pequeño, indicando una diferencia estadísticamente significativa entre las proporciones de valoraciones superiores a 4 en ambas localidades.</span>
+<span id="cb97-539"><a href="#cb97-539" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-540"><a href="#cb97-540" aria-hidden="true" tabindex="-1"></a>Esto significa que es muy poco probable que la diferencia observada entre las proporciones sea atribuida al azar.</span>
+<span id="cb97-541"><a href="#cb97-541" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-542"><a href="#cb97-542" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Intervalo de confianza:</span>
+<span id="cb97-543"><a href="#cb97-543" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-544"><a href="#cb97-544" aria-hidden="true" tabindex="-1"></a>El intervalo de confianza para la diferencia de proporciones es de <span class="co">[</span><span class="ot">-0.079, -0.039</span><span class="co">]</span>, lo que confirma que la proporción de valoraciones mayores a 4 en Palma de Mallorca es entre un 3.9% y un 7.9% mayor que en Pollença.</span>
+<span id="cb97-545"><a href="#cb97-545" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-546"><a href="#cb97-546" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Conclusión general:</span>
 <span id="cb97-547"><a href="#cb97-547" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-548"><a href="#cb97-548" aria-hidden="true" tabindex="-1"></a>Luego lasa proporciones de las valoraciones superior a 4 son iguales en la muestra de 2023 y la de 2024</span>
+<span id="cb97-548"><a href="#cb97-548" aria-hidden="true" tabindex="-1"></a>Aunque ambas localidades tienen una alta proporción de valoraciones positivas, los alojamientos en Palma de Mallorca reciben valoraciones superiores a 4 con mayor frecuencia que los de Pollença.</span>
 <span id="cb97-549"><a href="#cb97-549" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-552"><a href="#cb97-552" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-553"><a href="#cb97-553" aria-hidden="true" tabindex="-1"></a><span class="co"># Eliminamos los valores NA (valores faltantes) de la columna review_scores_rating del conjunto de datos rating_2024</span></span>
-<span id="cb97-554"><a href="#cb97-554" aria-hidden="true" tabindex="-1"></a>rating_2024 <span class="ot">=</span> <span class="fu">na.omit</span>(rating_2024<span class="sc">$</span>review_scores_rating)</span>
-<span id="cb97-555"><a href="#cb97-555" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb97-556"><a href="#cb97-556" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-557"><a href="#cb97-557" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pregunta 7 (**1punto**)</span></span>
-<span id="cb97-558"><a href="#cb97-558" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-559"><a href="#cb97-559" aria-hidden="true" tabindex="-1"></a>La <span class="co">[</span><span class="ot">Zipf's law es una ley empírica</span><span class="co">](https://en.wikipedia.org/wiki/Zipf%27s_law#Word_frequencies_in_natural_languages)</span> que dice que la frecuencia de las palabras en un texto es inversamente proporcional a su rango. Decidid si la ley se ajusta a los datos de la longitud de los comentarios de los apartamentos de la muestra "2023-12-17" de Palma. Para ello, haced un análisis de regresión lineal de la frecuencia de las longitudes de los comentarios de los apartamentos de Palma y el rango de las longitudes de los comentarios. Justificad la respuesta, estadísticamente y gráficamente.</span>
-<span id="cb97-560"><a href="#cb97-560" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-561"><a href="#cb97-561" aria-hidden="true" tabindex="-1"></a>Como ayuda estudiar el siguiente código, utilizadlo y comentadlo.</span>
-<span id="cb97-562"><a href="#cb97-562" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-565"><a href="#cb97-565" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-566"><a href="#cb97-566" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar la librería necesaria</span></span>
-<span id="cb97-567"><a href="#cb97-567" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb97-568"><a href="#cb97-568" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(reviews)</span>
+<span id="cb97-550"><a href="#cb97-550" aria-hidden="true" tabindex="-1"></a>Esto podría reflejar una mayor satisfacción general en Palma de Mallorca, posiblemente debido a diferencias en la calidad del servicio, las instalaciones, o la percepción de los usuarios.</span>
+<span id="cb97-551"><a href="#cb97-551" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-552"><a href="#cb97-552" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pregunta 6 (**1punto**)</span></span>
+<span id="cb97-553"><a href="#cb97-553" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-554"><a href="#cb97-554" aria-hidden="true" tabindex="-1"></a>Calcular la proporción de apartamentos de los periodos "2023-12-17" y "2024-03-23" con media de valoración <span class="in">`review_scores_rating`</span> mayor que 4 en Palma ~~y en Pollença~~ son iguales contra que son distintas.</span>
+<span id="cb97-555"><a href="#cb97-555" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-556"><a href="#cb97-556" aria-hidden="true" tabindex="-1"></a><span class="fu">### Solución</span></span>
+<span id="cb97-557"><a href="#cb97-557" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-558"><a href="#cb97-558" aria-hidden="true" tabindex="-1"></a>Ahora son proporciones de dos muestras dependientes. Las proporciones y tamaño de las muestras para los mismos id en cada periodo: "2023-12-17" y "2024-03-23" son:</span>
+<span id="cb97-559"><a href="#cb97-559" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-560"><a href="#cb97-560" aria-hidden="true" tabindex="-1"></a>Aunque ya estaba calculada recalculamos la de Palma 2024</span>
+<span id="cb97-561"><a href="#cb97-561" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-564"><a href="#cb97-564" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-565"><a href="#cb97-565" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtramos los datos de valoraciones para Palma de Mallorca en la fecha 2023-12-17</span></span>
+<span id="cb97-566"><a href="#cb97-566" aria-hidden="true" tabindex="-1"></a>rating_2023 <span class="ot">=</span> listings_common0_select <span class="sc">%&gt;%</span></span>
+<span id="cb97-567"><a href="#cb97-567" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(neighbourhood_cleansed <span class="sc">==</span> <span class="st">"Palma de Mallorca"</span> <span class="sc">&amp;</span> date <span class="sc">==</span> <span class="st">"2023-12-17"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb97-568"><a href="#cb97-568" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(id) <span class="sc">%&gt;%</span> <span class="fu">select</span>(id, review_scores_rating)</span>
 <span id="cb97-569"><a href="#cb97-569" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-570"><a href="#cb97-570" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtener las longitudes de los comentarios</span></span>
-<span id="cb97-571"><a href="#cb97-571" aria-hidden="true" tabindex="-1"></a>length_rewiews<span class="ot">=</span>stringr<span class="sc">::</span><span class="fu">str_count</span>(reviews<span class="sc">$</span>comments,<span class="st">"</span><span class="sc">\\</span><span class="st">w+"</span>)</span>
-<span id="cb97-572"><a href="#cb97-572" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">table</span>(length_rewiews))</span>
-<span id="cb97-573"><a href="#cb97-573" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-570"><a href="#cb97-570" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtramos los datos de valoraciones para Palma de Mallorca en la fecha 2024-03-23</span></span>
+<span id="cb97-571"><a href="#cb97-571" aria-hidden="true" tabindex="-1"></a>rating_2024 <span class="ot">=</span> listings_common0_select <span class="sc">%&gt;%</span></span>
+<span id="cb97-572"><a href="#cb97-572" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(neighbourhood_cleansed <span class="sc">==</span> <span class="st">"Palma de Mallorca"</span> <span class="sc">&amp;</span> date <span class="sc">==</span> <span class="st">"2024-03-23"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb97-573"><a href="#cb97-573" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(id) <span class="sc">%&gt;%</span> <span class="fu">select</span>(id, review_scores_rating)</span>
 <span id="cb97-574"><a href="#cb97-574" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-577"><a href="#cb97-577" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-578"><a href="#cb97-578" aria-hidden="true" tabindex="-1"></a><span class="co"># Frecuencia de las longitudes</span></span>
-<span id="cb97-579"><a href="#cb97-579" aria-hidden="true" tabindex="-1"></a>aux<span class="ot">=</span><span class="fu">table</span>(length_rewiews)</span>
-<span id="cb97-580"><a href="#cb97-580" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(aux)</span>
-<span id="cb97-581"><a href="#cb97-581" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">names</span>(aux))</span>
-<span id="cb97-582"><a href="#cb97-582" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-583"><a href="#cb97-583" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear el tibble con frecuencias, rangos y logaritmos</span></span>
-<span id="cb97-584"><a href="#cb97-584" aria-hidden="true" tabindex="-1"></a>tbl<span class="ot">=</span><span class="fu">tibble</span>( <span class="at">L=</span><span class="fu">as.numeric</span>(<span class="fu">names</span>(aux)),<span class="at">Freq=</span><span class="fu">as.numeric</span>(aux),</span>
-<span id="cb97-585"><a href="#cb97-585" aria-hidden="true" tabindex="-1"></a>            <span class="at">Rank=</span><span class="fu">rank</span>(L),<span class="at">Log_Freq=</span><span class="fu">log</span>(Freq),<span class="at">Log_Rank=</span><span class="fu">log</span>(Rank))</span>
-<span id="cb97-586"><a href="#cb97-586" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(tbl)</span>
-<span id="cb97-587"><a href="#cb97-587" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb97-588"><a href="#cb97-588" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-591"><a href="#cb97-591" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-592"><a href="#cb97-592" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar datos para rango entre 10 y 1000</span></span>
-<span id="cb97-593"><a href="#cb97-593" aria-hidden="true" tabindex="-1"></a>tbl2<span class="ot">=</span>tbl <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Rank<span class="sc">&gt;</span><span class="dv">10</span>) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Rank<span class="sc">&lt;</span><span class="dv">1000</span>)</span>
-<span id="cb97-594"><a href="#cb97-594" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-595"><a href="#cb97-595" aria-hidden="true" tabindex="-1"></a><span class="co"># Regresión lineal simple de Freq contra Rank</span></span>
-<span id="cb97-596"><a href="#cb97-596" aria-hidden="true" tabindex="-1"></a>sol1<span class="ot">=</span><span class="fu">lm</span>(tbl2<span class="sc">$</span>Freq<span class="sc">~</span>tbl2<span class="sc">$</span>Rank)</span>
-<span id="cb97-597"><a href="#cb97-597" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sol1)</span>
-<span id="cb97-598"><a href="#cb97-598" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-599"><a href="#cb97-599" aria-hidden="true" tabindex="-1"></a><span class="co"># Regresión lineal de Freq contra Log_Rank</span></span>
-<span id="cb97-600"><a href="#cb97-600" aria-hidden="true" tabindex="-1"></a>sol2<span class="ot">=</span><span class="fu">lm</span>(tbl2<span class="sc">$</span>Freq<span class="sc">~</span>tbl2<span class="sc">$</span>Log_Rank)</span>
-<span id="cb97-601"><a href="#cb97-601" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sol2)</span>
-<span id="cb97-602"><a href="#cb97-602" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-603"><a href="#cb97-603" aria-hidden="true" tabindex="-1"></a><span class="co"># Regresión lineal de Log_Freq contra Log_Rank (relación log-log)</span></span>
-<span id="cb97-604"><a href="#cb97-604" aria-hidden="true" tabindex="-1"></a>sol3<span class="ot">=</span><span class="fu">lm</span>(tbl2<span class="sc">$</span>Log_Freq<span class="sc">~</span>tbl2<span class="sc">$</span>Log_Rank)</span>
-<span id="cb97-605"><a href="#cb97-605" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sol3)</span>
-<span id="cb97-606"><a href="#cb97-606" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-575"><a href="#cb97-575" aria-hidden="true" tabindex="-1"></a><span class="co"># Combinamos las valoraciones de ambas fechas utilizando un 'left join' por la columna 'id'</span></span>
+<span id="cb97-576"><a href="#cb97-576" aria-hidden="true" tabindex="-1"></a>rating_23_24 <span class="ot">=</span> rating_2023 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(rating_2024, <span class="at">by =</span> <span class="st">"id"</span>)</span>
+<span id="cb97-577"><a href="#cb97-577" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-578"><a href="#cb97-578" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos una tabla de frecuencias cruzadas para comparar las valoraciones &gt; 4 en ambas fechas</span></span>
+<span id="cb97-579"><a href="#cb97-579" aria-hidden="true" tabindex="-1"></a>tabla <span class="ot">=</span> <span class="fu">table</span>(rating_23_24<span class="sc">$</span>review_scores_rating.x <span class="sc">&gt;</span> <span class="dv">4</span>, rating_23_24<span class="sc">$</span>review_scores_rating.y <span class="sc">&gt;</span> <span class="dv">4</span>)</span>
+<span id="cb97-580"><a href="#cb97-580" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-581"><a href="#cb97-581" aria-hidden="true" tabindex="-1"></a>tabla</span>
+<span id="cb97-582"><a href="#cb97-582" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-583"><a href="#cb97-583" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-586"><a href="#cb97-586" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-587"><a href="#cb97-587" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizamos la prueba de McNemar sobre la tabla de contingencia previamente calculada</span></span>
+<span id="cb97-588"><a href="#cb97-588" aria-hidden="true" tabindex="-1"></a><span class="fu">mcnemar.test</span>(tabla)</span>
+<span id="cb97-589"><a href="#cb97-589" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-590"><a href="#cb97-590" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-591"><a href="#cb97-591" aria-hidden="true" tabindex="-1"></a>Luego la tasa de proporciones de las valoraciones superior a 4 son iguales en la muestra de 2023 y la de 2024</span>
+<span id="cb97-592"><a href="#cb97-592" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-595"><a href="#cb97-595" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-596"><a href="#cb97-596" aria-hidden="true" tabindex="-1"></a><span class="co"># Eliminamos los valores NA de la columna review_scores_rating del conjunto de datos rating_2024</span></span>
+<span id="cb97-597"><a href="#cb97-597" aria-hidden="true" tabindex="-1"></a>rating_2024 <span class="ot">=</span> <span class="fu">na.omit</span>(rating_2024<span class="sc">$</span>review_scores_rating)</span>
+<span id="cb97-598"><a href="#cb97-598" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-599"><a href="#cb97-599" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-600"><a href="#cb97-600" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Tabla de contingencia:</span>
+<span id="cb97-601"><a href="#cb97-601" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-602"><a href="#cb97-602" aria-hidden="true" tabindex="-1"></a>La tabla compara la proporción de valoraciones superiores a 4 entre dos momentos distintos.</span>
+<span id="cb97-603"><a href="#cb97-603" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-604"><a href="#cb97-604" aria-hidden="true" tabindex="-1"></a>Valoraciones consistentes (ambas &gt;4 o ambas ≤4):</span>
+<span id="cb97-605"><a href="#cb97-605" aria-hidden="true" tabindex="-1"></a>805 alojamientos tuvieron valoraciones superiores a 4 en ambos momentos.</span>
+<span id="cb97-606"><a href="#cb97-606" aria-hidden="true" tabindex="-1"></a>32 alojamientos tuvieron valoraciones iguales o inferiores a 4 en ambos momentos.</span>
 <span id="cb97-607"><a href="#cb97-607" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-608"><a href="#cb97-608" aria-hidden="true" tabindex="-1"></a><span class="fu">### Solución</span></span>
-<span id="cb97-609"><a href="#cb97-609" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-610"><a href="#cb97-610" aria-hidden="true" tabindex="-1"></a>Vamos a mostrar gráficamente los resultados obtenidos con el codigo anterior</span>
+<span id="cb97-608"><a href="#cb97-608" aria-hidden="true" tabindex="-1"></a>Cambios en las valoraciones:</span>
+<span id="cb97-609"><a href="#cb97-609" aria-hidden="true" tabindex="-1"></a>Solo 1 alojamiento pasó de una valoración ≤4 a &gt;4.</span>
+<span id="cb97-610"><a href="#cb97-610" aria-hidden="true" tabindex="-1"></a>2 alojamientos pasaron de una valoración &gt;4 a ≤4.</span>
 <span id="cb97-611"><a href="#cb97-611" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-614"><a href="#cb97-614" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-615"><a href="#cb97-615" aria-hidden="true" tabindex="-1"></a><span class="co"># Freq vs Rank</span></span>
-<span id="cb97-616"><a href="#cb97-616" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tbl2<span class="sc">$</span>Rank, tbl2<span class="sc">$</span>Freq, <span class="at">col =</span> <span class="st">"green"</span>, <span class="at">main =</span> <span class="st">"Frecuencia vs Rango"</span>,</span>
-<span id="cb97-617"><a href="#cb97-617" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Rango"</span>, <span class="at">ylab =</span> <span class="st">"Frecuencia"</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">cex.lab =</span> <span class="fl">1.5</span>, <span class="at">cex.main =</span> <span class="fl">1.8</span>)</span>
-<span id="cb97-618"><a href="#cb97-618" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb97-619"><a href="#cb97-619" aria-hidden="true" tabindex="-1"></a>Esta gráfica muestra cómo varía la frecuencia de las longitudes de los comentarios en función de su rango.</span>
-<span id="cb97-620"><a href="#cb97-620" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-621"><a href="#cb97-621" aria-hidden="true" tabindex="-1"></a>Proporciona una visión general de la relación entre estas dos variables en escala lineal.</span>
-<span id="cb97-622"><a href="#cb97-622" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-623"><a href="#cb97-623" aria-hidden="true" tabindex="-1"></a>En general, la relación no parece seguir una línea recta clara en escala lineal, lo que indica que el modelo lineal simple no es apropiado para analizar esta relación.</span>
-<span id="cb97-626"><a href="#cb97-626" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-627"><a href="#cb97-627" aria-hidden="true" tabindex="-1"></a><span class="co"># Rank vs Log_Freq</span></span>
-<span id="cb97-628"><a href="#cb97-628" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tbl2<span class="sc">$</span>Rank, tbl2<span class="sc">$</span>Log_Freq, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">main =</span> <span class="st">"Rango vs Log(Frecuencia)"</span>,</span>
-<span id="cb97-629"><a href="#cb97-629" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Rango"</span>, <span class="at">ylab =</span> <span class="st">"Log(Frecuencia)"</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">cex.lab =</span> <span class="fl">1.5</span>, <span class="at">cex.main =</span> <span class="fl">1.8</span>)</span>
-<span id="cb97-630"><a href="#cb97-630" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-631"><a href="#cb97-631" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb97-632"><a href="#cb97-632" aria-hidden="true" tabindex="-1"></a>Representa el rango en el eje x y el logaritmo de la frecuencia en el eje y.</span>
-<span id="cb97-633"><a href="#cb97-633" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-634"><a href="#cb97-634" aria-hidden="true" tabindex="-1"></a>Introduce el logaritmo para reducir la disparidad en las frecuencias altas, facilitando la observación de patrones más sutiles.</span>
-<span id="cb97-635"><a href="#cb97-635" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-636"><a href="#cb97-636" aria-hidden="true" tabindex="-1"></a>Si bien hay una tendencia decreciente, la relación sigue sin ser completamente lineal, lo que sugiere que una escala log-log podría ser más adecuada.</span>
-<span id="cb97-639"><a href="#cb97-639" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-640"><a href="#cb97-640" aria-hidden="true" tabindex="-1"></a><span class="co"># Freq vs Log_Rank</span></span>
-<span id="cb97-641"><a href="#cb97-641" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tbl2<span class="sc">$</span>Log_Rank, tbl2<span class="sc">$</span>Freq, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">main =</span> <span class="st">"Frecuencia vs Log(Rango)"</span>,</span>
-<span id="cb97-642"><a href="#cb97-642" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Log(Rango)"</span>, <span class="at">ylab =</span> <span class="st">"Frecuencia"</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">cex.lab =</span> <span class="fl">1.5</span>, <span class="at">cex.main =</span> <span class="fl">1.8</span>)</span>
-<span id="cb97-643"><a href="#cb97-643" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb97-644"><a href="#cb97-644" aria-hidden="true" tabindex="-1"></a>Representa la frecuencia en el eje y y el logaritmo del rango en el eje x.</span>
-<span id="cb97-645"><a href="#cb97-645" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-646"><a href="#cb97-646" aria-hidden="true" tabindex="-1"></a>Permite observar si la frecuencia depende logarítmicamente del rango.</span>
+<span id="cb97-612"><a href="#cb97-612" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Prueba de McNemar:</span>
+<span id="cb97-613"><a href="#cb97-613" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-614"><a href="#cb97-614" aria-hidden="true" tabindex="-1"></a>El estadístico chi-cuadrado obtenido es 0, con un grado de libertad.</span>
+<span id="cb97-615"><a href="#cb97-615" aria-hidden="true" tabindex="-1"></a>El p-valor es 1, indicando que no hay evidencia estadística de un cambio significativo en las proporciones de valoraciones superiores a 4 entre los dos momentos evaluados.</span>
+<span id="cb97-616"><a href="#cb97-616" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-617"><a href="#cb97-617" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Conclusión general:</span>
+<span id="cb97-618"><a href="#cb97-618" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-619"><a href="#cb97-619" aria-hidden="true" tabindex="-1"></a>El nivel de satisfacción, medido por valoraciones superiores a 4, se mantuvo estable entre los dos periodos evaluados.</span>
+<span id="cb97-620"><a href="#cb97-620" aria-hidden="true" tabindex="-1"></a>Esto podría indicar una estabilidad en la calidad percibida de los alojamientos.</span>
+<span id="cb97-621"><a href="#cb97-621" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-622"><a href="#cb97-622" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pregunta 7 (**1punto**)</span></span>
+<span id="cb97-623"><a href="#cb97-623" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-624"><a href="#cb97-624" aria-hidden="true" tabindex="-1"></a>La <span class="co">[</span><span class="ot">Zipf's law es una ley empírica</span><span class="co">](https://en.wikipedia.org/wiki/Zipf%27s_law#Word_frequencies_in_natural_languages)</span> que dice que la frecuencia de las palabras en un texto es inversamente proporcional a su rango. Decidid si la ley se ajusta a los datos de la longitud de los comentarios de los apartamentos de la muestra "2023-12-17" de Palma. Para ello, haced un análisis de regresión lineal de la frecuencia de las longitudes de los comentarios de los apartamentos de Palma y el rango de las longitudes de los comentarios. Justificad la respuesta, estadísticamente y gráficamente.</span>
+<span id="cb97-625"><a href="#cb97-625" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-626"><a href="#cb97-626" aria-hidden="true" tabindex="-1"></a>Como ayuda estudiar el siguiente código, utilizadlo y comentadlo.</span>
+<span id="cb97-627"><a href="#cb97-627" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-630"><a href="#cb97-630" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-631"><a href="#cb97-631" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargamos la librería necesaria</span></span>
+<span id="cb97-632"><a href="#cb97-632" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb97-633"><a href="#cb97-633" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(reviews)</span>
+<span id="cb97-634"><a href="#cb97-634" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-635"><a href="#cb97-635" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtenemos las longitudes de los comentarios</span></span>
+<span id="cb97-636"><a href="#cb97-636" aria-hidden="true" tabindex="-1"></a>length_rewiews<span class="ot">=</span>stringr<span class="sc">::</span><span class="fu">str_count</span>(reviews<span class="sc">$</span>comments,<span class="st">"</span><span class="sc">\\</span><span class="st">w+"</span>)</span>
+<span id="cb97-637"><a href="#cb97-637" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">table</span>(length_rewiews))</span>
+<span id="cb97-638"><a href="#cb97-638" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-639"><a href="#cb97-639" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-642"><a href="#cb97-642" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-643"><a href="#cb97-643" aria-hidden="true" tabindex="-1"></a><span class="co"># Frecuencia de las longitudes</span></span>
+<span id="cb97-644"><a href="#cb97-644" aria-hidden="true" tabindex="-1"></a>aux<span class="ot">=</span><span class="fu">table</span>(length_rewiews)</span>
+<span id="cb97-645"><a href="#cb97-645" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(aux)</span>
+<span id="cb97-646"><a href="#cb97-646" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">names</span>(aux))</span>
 <span id="cb97-647"><a href="#cb97-647" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-648"><a href="#cb97-648" aria-hidden="true" tabindex="-1"></a>No se observa una relación lineal clara, lo que refuerza la necesidad de escalar ambas variables logarítmicamente.</span>
-<span id="cb97-651"><a href="#cb97-651" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb97-652"><a href="#cb97-652" aria-hidden="true" tabindex="-1"></a><span class="co"># Log_Freq vs Log_Rank</span></span>
-<span id="cb97-653"><a href="#cb97-653" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tbl2<span class="sc">$</span>Log_Rank, tbl2<span class="sc">$</span>Log_Freq, <span class="at">col =</span> <span class="st">"purple"</span>, <span class="at">main =</span> <span class="st">"Log(Frecuencia) vs Log(Rango)"</span>,</span>
-<span id="cb97-654"><a href="#cb97-654" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Log(Rango)"</span>, <span class="at">ylab =</span> <span class="st">"Log(Frecuencia)"</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">cex.lab =</span> <span class="fl">1.5</span>, <span class="at">cex.main =</span> <span class="fl">1.8</span>)</span>
-<span id="cb97-655"><a href="#cb97-655" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-656"><a href="#cb97-656" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb97-657"><a href="#cb97-657" aria-hidden="true" tabindex="-1"></a>Representa el logaritmo de la frecuencia en el eje y y el logaritmo del rango en el eje x.</span>
-<span id="cb97-658"><a href="#cb97-658" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-659"><a href="#cb97-659" aria-hidden="true" tabindex="-1"></a>Evalúa la Ley de Zipf, ya que una relación lineal en esta escala indica una ley potencial, con pendiente cercana a -1.</span>
-<span id="cb97-660"><a href="#cb97-660" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-661"><a href="#cb97-661" aria-hidden="true" tabindex="-1"></a>En esta escala log-log, los puntos generalmente se alinean, lo que sugiere que la Ley de Zipf puede ajustarse a los datos.</span>
+<span id="cb97-648"><a href="#cb97-648" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos el tibble con frecuencias, rangos y logaritmos</span></span>
+<span id="cb97-649"><a href="#cb97-649" aria-hidden="true" tabindex="-1"></a>tbl<span class="ot">=</span><span class="fu">tibble</span>( <span class="at">L=</span><span class="fu">as.numeric</span>(<span class="fu">names</span>(aux)),<span class="at">Freq=</span><span class="fu">as.numeric</span>(aux),</span>
+<span id="cb97-650"><a href="#cb97-650" aria-hidden="true" tabindex="-1"></a>            <span class="at">Rank=</span><span class="fu">rank</span>(L),<span class="at">Log_Freq=</span><span class="fu">log</span>(Freq),<span class="at">Log_Rank=</span><span class="fu">log</span>(Rank))</span>
+<span id="cb97-651"><a href="#cb97-651" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(tbl)</span>
+<span id="cb97-652"><a href="#cb97-652" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-653"><a href="#cb97-653" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-656"><a href="#cb97-656" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-657"><a href="#cb97-657" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtramos los datos para rango entre 10 y 1000</span></span>
+<span id="cb97-658"><a href="#cb97-658" aria-hidden="true" tabindex="-1"></a>tbl2<span class="ot">=</span>tbl <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Rank<span class="sc">&gt;</span><span class="dv">10</span>) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Rank<span class="sc">&lt;</span><span class="dv">1000</span>)</span>
+<span id="cb97-659"><a href="#cb97-659" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-660"><a href="#cb97-660" aria-hidden="true" tabindex="-1"></a><span class="co"># Regresión lineal simple de Freq contra Rank</span></span>
+<span id="cb97-661"><a href="#cb97-661" aria-hidden="true" tabindex="-1"></a>sol1<span class="ot">=</span><span class="fu">lm</span>(tbl2<span class="sc">$</span>Freq<span class="sc">~</span>tbl2<span class="sc">$</span>Rank)</span>
+<span id="cb97-662"><a href="#cb97-662" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sol1)</span>
+<span id="cb97-663"><a href="#cb97-663" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-664"><a href="#cb97-664" aria-hidden="true" tabindex="-1"></a><span class="co"># Regresión lineal de Freq contra Log_Rank</span></span>
+<span id="cb97-665"><a href="#cb97-665" aria-hidden="true" tabindex="-1"></a>sol2<span class="ot">=</span><span class="fu">lm</span>(tbl2<span class="sc">$</span>Freq<span class="sc">~</span>tbl2<span class="sc">$</span>Log_Rank)</span>
+<span id="cb97-666"><a href="#cb97-666" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sol2)</span>
+<span id="cb97-667"><a href="#cb97-667" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-668"><a href="#cb97-668" aria-hidden="true" tabindex="-1"></a><span class="co"># Regresión lineal de Log_Freq contra Log_Rank (relación log-log)</span></span>
+<span id="cb97-669"><a href="#cb97-669" aria-hidden="true" tabindex="-1"></a>sol3<span class="ot">=</span><span class="fu">lm</span>(tbl2<span class="sc">$</span>Log_Freq<span class="sc">~</span>tbl2<span class="sc">$</span>Log_Rank)</span>
+<span id="cb97-670"><a href="#cb97-670" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sol3)</span>
+<span id="cb97-671"><a href="#cb97-671" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-672"><a href="#cb97-672" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-673"><a href="#cb97-673" aria-hidden="true" tabindex="-1"></a><span class="fu">### Solución</span></span>
+<span id="cb97-674"><a href="#cb97-674" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-675"><a href="#cb97-675" aria-hidden="true" tabindex="-1"></a>Vamos a mostrar gráficamente los resultados obtenidos con el codigo anterior</span>
+<span id="cb97-676"><a href="#cb97-676" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-679"><a href="#cb97-679" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-680"><a href="#cb97-680" aria-hidden="true" tabindex="-1"></a><span class="co"># Freq vs Rank</span></span>
+<span id="cb97-681"><a href="#cb97-681" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tbl2<span class="sc">$</span>Rank, tbl2<span class="sc">$</span>Freq, <span class="at">col =</span> <span class="st">"green"</span>, <span class="at">main =</span> <span class="st">"Frecuencia vs Rango"</span>,</span>
+<span id="cb97-682"><a href="#cb97-682" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Rango"</span>, <span class="at">ylab =</span> <span class="st">"Frecuencia"</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">cex.lab =</span> <span class="fl">1.5</span>, <span class="at">cex.main =</span> <span class="fl">1.8</span>)</span>
+<span id="cb97-683"><a href="#cb97-683" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-684"><a href="#cb97-684" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-685"><a href="#cb97-685" aria-hidden="true" tabindex="-1"></a>Esta gráfica muestra cómo varía la frecuencia de las longitudes de los comentarios en función de su rango.</span>
+<span id="cb97-686"><a href="#cb97-686" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-687"><a href="#cb97-687" aria-hidden="true" tabindex="-1"></a>Proporciona una visión general de la relación entre estas dos variables en escala lineal.</span>
+<span id="cb97-688"><a href="#cb97-688" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-689"><a href="#cb97-689" aria-hidden="true" tabindex="-1"></a>En general, la relación no parece seguir una línea recta clara en escala lineal, lo que indica que el modelo lineal simple no es apropiado para analizar esta relación.</span>
+<span id="cb97-690"><a href="#cb97-690" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-693"><a href="#cb97-693" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-694"><a href="#cb97-694" aria-hidden="true" tabindex="-1"></a><span class="co"># Rank vs Log_Freq</span></span>
+<span id="cb97-695"><a href="#cb97-695" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tbl2<span class="sc">$</span>Rank, tbl2<span class="sc">$</span>Log_Freq, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">main =</span> <span class="st">"Rango vs Log(Frecuencia)"</span>,</span>
+<span id="cb97-696"><a href="#cb97-696" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Rango"</span>, <span class="at">ylab =</span> <span class="st">"Log(Frecuencia)"</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">cex.lab =</span> <span class="fl">1.5</span>, <span class="at">cex.main =</span> <span class="fl">1.8</span>)</span>
+<span id="cb97-697"><a href="#cb97-697" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-698"><a href="#cb97-698" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-699"><a href="#cb97-699" aria-hidden="true" tabindex="-1"></a>Representa el rango en el eje x y el logaritmo de la frecuencia en el eje y.</span>
+<span id="cb97-700"><a href="#cb97-700" aria-hidden="true" tabindex="-1"></a>s</span>
+<span id="cb97-701"><a href="#cb97-701" aria-hidden="true" tabindex="-1"></a>Introduce el logaritmo para reducir la disparidad en las frecuencias altas, facilitando la observación de patrones más sutiles.</span>
+<span id="cb97-702"><a href="#cb97-702" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-703"><a href="#cb97-703" aria-hidden="true" tabindex="-1"></a>Si bien hay una tendencia decreciente, la relación sigue sin ser completamente lineal, lo que sugiere que una escala log-log podría ser más adecuada.</span>
+<span id="cb97-704"><a href="#cb97-704" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-707"><a href="#cb97-707" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-708"><a href="#cb97-708" aria-hidden="true" tabindex="-1"></a><span class="co"># Freq vs Log_Rank</span></span>
+<span id="cb97-709"><a href="#cb97-709" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tbl2<span class="sc">$</span>Log_Rank, tbl2<span class="sc">$</span>Freq, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">main =</span> <span class="st">"Frecuencia vs Log(Rango)"</span>,</span>
+<span id="cb97-710"><a href="#cb97-710" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Log(Rango)"</span>, <span class="at">ylab =</span> <span class="st">"Frecuencia"</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">cex.lab =</span> <span class="fl">1.5</span>, <span class="at">cex.main =</span> <span class="fl">1.8</span>)</span>
+<span id="cb97-711"><a href="#cb97-711" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-712"><a href="#cb97-712" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-713"><a href="#cb97-713" aria-hidden="true" tabindex="-1"></a>Representa la frecuencia en el eje y y el logaritmo del rango en el eje x.</span>
+<span id="cb97-714"><a href="#cb97-714" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-715"><a href="#cb97-715" aria-hidden="true" tabindex="-1"></a>Permite observar si la frecuencia depende logarítmicamente del rango.</span>
+<span id="cb97-716"><a href="#cb97-716" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-717"><a href="#cb97-717" aria-hidden="true" tabindex="-1"></a>No se observa una relación lineal clara, lo que refuerza la necesidad de escalar ambas variables logarítmicamente.</span>
+<span id="cb97-718"><a href="#cb97-718" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-721"><a href="#cb97-721" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb97-722"><a href="#cb97-722" aria-hidden="true" tabindex="-1"></a><span class="co"># Log_Freq vs Log_Rank</span></span>
+<span id="cb97-723"><a href="#cb97-723" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tbl2<span class="sc">$</span>Log_Rank, tbl2<span class="sc">$</span>Log_Freq, <span class="at">col =</span> <span class="st">"purple"</span>, <span class="at">main =</span> <span class="st">"Log(Frecuencia) vs Log(Rango)"</span>,</span>
+<span id="cb97-724"><a href="#cb97-724" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Log(Rango)"</span>, <span class="at">ylab =</span> <span class="st">"Log(Frecuencia)"</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">cex.lab =</span> <span class="fl">1.5</span>, <span class="at">cex.main =</span> <span class="fl">1.8</span>)</span>
+<span id="cb97-725"><a href="#cb97-725" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-726"><a href="#cb97-726" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb97-727"><a href="#cb97-727" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-728"><a href="#cb97-728" aria-hidden="true" tabindex="-1"></a>Representa el logaritmo de la frecuencia en el eje y y el logaritmo del rango en el eje x.</span>
+<span id="cb97-729"><a href="#cb97-729" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-730"><a href="#cb97-730" aria-hidden="true" tabindex="-1"></a>Evalúa la Ley de Zipf, ya que una relación lineal en esta escala indica una ley potencial, con pendiente cercana a -1.</span>
+<span id="cb97-731"><a href="#cb97-731" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-732"><a href="#cb97-732" aria-hidden="true" tabindex="-1"></a>En esta escala log-log, los puntos generalmente se alinean, lo que sugiere que la Ley de Zipf puede ajustarse a los datos.</span>
 </code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
